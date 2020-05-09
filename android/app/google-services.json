@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "281836320699",
+    "firebase_url": "https://kochchiye-ko.firebaseio.com",
+    "project_id": "kochchiye-ko",
+    "storage_bucket": "kochchiye-ko.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281836320699:android:cf0f8a12f353ed2d4c769e",
+        "android_client_info": {
+          "package_name": "com.example.kochchiye_ko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "281836320699-73ghnib16r20evs101mo6nit5kgirb8h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUqr9Jo1g_rH4j-W5wXw8hgu0T7eKzFuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "281836320699-73ghnib16r20evs101mo6nit5kgirb8h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
