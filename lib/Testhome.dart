@@ -25,7 +25,7 @@ class _TestHomeState extends State<TestHome> {
           .document('train3')
           .setData({'position': point.data});
     });
-    print("endsa");
+   
   }
 
   @override
