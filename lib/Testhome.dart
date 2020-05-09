@@ -74,6 +74,10 @@ class _TestHomeState extends State<TestHome> {
                   BackgroundLocation.stopLocationService();
                 },
               ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text("All of these are in testing mode to tese]t.UI's will be added leter")
             ]),
           )
         ],

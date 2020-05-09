@@ -31,6 +31,15 @@ class _UserhomeState extends State<Userhome> {
               SizedBox(
                 height: 10.0,
               ),
+                RaisedButton(
+                child: Text("Go to UserTrain Deatils"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>Usertraindetail()),
+                  );
+                },
+              ),
            
             
             ]),
