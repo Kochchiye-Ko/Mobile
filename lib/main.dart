@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Testhome.dart';
+import 'package:kochchiye_ko/home/signup.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:TestHome(),
+      home:SignUppage(),
     );
   }
 }
