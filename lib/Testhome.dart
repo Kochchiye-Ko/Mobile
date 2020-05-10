@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:kochchiye_ko/Admin/Admin.dart';
+import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/User/User.dart';
-
 
 class TestHome extends StatefulWidget {
   @override
@@ -15,7 +15,6 @@ class _TestHomeState extends State<TestHome> {
   Geoflutterfire geo = Geoflutterfire();
 
   getaa() async {
-    
     BackgroundLocation.startLocationService();
     BackgroundLocation.getLocationUpdates((location) {
       GeoFirePoint point =
@@ -25,7 +24,6 @@ class _TestHomeState extends State<TestHome> {
           .document('train3')
           .setData({'position': point.data});
     });
-   
   }
 
   @override
@@ -77,7 +75,17 @@ class _TestHomeState extends State<TestHome> {
               SizedBox(
                 height: 10.0,
               ),
-              Text("All of these are in testing mode to tese]t.UI's will be added leter")
+              RaisedButton(
+                child: Text("Stop send location"),
+                onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  Signin()),
+                  );
+                },
+              ),
+              Text(
+                  "All of these are in testing mode to tese]t.UI's will be added leter")
             ]),
           )
         ],
