@@ -13,6 +13,7 @@ class TestHome extends StatefulWidget {
 
 class _TestHomeState extends State<TestHome> {
   Geoflutterfire geo = Geoflutterfire();
+    final AuthService _auth = AuthService();
 
   getaa() async {
     BackgroundLocation.startLocationService();
@@ -31,6 +32,15 @@ class _TestHomeState extends State<TestHome> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Test Home"),
+        actions: <Widget>[
+            FlatButton.icon(
+              icon: Icon(Icons.person),
+              label: new Text("Logout"),
+              onPressed: () async {
+                await _auth.signOut();
+              },
+            ),
+          ],
       ),
       body: Column(
         children: <Widget>[
@@ -78,10 +88,11 @@ class _TestHomeState extends State<TestHome> {
               RaisedButton(
                 child: Text("Stop send location"),
                 onPressed: () {
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  Signin()),
-                  );
+                  //   Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) =>  Signin()
+                  //   ),
+                  // );
                 },
               ),
               Text(
