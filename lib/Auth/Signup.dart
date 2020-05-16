@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/constants/constants.dart';
 import 'package:kochchiye_ko/constants/loading.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class Signup extends StatefulWidget {
   // Signup({Key key}) : super(key: key);
@@ -34,11 +34,12 @@ class _SignupState extends State<Signup> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.white,
             ),
+            validator: (val) => val.isEmpty ? 'Enter your email' : null,
             onChanged: (val) {
               setState(() => email = val);
             },
@@ -142,141 +143,114 @@ class _SignupState extends State<Signup> {
             fontWeight: FontWeight.w400,
           ),
         ),
-        SizedBox(height: 20.0),
+        SizedBox(height: 10.0),
         Text(
           'Sign up with',
-          style: kLabelStyle,
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
       ],
     );
   }
 
-  _socialBtn(Function onTap, AssetImage logo) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 60.0,
-        width: 60.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              offset: Offset(0, 2),
-              blurRadius: 6.0,
-            ),
-          ],
-          image: DecorationImage(
-            image: logo,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _socialBtnRow() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 30.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _socialBtn(
-            () => print('Login with Facebook'),
-            AssetImage(
-              'assets/icons/facebook.jpg',
-            ),
-          ),
-          _socialBtn(
-            () => print('Login with Google'),
-            AssetImage(
-              'assets/icons/google.png',
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return  loading ? Loading(): Scaffold(
-      
-      body: Stack(
-        children: <Widget>[
-          Container(            
-            decoration: BoxDecoration(
-              image: DecorationImage(
-              image: AssetImage('assets/background/watermarklogo.png'),
-              fit: BoxFit.fitWidth,
-              ),
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    const Color(0xFF4FC3F7),
-                    const Color(0xFF00B0FF),
-                    const Color(0xFF0288D1),
-                    const Color(0xFF01579B),
-                  ],
-                  stops: [
-                    0.1,
-                    0.4,
-                    0.6,
-                    0.9
-                  ]),
-            ),
-          ),
-          Container(
-            height: double.infinity,
-            
-            child: SingleChildScrollView(
-              
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(
-                horizontal: 40.0,
-                vertical: 120.0,
-              ),
-              child: Form(
-                
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Sign Up',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 50.0,
-                          fontWeight: FontWeight.bold),
+    return loading
+        ? Loading()
+        : Scaffold(
+            body: Stack(
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    // image: DecorationImage(
+                    //   image: AssetImage('assets/background/watermarklogo.png'),
+                    //   fit: BoxFit.fitWidth,
+                    // ),
+                    // gradient: LinearGradient(
+                    //     begin: Alignment.topCenter,
+                    //     end: Alignment.bottomRight,
+                        // colors: [
+                        //   const Color(0xFF4FC3F7),
+                        //   const Color(0xFF00B0FF),
+                        //   const Color(0xFF0288D1),
+                        //   const Color(0xFF01579B),
+                        // ],
+                        // stops: [
+                        //   0.1,
+                        //   0.4,
+                        //   0.6,
+                        //   0.9
+                        // ]
+                        // ),
+                  ),
+                ),
+                Container(
+                  height: double.infinity,
+                  child: SingleChildScrollView(
+                    physics: AlwaysScrollableScrollPhysics(),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 40.0,
+                      // vertical: 40.0,
                     ),
-                    SizedBox(height: 30.0),
-                    _email(),
-                    SizedBox(height: 30.0),
-                    _password(),
-                    SizedBox(height: 30.0),
-                    _sButton(),
-                    FlatButton(
-                      onPressed: () {
-                        widget.toggleView();
-                      },
-                      color: Colors.transparent,
-                      textColor: Colors.black38,
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "( Login )",
-                        style: TextStyle(fontSize: 20.0),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(height: 90.0),
+                          Text(
+                            'Sign Up',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 50.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+
+                          SizedBox(height: 30.0),
+                          _email(),
+                          SizedBox(height: 20.0),
+                          _password(),
+                          SizedBox(height: 20.0),
+                          _sButton(),
+                          Text(
+                            "Already have an account?",
+                            style: TextStyle(color: Colors.white70),
+                          ),
+                          FlatButton(
+                            onPressed: () {
+                              widget.toggleView();
+                            },
+                            color: Colors.transparent,
+                            textColor: Colors.black38,
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          _sinupwith(),
+                          SizedBox(height: 30.0),
+                          GoogleSignInButton(
+                              onPressed: () async{
+                                dynamic result = await _auth.signInWithGoogle();
+                                if (result == null) {
+                                } else {
+                                  print(result);
+                                }
+                              },
+                              darkMode: true),
+                        ],
                       ),
                     ),
-                    _sinupwith(),
-                    _socialBtnRow(),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ),
-        ],
-      ),
-    );
+          );
   }
 }

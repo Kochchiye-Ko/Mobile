@@ -1,15 +1,19 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kochchiye_ko/Auth/model/user.dart';
 import 'package:kochchiye_ko/Auth/model/database.dart';
+// import 'package:kochchiye_ko/constants/loading.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   User _userFromFirebaseUser(FirebaseUser user) {
     return user != null ? User(uid: user.uid) : null;
   }
 
   Stream<User> get user {
-    return _auth.onAuthStateChanged.map(_userFromFirebaseUser); 
+    return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
 //singn in anonimus
@@ -25,12 +29,13 @@ class AuthService {
   }
 
 //sign with email pass
- Future signInWithEmailandpassword(String email, String password) async{
-    try{
-      AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
-      FirebaseUser user =result.user;
+  Future signInWithEmailandpassword(String email, String password) async {
+    try {
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
       return _userFromFirebaseUser(user);
-    }catch(e){
+    } catch (e) {
       print(e.toString());
       return null;
     }
@@ -38,14 +43,16 @@ class AuthService {
 
 //register withr email pass
 
-  Future registerWithEmailandpassword(String email, String password) async{
-    try{
-      AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      FirebaseUser user =result.user;
+  Future registerWithEmailandpassword(String email, String password) async {
+    try {
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
 
-      await DatabaseService(uid: user.uid).updateUserData(email, password, "passenger");
+      await DatabaseService(uid: user.uid)
+          .updateUserData(email, password, "passenger");
       return _userFromFirebaseUser(user);
-    }catch(e){    
+    } catch (e) {
       print(e.toString());
       return null;
     }
@@ -61,4 +68,30 @@ class AuthService {
       return null;
     }
   }
+
+
+final GoogleSignIn googleSignIn = GoogleSignIn();
+
+Future<String> signInWithGoogle() async {
+  final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+  final GoogleSignInAuthentication googleSignInAuthentication =
+      await googleSignInAccount.authentication;
+
+  final AuthCredential credential = GoogleAuthProvider.getCredential(
+    accessToken: googleSignInAuthentication.accessToken,
+    idToken: googleSignInAuthentication.idToken,
+  );
+
+  final AuthResult authResult = await _auth.signInWithCredential(credential);
+  final FirebaseUser user = authResult.user;
+
+  assert(!user.isAnonymous);
+  assert(await user.getIdToken() != null);
+
+  final FirebaseUser currentUser = await _auth.currentUser();
+  assert(user.uid == currentUser.uid);
+
+  return 'signInWithGoogle succeeded: $user';
+}
+
 }
