@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:kochchiye_ko/Admin/DriversAdmin.dart';
+import 'package:kochchiye_ko/Admin/UsersAdmin.dart';
+import 'package:kochchiye_ko/Admin/about.dart';
+import 'package:kochchiye_ko/Admin/createNotification.dart';
+import 'package:kochchiye_ko/Admin/map.dart';
+import 'package:kochchiye_ko/Admin/trainsgedule.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/wrapper.dart';
 import 'package:kochchiye_ko/constants/constants.dart';
@@ -58,13 +64,32 @@ class _AdminhomeState extends State<Adminhome> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      SizedBox(height: 20.0),
+                      Container(
+                        child: Card(
+                          color: Colors.grey[700],
+                          child: InkWell(
+                            splashColor: Colors.grey,
+                            child: Container(
+                              width: double.infinity,
+                              height: 200.0,
+                              child: Text('A card that can be tapped'),
+                            ),
+                          ),
+                        ),
+                      ),
                       Container(
                         child: Card(
                           color: Colors.grey[700],
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
-                              print('Card tapped.');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        CreateNotifications()),
+                              );
                             },
                             child: Container(
                               alignment: Alignment.centerLeft,
@@ -77,12 +102,19 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "Create Notifications",
+                                  "   Notifications",
                                   style: TextStyle(
                                       color: Colors.orange[200],
                                       fontSize: 30.0),
                                 ),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CreateNotifications()),
+                                  );
+                                },
                               ),
                             ),
                           ),
@@ -94,7 +126,11 @@ class _AdminhomeState extends State<Adminhome> {
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
-                              print('Card tapped.');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TrainShedule()),
+                              );
                             },
                             child: Container(
                               alignment: Alignment.centerLeft,
@@ -102,17 +138,23 @@ class _AdminhomeState extends State<Adminhome> {
                               height: 80.0,
                               child: FlatButton.icon(
                                 icon: Icon(
-                                  Icons.add_alert,
+                                  Icons.train,
                                   size: 50.0,
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "Train Shedules",
+                                  "   Train Schedule",
                                   style: TextStyle(
                                       color: Colors.orange[200],
                                       fontSize: 30.0),
                                 ),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => TrainShedule()),
+                                  );
+                                },
                               ),
                             ),
                           ),
@@ -124,12 +166,36 @@ class _AdminhomeState extends State<Adminhome> {
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
-                              print('Card tapped.');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => MapAdminpanel()),
+                              );
                             },
                             child: Container(
+                              alignment: Alignment.centerLeft,
                               width: double.infinity,
                               height: 80.0,
-                              child: Text('A card that can be tapped'),
+                              child: FlatButton.icon(
+                                icon: Icon(
+                                  Icons.map,
+                                  size: 50.0,
+                                  color: Colors.orange,
+                                ),
+                                label: new Text(
+                                  "   Map",
+                                  style: TextStyle(
+                                      color: Colors.orange[200],
+                                      fontSize: 30.0),
+                                ),
+                                onPressed: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MapAdminpanel()),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),
@@ -140,12 +206,37 @@ class _AdminhomeState extends State<Adminhome> {
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
-                              print('Card tapped.');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => UsersAdminpanel()),
+                              );
                             },
                             child: Container(
+                              alignment: Alignment.centerLeft,
                               width: double.infinity,
                               height: 80.0,
-                              child: Text('A card that can be tapped'),
+                              child: FlatButton.icon(
+                                icon: Icon(
+                                  Icons.people,
+                                  size: 50.0,
+                                  color: Colors.orange,
+                                ),
+                                label: new Text(
+                                  "   Users",
+                                  style: TextStyle(
+                                      color: Colors.orange[200],
+                                      fontSize: 30.0),
+                                ),
+                                onPressed: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            UsersAdminpanel()),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),
@@ -156,12 +247,37 @@ class _AdminhomeState extends State<Adminhome> {
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
-                              print('Card tapped.');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DriversAdminpanel()),
+                              );
                             },
                             child: Container(
+                              alignment: Alignment.centerLeft,
                               width: double.infinity,
                               height: 80.0,
-                              child: Text('A card that can be tapped'),
+                              child: FlatButton.icon(
+                                icon: Icon(
+                                  Icons.directions_transit,
+                                  size: 50.0,
+                                  color: Colors.orange,
+                                ),
+                                label: new Text(
+                                  "   Drivers",
+                                  style: TextStyle(
+                                      color: Colors.orange[200],
+                                      fontSize: 30.0),
+                                ),
+                                onPressed: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            DriversAdminpanel()),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),
@@ -172,32 +288,41 @@ class _AdminhomeState extends State<Adminhome> {
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
-                              print('Card tapped.');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => About()),
+                              );
                             },
                             child: Container(
+                              alignment: Alignment.centerLeft,
                               width: double.infinity,
                               height: 80.0,
-                              child: Text('A card that can be tapped'),
+                              child: FlatButton.icon(
+                                icon: Icon(
+                                  Icons.info,
+                                  size: 50.0,
+                                  color: Colors.orange,
+                                ),
+                                label: new Text(
+                                  "   About",
+                                  style: TextStyle(
+                                      color: Colors.orange[200],
+                                      fontSize: 30.0),
+                                ),
+                                onPressed: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => About()),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),
                       ),
-                      Container(
-                        child: Card(
-                          color: Colors.grey[700],
-                          child: InkWell(
-                            splashColor: Colors.grey,
-                            onTap: () {
-                              print('Card tapped.');
-                            },
-                            child: Container(
-                              width: double.infinity,
-                              height: 80.0,
-                              child: Text('A card that can be tapped'),
-                            ),
-                          ),
-                        ),
-                      ),
+                      SizedBox(height: 30.0),
                     ]),
               ),
             ),
