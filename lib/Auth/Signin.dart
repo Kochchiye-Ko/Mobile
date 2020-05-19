@@ -34,7 +34,8 @@ class _SigninState extends State<Signin> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
+            validator: (val) => val.isEmpty ? 'Enter your email' : null,
             onChanged: (val) {
               setState(() => email = val);
             },
@@ -44,7 +45,8 @@ class _SigninState extends State<Signin> {
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
+              contentPadding:
+                  EdgeInsets.only(top: 14.0, left: 50.0, bottom: -10.0),
               prefixIcon: Icon(
                 Icons.email,
                 color: Colors.white,
@@ -71,7 +73,8 @@ class _SigninState extends State<Signin> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
+            validator: (val) => val.isEmpty ? 'Enter your password' : null,
             onChanged: (val) {
               setState(() => password = val);
             },
@@ -79,11 +82,11 @@ class _SigninState extends State<Signin> {
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
                 color: Colors.white,
               ),
+              contentPadding: EdgeInsets.only(top: 14.0, left: 50.0),
               hintText: 'Enter your Password',
               hintStyle: kHintTextStyle,
             ),
@@ -100,26 +103,26 @@ class _SigninState extends State<Signin> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-          dynamic result = await _auth.signInAnon();
-          if (result == null) {
-            print("errpr");
-          } else {
-            print("sucesses");
-            print(result);
-          }
+          // dynamic result = await _auth.signInAnon();
+          // if (result == null) {
+          //   print("errpr");
+          // } else {
+          //   print("sucesses");
+          //   print(result);
+          // }
 
           //email,passowrd ------------------------------------
-          // if (_formKey.currentState.validate()) {
-          //   setState(() => loading = true);
-          //   dynamic result =
-          //       await _auth.signInWithEmailandpassword(email, password);
-          //   if (result == null) {
-          //     setState(() {
-          //       error = 'Could not sign in with those credentials';
-          //       loading = false;
-          //     });
-          //   }
-          // }
+          if (_formKey.currentState.validate()) {
+            setState(() => loading = true);
+            dynamic result =
+                await _auth.signInWithEmailandpassword(email, password);
+            if (result == null) {
+              setState(() {
+                error = 'Could not sign in with those credentials';
+                loading = false;
+              });
+            }
+          }
           //-------------------------------------------
         },
         padding: EdgeInsets.all(15.0),
@@ -130,7 +133,7 @@ class _SigninState extends State<Signin> {
         child: Text(
           'Login',
           style: TextStyle(
-            color: Colors.blue[900],
+            color: Colors.orange[700],
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
@@ -169,17 +172,7 @@ class _SigninState extends State<Signin> {
             body: Stack(
               children: <Widget>[
                 Container(
-                  decoration: BoxDecoration(color: Colors.blue
-                      // gradient: LinearGradient(
-                      //     begin: Alignment.topCenter,
-                      //     end: Alignment.bottomRight,
-                      //     colors: [
-                      //       // // const Color(0xFF4FC3F7),
-                      //       // const Color(0xFF00B0FF),
-                      //       // const Color(0xFF0288D1),
-                      //       const Color(0xFF01579B),
-                      //     ]),
-                      ),
+                  decoration: BoxDecoration(color: Colors.orange),
                 ),
                 Container(
                   height: double.infinity,
@@ -210,6 +203,11 @@ class _SigninState extends State<Signin> {
                           _email(),
                           SizedBox(height: 20.0),
                           _password(),
+                          SizedBox(height: 10.0),
+                          Text(
+                            error,
+                            style: TextStyle(color: Colors.red, fontSize: 14.0),
+                          ),
                           _sButton(),
                           Text(
                             "Don't have an account?",
@@ -231,9 +229,12 @@ class _SigninState extends State<Signin> {
                             ),
                           ),
                           _continueWith(),
-                          SizedBox(height: 20.0),
+                          SizedBox(height: 10.0),
                           GoogleSignInButton(
                               onPressed: () async {
+                                setState(() {
+                                  loading = true;
+                                });
                                 dynamic result = await _auth.signInWithGoogle();
                                 if (result == null) {
                                 } else {

@@ -45,7 +45,7 @@ class _SignupState extends State<Signup> {
             },
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
+              contentPadding: EdgeInsets.only(top: 14.0, left: 50.0),
               prefixIcon: Icon(
                 Icons.email,
                 color: Colors.white,
@@ -72,7 +72,8 @@ class _SignupState extends State<Signup> {
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
           height: 60.0,
-          child: TextField(
+          child: TextFormField(
+            validator: (val) => val.isEmpty ? 'Enter your Password' : null,
             onChanged: (val) {
               setState(() => password = val);
             },
@@ -80,7 +81,7 @@ class _SignupState extends State<Signup> {
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
+              contentPadding: EdgeInsets.only(top: 14.0, left: 50.0),
               prefixIcon: Icon(
                 Icons.lock,
                 color: Colors.white,
@@ -102,8 +103,8 @@ class _SignupState extends State<Signup> {
         elevation: 5.0,
         onPressed: () async {
           if (_formKey.currentState.validate()) {
-            print(email);
-            print(password);
+            // print(email);
+            // print(password);
             setState(() => loading = true);
             dynamic result =
                 await _auth.registerWithEmailandpassword(email, password);
@@ -123,7 +124,7 @@ class _SignupState extends State<Signup> {
         child: Text(
           'Register',
           style: TextStyle(
-            color: Colors.blue[900],
+            color: Colors.orange[700],
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
@@ -163,27 +164,7 @@ class _SignupState extends State<Signup> {
               children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.blue,
-                    // image: DecorationImage(
-                    //   image: AssetImage('assets/background/watermarklogo.png'),
-                    //   fit: BoxFit.fitWidth,
-                    // ),
-                    // gradient: LinearGradient(
-                    //     begin: Alignment.topCenter,
-                    //     end: Alignment.bottomRight,
-                        // colors: [
-                        //   const Color(0xFF4FC3F7),
-                        //   const Color(0xFF00B0FF),
-                        //   const Color(0xFF0288D1),
-                        //   const Color(0xFF01579B),
-                        // ],
-                        // stops: [
-                        //   0.1,
-                        //   0.4,
-                        //   0.6,
-                        //   0.9
-                        // ]
-                        // ),
+                    color: Colors.orange,
                   ),
                 ),
                 Container(
@@ -207,12 +188,16 @@ class _SignupState extends State<Signup> {
                                 fontSize: 50.0,
                                 fontWeight: FontWeight.bold),
                           ),
-
                           SizedBox(height: 30.0),
                           _email(),
                           SizedBox(height: 20.0),
                           _password(),
                           SizedBox(height: 20.0),
+                          SizedBox(height: 10.0),
+                          Text(
+                            error,
+                            style: TextStyle(color: Colors.red, fontSize: 14.0),
+                          ),
                           _sButton(),
                           Text(
                             "Already have an account?",
@@ -236,7 +221,8 @@ class _SignupState extends State<Signup> {
                           _sinupwith(),
                           SizedBox(height: 30.0),
                           GoogleSignInButton(
-                              onPressed: () async{
+                              onPressed: () async {
+                                setState(() => loading = true);
                                 dynamic result = await _auth.signInWithGoogle();
                                 if (result == null) {
                                 } else {
