@@ -73,7 +73,7 @@ class _AdminhomeState extends State<Adminhome> {
                             child: Container(
                               width: double.infinity,
                               height: 200.0,
-                              child: Text('A card that can be tapped'),
+                              // child: Text('A card that can be tapped'),
                             ),
                           ),
                         ),
@@ -104,7 +104,7 @@ class _AdminhomeState extends State<Adminhome> {
                                 label: new Text(
                                   "   Notifications",
                                   style: TextStyle(
-                                      color: Colors.orange[200],
+                                      color: Colors.orange[100],
                                       fontSize: 30.0),
                                 ),
                                 onPressed: () async {
@@ -145,7 +145,7 @@ class _AdminhomeState extends State<Adminhome> {
                                 label: new Text(
                                   "   Train Schedule",
                                   style: TextStyle(
-                                      color: Colors.orange[200],
+                                      color: Colors.orange[100],
                                       fontSize: 30.0),
                                 ),
                                 onPressed: () async {
@@ -185,7 +185,7 @@ class _AdminhomeState extends State<Adminhome> {
                                 label: new Text(
                                   "   Map",
                                   style: TextStyle(
-                                      color: Colors.orange[200],
+                                      color: Colors.orange[100],
                                       fontSize: 30.0),
                                 ),
                                 onPressed: () async {
@@ -225,7 +225,7 @@ class _AdminhomeState extends State<Adminhome> {
                                 label: new Text(
                                   "   Users",
                                   style: TextStyle(
-                                      color: Colors.orange[200],
+                                      color: Colors.orange[100],
                                       fontSize: 30.0),
                                 ),
                                 onPressed: () async {
@@ -266,7 +266,7 @@ class _AdminhomeState extends State<Adminhome> {
                                 label: new Text(
                                   "   Drivers",
                                   style: TextStyle(
-                                      color: Colors.orange[200],
+                                      color: Colors.orange[100],
                                       fontSize: 30.0),
                                 ),
                                 onPressed: () async {
@@ -307,7 +307,7 @@ class _AdminhomeState extends State<Adminhome> {
                                 label: new Text(
                                   "   About",
                                   style: TextStyle(
-                                      color: Colors.orange[200],
+                                      color: Colors.orange[100],
                                       fontSize: 30.0),
                                 ),
                                 onPressed: () async {
@@ -317,6 +317,7 @@ class _AdminhomeState extends State<Adminhome> {
                                         builder: (context) => About()),
                                   );
                                 },
+                                textTheme: ButtonTextTheme.primary,
                               ),
                             ),
                           ),
