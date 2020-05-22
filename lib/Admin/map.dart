@@ -88,6 +88,7 @@ class _GeomapState extends State<Geomap> {
               ));
 
             for (int i = 0; i <snapshot.data.documents.length; i++) {
+              print("object");
               var train = snapshot.data.documents[i];
               GeoPoint geoPoint = train['position']['geopoint'];
               double lat = geoPoint.latitude;
