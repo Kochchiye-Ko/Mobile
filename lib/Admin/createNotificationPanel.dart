@@ -17,7 +17,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
         style: TextStyle(fontSize: 20.0),
       ),
       duration: Duration(seconds: 3),
-      backgroundColor: Colors.green[700],
+      backgroundColor: Colors.green[300],
     );
     _sKey.currentState.showSnackBar(snackBar);
   }
@@ -40,7 +40,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
       body: Stack(
         children: <Widget>[
           Container(
-            color: Colors.grey[400],
+            color: Colors.grey[600],
             height: double.infinity,
             child: SingleChildScrollView(
               physics: AlwaysScrollableScrollPhysics(),
@@ -95,6 +95,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                                       Text(
                                         "To all",
                                         style: TextStyle(
+                                            color: Colors.white,
                                             fontSize: 17.0,
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -124,6 +125,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                                       Text(
                                         "To Drivers",
                                         style: TextStyle(
+                                            color: Colors.white,
                                             fontSize: 17.0,
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -153,6 +155,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                                       Text(
                                         "To Passengers",
                                         style: TextStyle(
+                                            color: Colors.white,
                                             fontSize: 17.0,
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -172,6 +175,8 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   FlatButton.icon(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 100.0, vertical: 10.0),
                                     label: new Text(
                                       " Send",
                                       style: TextStyle(
@@ -183,7 +188,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                                     ),
                                     shape: new RoundedRectangleBorder(
                                         borderRadius:
-                                            new BorderRadius.circular(8.0)),
+                                            new BorderRadius.circular(5.0)),
                                     color: Colors.orange,
                                     onPressed: () async {
                                       if (checkBoxValue1 == true) {
@@ -213,6 +218,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                                           checkBoxValue2 = false;
                                           checkBoxValue3 = false;
                                           nameHolder.clear();
+                                          errorMsg1 = "";
                                         });
                                         _showSnackBar();
                                       }

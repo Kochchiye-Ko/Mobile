@@ -17,7 +17,7 @@ class DatabaseService {
   }
 
   Stream<List<Notifications>> get allNotifications {
-    return notificationCollection
+    return notificationCollection.orderBy("dateTime", descending: true)
         .snapshots()
         .map(_notificationListFromSnapshot);
   }
