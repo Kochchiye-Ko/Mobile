@@ -6,7 +6,7 @@ class DatabaseService {
   DatabaseService({this.uid});
 
   final CollectionReference notificationCollection =
-      Firestore.instance.collection("Notifications");
+      Firestore.instance.collection("AdminNotifications");
 
   Future addNotifications(String msg, String accounttype) async {
     return await notificationCollection.document(uid).setData({
