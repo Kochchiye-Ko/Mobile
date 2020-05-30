@@ -50,7 +50,7 @@ class AuthService {
       FirebaseUser user = result.user;
 
       await DatabaseService(uid: user.uid)
-          .updateUserData(email, password, "passenger");
+          .updateUserData(email,"passenger");
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -77,7 +77,7 @@ Future<String> signInWithGoogle() async {
   final GoogleSignInAuthentication googleSignInAuthentication =
       await googleSignInAccount.authentication;
 
-  final AuthCredential credential = GoogleAuthProvider.getCredential(
+   AuthCredential credential = GoogleAuthProvider.getCredential(
     accessToken: googleSignInAuthentication.accessToken,
     idToken: googleSignInAuthentication.idToken,
   );
@@ -91,7 +91,14 @@ Future<String> signInWithGoogle() async {
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
 
-  return 'signInWithGoogle succeeded: $user';
+await DatabaseService(uid: user.uid)
+          .updateUserData(googleSignInAccount.email.toString(),"passenger");
+  // return 'signInWithGoogle succeeded: $user';
 }
+
+
+
+
+
 
 }

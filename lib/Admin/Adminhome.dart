@@ -36,6 +36,26 @@ class _AdminhomeState extends State<Adminhome> {
         title: Text("Home"),
         backgroundColor: Colors.grey[900],
         actions: <Widget>[
+          
+          // Container(
+          //   // alignment: AlignmentDirectional.bottomEnd,
+          //   padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+          //   child: FloatingActionButton(
+          //     onPressed: () {
+          //       Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //           builder: (context) => CreateNotifications(),
+          //         ),
+          //       );
+          //     },
+          //     child: Icon(
+          //       Icons.notification_important,
+          //       color: Colors.orange,
+          //     ),
+          //     backgroundColor: Colors.grey[800],
+          //   ),
+          // ),
           PopupMenuButton<String>(
             onSelected: choiceAction,
             itemBuilder: (BuildContext context) {
