@@ -83,7 +83,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                         height: 2,
                         color: Colors.orange,
                       ),
-                      dropdownColor: Colors.grey[900],
+                     // dropdownColor: Colors.grey[900],
                       hint: Text("Select a Train"),
                       onChanged: (String newValue) {
                         setState(() {
