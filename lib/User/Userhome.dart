@@ -40,8 +40,30 @@ class _UserhomeState extends State<Userhome> {
                   );
                 },
               ),
-           
-            
+              SizedBox(
+                height: 10.0,
+              ),
+                RaisedButton(
+                child: Text("Go to UserTrain Schduele"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>Usertraindetail()),
+                  );
+                },
+              ),
+            SizedBox(
+                height: 10.0,
+              ),
+                RaisedButton(
+                child: Text("See ruring trains"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>Searchtrain()),
+                  );
+                },
+              ),
             ]),
           )
         ],
