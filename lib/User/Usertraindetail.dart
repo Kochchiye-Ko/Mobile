@@ -34,7 +34,7 @@ class _UsertraindetailState extends State<Usertraindetail> {
                       ),
                       _iconDestination(),
                       SizedBox(
-                        width: 17,
+                        width: 15,
                       ),
                       orginandDestination()
                     ],
@@ -125,10 +125,10 @@ Widget orginandDestination() {
       RichText(
           text: TextSpan(children: <TextSpan>[
         TextSpan(
-            text: "Origin\n",
+            text: "Destination\n",
             style: TextStyle(color: Color(0xFFFb7b7c5), fontSize: 14)),
         TextSpan(
-            text: "Colombo Fort",
+            text: "Anuradhapura",
             style: TextStyle(fontSize: 17, color: Colors.black)),
       ])),
     ],
