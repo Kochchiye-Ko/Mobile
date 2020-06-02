@@ -20,8 +20,21 @@ class _DriverhomeState extends State<Driverhome> {
                   gradient: LinearGradient(
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft,
-                      colors: [const Color(0xFFFF5700), const Color(0xFFFFDF32)])),
+                      colors: [
+                    const Color(0xFFFF5700),
+                    const Color(0xFFFFDF32)
+                  ])),
             ),
+          ),
+          Container(
+            child: Expanded(child: GridView.count(crossAxisCount: 2,children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  color:Colors.green,
+                  borderRadius: BorderRadius.circular(13)
+                ),
+              )
+            ],)),
           )
         ],
       ),
@@ -29,12 +42,13 @@ class _DriverhomeState extends State<Driverhome> {
   }
 }
 
-class MyClipper extends CustomClipper<Path>{
+class MyClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    var path=Path();
-    path.lineTo(0, size.height-80);
-    path.quadraticBezierTo(size.width/2,size.height , size.width, size.height-80);
+    var path = Path();
+    path.lineTo(0, size.height - 80);
+    path.quadraticBezierTo(
+        size.width / 2, size.height, size.width, size.height - 80);
     path.lineTo(size.width, 0);
     path.close();
     return path;
@@ -42,8 +56,6 @@ class MyClipper extends CustomClipper<Path>{
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
-
     return null;
   }
-
 }
