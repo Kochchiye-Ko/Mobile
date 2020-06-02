@@ -33,7 +33,7 @@ class _UserhomeState extends State<Userhome> {
                 height: 10.0,
               ),
                 RaisedButton(
-                child: Text("Go to UserTrain Deatils"),
+                child: Text("Go to Indviudla Train Details"),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -45,11 +45,11 @@ class _UserhomeState extends State<Userhome> {
                 height: 10.0,
               ),
                 RaisedButton(
-                child: Text("Go to UserTrain Schduele"),
+                child: Text("Search Train Schudules"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Usertrainschdule()),
+                    MaterialPageRoute(builder: (context) =>Searchtrain()),
                   );
                 },
               ),
@@ -61,7 +61,7 @@ class _UserhomeState extends State<Userhome> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Searchtrain()),
+                    MaterialPageRoute(builder: (context) =>Usertrainschdule()),
                   );
                 },
               ),

@@ -21,22 +21,28 @@ class _UsertraindetailState extends State<Usertraindetail> {
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(horizontal: 20),
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   width: MediaQuery.of(context).size.width * 0.85,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(14))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(
-                        width: 10,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          SizedBox(
+                            width: 10,
+                          ),
+                          _iconDestination(),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          orginandDestination()
+                        ],
                       ),
-                      _iconDestination(),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      orginandDestination()
                     ],
                   ),
                 )
@@ -121,7 +127,8 @@ Widget orginandDestination() {
             text: "Colombo Fort",
             style: TextStyle(fontSize: 17, color: Colors.black)),
       ])),
-   
+      SizedBox(height: 65,),
+      Icon(Icons.swap_vert,color: Colors.indigo,),
       RichText(
           text: TextSpan(children: <TextSpan>[
         TextSpan(
