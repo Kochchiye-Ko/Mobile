@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class Usertrainschdule extends StatefulWidget {
   Usertrainschdule({Key key}) : super(key: key);
@@ -9,9 +11,14 @@ class Usertrainschdule extends StatefulWidget {
 }
 
 class _UsertrainschduleState extends State<Usertrainschdule> {
+  final Completer<WebViewController> controller =
+      Completer<WebViewController>();
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Schduels"),
+      ),
       
     );
   }

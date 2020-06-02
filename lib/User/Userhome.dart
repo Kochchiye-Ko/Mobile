@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/User/User.dart';
+import 'package:kochchiye_ko/User/Usertrainschdule.dart';
 
 class Userhome extends StatefulWidget {
   Userhome({Key key}) : super(key: key);
@@ -48,7 +49,7 @@ class _UserhomeState extends State<Userhome> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Usertraindetail()),
+                    MaterialPageRoute(builder: (context) =>Usertrainschdule()),
                   );
                 },
               ),
@@ -56,7 +57,7 @@ class _UserhomeState extends State<Userhome> {
                 height: 10.0,
               ),
                 RaisedButton(
-                child: Text("See ruring trains"),
+                child: Text("See running trains"),
                 onPressed: () {
                   Navigator.push(
                     context,

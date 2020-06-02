@@ -10,8 +10,11 @@ class _SearchtrainState extends State<Searchtrain> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
+      appBar: AppBar(title: Text("Serach Trains"),),
       body: Center(
-        child: Trainview(),
+        child:ListView.builder(itemCount: 10,itemBuilder: (context,index){
+          return  Trainview();
+        }),
       ),
     );
   }
@@ -23,15 +26,18 @@ class Trainview extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(16),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-            height: 100,
+            height: 120,
+            padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    topRight: Radius.circular(16))),
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24))),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Row(
                   children: <Widget>[
@@ -42,20 +48,81 @@ class Trainview extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.indigo),
                     ),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Container(
-                      padding:EdgeInsets.all(8) ,
+                      padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                         color: Colors.indigo.shade50,
-                          borderRadius: BorderRadius.circular(20)
-                      ),
+                          color: Colors.indigo.shade50,
+                          borderRadius: BorderRadius.circular(20)),
                       child: SizedBox(
                         height: 8,
                         width: 8,
-                        child: DecoratedBox(decoration: BoxDecoration(
-                          color: Colors.indigo.shade400,
-                          borderRadius: BorderRadius.circular(5)
-                        ),),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              color: Colors.indigo.shade400,
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
                       ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Stack(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 24,
+                              child: LayoutBuilder(
+                                builder: (context, constraints) {
+                                  return Flex(
+                                    children: List.generate(
+                                      (constraints.constrainWidth() / 10)
+                                          .floor(),
+                                      (index) => SizedBox(
+                                        height: 1,
+                                        width: 3,
+                                        child: DecoratedBox(
+                                          decoration: BoxDecoration(
+                                              color: Colors.grey.shade800),
+                                        ),
+                                      ),
+                                    ),
+                                    direction: Axis.horizontal,
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                  );
+                                },
+                              ),
+                            ),
+                            Center(
+                                child: Icon(
+                              Icons.directions_transit,
+                              color: Colors.green.shade400,
+                              size: 24,
+                            ))
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          color: Colors.pink.shade50,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: SizedBox(
+                        height: 8,
+                        width: 8,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              color: Colors.indigo.shade400,
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
                     ),
                     Text(
                       "Anuradhapura",
@@ -63,6 +130,62 @@ class Trainview extends StatelessWidget {
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: Colors.pink),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    SizedBox(
+                      width: 100,
+                      child: Text(
+                        "Origin",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "5H 30M",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                    SizedBox(
+                      width: 100,
+                      child: Text(
+                        "Destination",
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "08:00 AM",
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "02:30 PM",
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
                     )
                   ],
                 )
@@ -122,11 +245,28 @@ class Trainview extends StatelessWidget {
           ),
           Container(
             height: 50,
+            padding: EdgeInsets.only(left: 16,right: 16,bottom: 8),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16))),
+                    bottomLeft: Radius.circular(24),
+                    bottomRight: Radius.circular(24))),
+            child: Row(
+              children: <Widget>[
+
+                Container(
+                   padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.amber.shade50,
+                    borderRadius:BorderRadius.circular(20)
+                  ),
+                  child: Icon(Icons.train,color: Colors.amber,),
+
+                ),
+                SizedBox(width: 15,),
+                Text("Intercity",style: TextStyle(fontSize:16,fontWeight: FontWeight.bold,color: Colors.grey),)
+              ],
+            ),
           )
         ],
       ),
