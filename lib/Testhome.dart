@@ -16,6 +16,13 @@ class _TestHomeState extends State<TestHome> {
   Geoflutterfire geo = Geoflutterfire();
     final AuthService _auth = AuthService();
 
+    
+  @override
+  void initState() {
+    super.initState();
+ 
+  }
+
   getaa() async {
     BackgroundLocation.startLocationService();
     BackgroundLocation.getLocationUpdates((location) {

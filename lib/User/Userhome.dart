@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kochchiye_ko/Testhome.dart';
 import 'package:kochchiye_ko/User/User.dart';
+import 'package:kochchiye_ko/User/Usertesthome.dart';
 import 'package:kochchiye_ko/User/Usertrainschdule.dart';
 
 class Userhome extends StatefulWidget {
@@ -62,6 +64,18 @@ class _UserhomeState extends State<Userhome> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) =>Usertrainschdule()),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+                RaisedButton(
+                child: Text("See home"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>Usertesthome()),
                   );
                 },
               ),
