@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kochchiye_ko/Driver/Driver.dart';
 
 class Driverhome extends StatefulWidget {
   @override
@@ -39,11 +40,36 @@ class _DriverhomeState extends State<Driverhome> {
                         child: Stack(
                           children: <Widget>[
                             Positioned(
-                              top: 30,
-                              left: 190,
+                              top: 50,
+                              left: 260,
                               child: Image.asset('assets/Driver/Driver.png'),
+                              height: 250,
+                            ),
+                            Positioned(
+                              top: 130,
+                              left: 5,
+                              child:
+                                  Image.asset('assets/Driver/Trainimage.png'),
                               height: 270,
-                            )
+                              width: 300,
+                            ),
+                            Positioned(
+                                top: 70,
+                                left: 20,
+                                child: Text("Good Morning",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 30,
+                                        color: Colors.white))),
+                            Positioned(
+                                top: 120,
+                                left: 20,
+                                child: Text(
+                                  "Welcom Driver",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30),
+                                )),
                           ],
                         ),
                       )
@@ -52,21 +78,45 @@ class _DriverhomeState extends State<Driverhome> {
                 ),
               ),
               Expanded(
-                  child: Row(
-                    
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[Cards(),Cards()],
+                  child: Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Driverstart()),
+                          );
+                        },
+                        child: Cards(
+                          img: "assets/Driver/Ride.png",
+                          title: "Start Journey",
+                        )),
+                    Cards(
+                        img: "assets/Driver/Notification.png",
+                        title: "Notifications")
+                  ],
+                ),
               )),
-                  Expanded(
-                  child: Row(
-                    
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[Cards(),Cards()],
+              Expanded(
+                  child: Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Cards(img: "assets/Driver/Ride.png", title: "Start Ride"),
+                    Cards(img: "assets/Driver/Ride.png", title: "Start Ride")
+                  ],
+                ),
               )),
             ],
           ),
+          Positioned(top: 320, left: 20, child: Text("See the details belwo")),
         ],
       ),
     );
@@ -74,8 +124,16 @@ class _DriverhomeState extends State<Driverhome> {
 }
 
 class Cards extends StatelessWidget {
+  final String img;
+  final String title;
+  // final Color color;
+  /// final double height;
+  // final double width;
+
   const Cards({
     Key key,
+    this.img,
+    this.title,
   }) : super(key: key);
 
   @override
@@ -96,20 +154,23 @@ class Cards extends StatelessWidget {
                     blurRadius: 10.0)
               ]),
         ),
-        Container(
-          alignment: FractionalOffset.topCenter,
-          child: Image(image: AssetImage('assets/Driver/Start.png')),
-          height: 100.0,
-          width: 170.0,
+        Padding(
+          padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
+          child: Container(
+            alignment: FractionalOffset.topCenter,
+            child: Image(image: AssetImage(img)),
+            height: 90.0,
+            width: 85.0,
+          ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 40.0, top: 100.0),
+          padding: const EdgeInsets.only(left: 40.0, top: 120.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Flexible(
                 child: Text(
-                  "Start Ride",
+                  title,
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,

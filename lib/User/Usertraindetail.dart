@@ -9,17 +9,23 @@ class _UsertraindetailState extends State<Usertraindetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Train Details"),
+        backgroundColor: Colors.amber,
+      ),
       resizeToAvoidBottomPadding: false,
       backgroundColor: Color(0xFFFf6f5fb),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
-            margin: EdgeInsets.only(left: 30, top: 40, bottom: 60),
+            margin: EdgeInsets.only(
+              left: 30,
+              top: 40,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   height: MediaQuery.of(context).size.height * 0.25,
                   width: MediaQuery.of(context).size.width * 0.85,
@@ -40,10 +46,92 @@ class _UsertraindetailState extends State<Usertraindetail> {
                           SizedBox(
                             width: 15,
                           ),
-                          orginandDestination()
+                          orginandDestination(),
                         ],
                       ),
                     ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  height: MediaQuery.of(context).size.height / 2,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:10),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: <Widget>[
+                                CircleAvatar(
+                                  radius: 10,
+                                  backgroundColor: Colors.greenAccent,
+                                  child: Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                    size: 14,
+                                  ),
+                                ),
+                                Container(
+                                  height: 100,
+                                  width: 3,
+                                  decoration:
+                                      BoxDecoration(color: Colors.greenAccent),
+                                ),
+                                CircleAvatar(
+                                  radius: 10,
+                                  backgroundColor: Colors.greenAccent,
+                                  child: Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                    size: 14,
+                                  ),
+                                ),
+                                Container(
+                                  height: 100,
+                                  width: 3,
+                                  decoration: BoxDecoration(color: Colors.red),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 10,
+                          child: SingleChildScrollView(
+                            padding: EdgeInsets.zero,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  height: 100,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Colombo Fort",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(padding: const EdgeInsets.only(top:16),
+                                      child: Text(
+                                        "Arrivaed tsfaj kfsakjfs"
+                                      ),
+                                      
+                                      ),
+
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -127,8 +215,11 @@ Widget orginandDestination() {
             text: "Colombo Fort",
             style: TextStyle(fontSize: 17, color: Colors.black)),
       ])),
-      SizedBox(height: 65,),
-      Icon(Icons.swap_vert,color: Colors.indigo,),
+      Icon(
+        Icons.swap_vert,
+        color: Colors.indigo,
+        size: 70,
+      ),
       RichText(
           text: TextSpan(children: <TextSpan>[
         TextSpan(

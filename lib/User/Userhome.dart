@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Testhome.dart';
+import 'package:kochchiye_ko/User/Testhome2.dart';
 import 'package:kochchiye_ko/User/User.dart';
 import 'package:kochchiye_ko/User/Usertesthome.dart';
 import 'package:kochchiye_ko/User/Usertrainschdule.dart';
@@ -76,6 +77,18 @@ class _UserhomeState extends State<Userhome> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) =>Usertesthome()),
+                  );
+                },
+              ),
+                 SizedBox(
+                height: 10.0,
+              ),
+                RaisedButton(
+                child: Text("Test home 2"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>Testhome2()),
                   );
                 },
               ),
