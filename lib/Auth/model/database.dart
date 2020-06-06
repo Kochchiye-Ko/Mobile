@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:kochchiye_ko/Auth/Auth.dart';
+import 'package:kochchiye_ko/Auth/model/user.dart';
 
 class DatabaseService {
   final String uid;
@@ -13,4 +15,17 @@ class DatabaseService {
       'accounttype': accounttype,
     });
   }
+
+  UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
+    return UserData(
+      uid: uid,
+      email: snapshot.data['email'],
+      accountType: snapshot.data['accounttype'],
+    );
+  }
+
+  Stream<UserData> get userData {
+    return userCollection.document(uid).snapshots().map(_userDataFromSnapshot);
+  }
+  
 }
