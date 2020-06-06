@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:kochchiye_ko/Admin/Admin.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
+import 'package:kochchiye_ko/Driver/Driver.dart';
 import 'package:kochchiye_ko/User/User.dart';
 
 class TestHome extends StatefulWidget {
@@ -64,6 +65,18 @@ class _TestHomeState extends State<TestHome> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Adminhome()),
+                  );
+                },
+              ),
+               SizedBox(
+                height: 10.0,
+              ),
+              RaisedButton(
+                child: Text("Go to Driverhome"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Driverhome()),
                   );
                 },
               ),
