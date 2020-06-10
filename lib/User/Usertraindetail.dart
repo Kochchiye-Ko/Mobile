@@ -52,11 +52,17 @@ class _UsertraindetailState extends State<Usertraindetail> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Detailed info"),
+                SizedBox(
+                  height: 10,
+                ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  height: MediaQuery.of(context).size.height / 2,
                   child: Padding(
-                    padding: const EdgeInsets.only(top:10),
+                    padding: const EdgeInsets.only(top: 10),
                     child: Row(
                       children: <Widget>[
                         Expanded(
@@ -64,48 +70,48 @@ class _UsertraindetailState extends State<Usertraindetail> {
                           child: SingleChildScrollView(
                             child: Column(
                               children: <Widget>[
+                                desty(Colors.greenAccent, Icons.check),
+                                desty(Colors.greenAccent, Icons.check),
+                                desty(Colors.greenAccent, Icons.check),
+                                desty(Colors.red, Icons.close),
+                                desty(Colors.red, Icons.close),
+                                desty(Colors.red, Icons.close),
+                                
+                                //   radius: 10,
+                                //   backgroundColor: Colors.greenAccent,
+                                //   child: Icon(
+                                //     Icons.check,
+                                //     color: Colors.white,
+                                //     size: 14,
+                                //   ),
+                                // ),
+                                // Container(
+                                //   height: 100,
+                                //   width: 3,
+                                //   decoration: BoxDecoration(color: Colors.red),
+                                // ),
                                 CircleAvatar(
                                   radius: 10,
-                                  backgroundColor: Colors.greenAccent,
+                                  backgroundColor: Colors.red,
                                   child: Icon(
-                                    Icons.check,
+                                    Icons.close,
                                     color: Colors.white,
                                     size: 14,
                                   ),
-                                ),
-                                Container(
-                                  height: 100,
-                                  width: 3,
-                                  decoration:
-                                      BoxDecoration(color: Colors.greenAccent),
-                                ),
-                                CircleAvatar(
-                                  radius: 10,
-                                  backgroundColor: Colors.greenAccent,
-                                  child: Icon(
-                                    Icons.check,
-                                    color: Colors.white,
-                                    size: 14,
-                                  ),
-                                ),
-                                Container(
-                                  height: 100,
-                                  width: 3,
-                                  decoration: BoxDecoration(color: Colors.red),
-                                ),
+                                 ),
                               ],
                             ),
                           ),
                         ),
                         Expanded(
-                          flex: 10,
+                          flex: 8,
                           child: SingleChildScrollView(
                             padding: EdgeInsets.zero,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Container(
-                                  height: 100,
+                                  height: 120,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -116,16 +122,111 @@ class _UsertraindetailState extends State<Usertraindetail> {
                                             fontWeight: FontWeight.bold,
                                             color: Colors.black),
                                       ),
-                                      Padding(padding: const EdgeInsets.only(top:16),
-                                      child: Text(
-                                        "Arrivaed tsfaj kfsakjfs"
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 16),
+                                        child: Text("Arrived At 8 pm"),
                                       ),
-                                      
-                                      ),
-
                                     ],
                                   ),
-                                )
+                                ),
+                             
+                                      Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Mardana",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 16),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                      Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Gampha",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 12),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                      Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Pollghawela",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 16),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                
+                                     Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Galgamuwa",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 16),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                  
+                                     Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Anuradhapura",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 16),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ), 
                               ],
                             ),
                           ),
@@ -229,6 +330,27 @@ Widget orginandDestination() {
             text: "Anuradhapura",
             style: TextStyle(fontSize: 17, color: Colors.black)),
       ])),
+    ],
+  );
+}
+
+Widget desty(color, icon) {
+  return Column(
+    children: <Widget>[
+      CircleAvatar(
+        radius: 10,
+        backgroundColor: color,
+        child: Icon(
+          icon,
+          color: Colors.white,
+          size: 14,
+        ),
+      ),
+      Container(
+        height: 100,
+        width: 3,
+        decoration: BoxDecoration(color: color),
+      ),
     ],
   );
 }

@@ -43,7 +43,7 @@ class Homebody extends StatelessWidget {
             Card(title: "Live location Map",),
             Card(title: "Trains on tracks",),
             Card(title: "Train Schdules",),
-            Card(),
+         
           ],
         ));
   }
@@ -200,7 +200,7 @@ class Card extends StatelessWidget {
                           style: TextStyle(color: Colors.white),
                           children: [
                         TextSpan(
-                            text: "See Live location",
+                            text: title,
                             style: TextStyle(fontSize: 16))
                       ])),
                 )),
