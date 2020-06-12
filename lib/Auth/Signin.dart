@@ -9,8 +9,9 @@ class Signin extends StatefulWidget {
 
 class _SigninState extends State<Signin> {
   final _formKey = GlobalKey<FormState>();
-  
-  String phoneNo, verificationID;
+
+  String phoneNo, verificationID, smsCode;
+  bool codeSent = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,21 @@ class _SigninState extends State<Signin> {
                         },
                       ),
                     ),
+                    codeSent
+                        ? Padding(
+                            padding: EdgeInsets.only(left: 25.0, right: 25.0),
+                            child: TextFormField(
+                              keyboardType: TextInputType.phone,
+                              decoration:
+                                  InputDecoration(hintText: "Enter OTP"),
+                              onChanged: (val) {
+                                setState(() {
+                                  this.smsCode = val;
+                                });
+                              },
+                            ),
+                          )
+                        : Container(),
                     SizedBox(
                       height: 20.0,
                     ),
@@ -53,11 +69,13 @@ class _SigninState extends State<Signin> {
                       padding: EdgeInsets.only(left: 25.0, right: 25.0),
                       child: RaisedButton(
                         child: Center(
-                          child: Text("Login"),
+                          child: codeSent ? Text("Verify") : Text("Login"),
                         ),
                         onPressed: () {
-                          // print(phoneNo);
-                          verifyPhone(phoneNo);
+                          codeSent
+                              ? Authservice()
+                                  .signinWithOTP(smsCode, verificationID)
+                              : verifyPhone(phoneNo);
                         },
                       ),
                     )
@@ -75,7 +93,6 @@ class _SigninState extends State<Signin> {
     final PhoneVerificationCompleted verified = (AuthCredential authResult) {
       print(authResult);
       Authservice().signIn(authResult);
-      
     };
 
     final PhoneVerificationFailed verificationfailed =
@@ -84,7 +101,10 @@ class _SigninState extends State<Signin> {
     };
 
     final PhoneCodeSent smsSent = (String verId, [int forceResend]) {
-      this.verificationID = verId; 
+      this.verificationID = verId;
+      setState(() {
+        this.codeSent = true;
+      });
     };
 
     final PhoneCodeAutoRetrievalTimeout autoTimeout = (String verId) {
