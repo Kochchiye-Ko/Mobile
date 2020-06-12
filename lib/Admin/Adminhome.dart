@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:kochchiye_ko/Admin/DriversAdmin.dart';
 import 'package:kochchiye_ko/Admin/UsersAdmin.dart';
 import 'package:kochchiye_ko/Admin/about.dart';
+import 'package:kochchiye_ko/Admin/changepassword.dart';
 import 'package:kochchiye_ko/Admin/createNotification.dart';
 import 'package:kochchiye_ko/Admin/map.dart';
 import 'package:kochchiye_ko/Admin/trainsgedule.dart';
@@ -26,6 +27,10 @@ class _AdminhomeState extends State<Adminhome> {
         MaterialPageRoute(builder: (context) => Wrapper()),
       );
     } else if (choice == Constant.resetPassword) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ChangePassword()),
+      );
     } else if (choice == Constant.changeEmail) {}
   }
 
@@ -36,7 +41,6 @@ class _AdminhomeState extends State<Adminhome> {
         title: Text("Home"),
         backgroundColor: Colors.grey[900],
         actions: <Widget>[
-          
           // Container(
           //   // alignment: AlignmentDirectional.bottomEnd,
           //   padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),

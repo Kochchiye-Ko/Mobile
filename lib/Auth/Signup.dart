@@ -106,14 +106,14 @@ class _SignupState extends State<Signup> {
             // print(email);
             // print(password);
             setState(() => loading = true);
-            dynamic result =
-                await _auth.registerWithEmailandpassword(email, password);
-            if (result == null) {
-              setState(() {
-                error = 'Could not sign in with those credentials';
-                loading = false;
-              });
-            }
+            // dynamic result =
+            //     await _auth.registerWithEmailandpassword(email, password);
+            // if (result == null) {
+            //   setState(() {
+            //     error = 'Could not sign in with those credentials';
+            //     loading = false;
+            //   });
+            // }
           }
         },
         padding: EdgeInsets.all(15.0),
@@ -223,11 +223,11 @@ class _SignupState extends State<Signup> {
                           GoogleSignInButton(
                               onPressed: () async {
                                 setState(() => loading = true);
-                                dynamic result = await _auth.signInWithGoogle();
-                                if (result == null) {
-                                } else {
-                                  print(result);
-                                }
+                                // dynamic result = await _auth.signInWithGoogle();
+                                // if (result == null) {
+                                // } else {
+                                //   print(result);
+                                // }
                               },
                               darkMode: true),
                         ],
