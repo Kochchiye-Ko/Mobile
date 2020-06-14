@@ -9,10 +9,8 @@ class Authservice {
       stream: FirebaseAuth.instance.onAuthStateChanged,
       builder: (BuildContext context, snapshot) {
         if (snapshot.hasData) {
-          print("ss");
           return TestHome();
         } else {
-          print("aa");
           return Signin();
         }
       },
