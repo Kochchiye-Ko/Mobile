@@ -30,6 +30,14 @@ class _SignupState extends State<Signup> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Container(
+                      child: Text(
+                        "Create Account",
+                        style: TextStyle(
+                          fontSize: 30.0,
+                        ),
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.only(left: 25.0, right: 25.0),
                       child: TextFormField(
@@ -45,6 +53,22 @@ class _SignupState extends State<Signup> {
                         },
                       ),
                     ),
+                    codeSent
+                        ? Padding(
+                            padding: EdgeInsets.only(left: 25.0, right: 25.0),
+                            child: TextFormField(
+                              keyboardType: TextInputType.phone,
+                              decoration: InputDecoration(
+                                hintText: "  Enter OTP",
+                              ),
+                              onChanged: (val) {
+                                setState(() {
+                                  this.smsCode = val;
+                                });
+                              },
+                            ),
+                          )
+                        : Container(),
                     SizedBox(
                       height: 20.0,
                     ),
@@ -53,13 +77,21 @@ class _SignupState extends State<Signup> {
                       child: RaisedButton(
                         color: Colors.grey[900],
                         child: Center(
-                          child: Text(
-                            "Login",
-                            style: TextStyle(color: Colors.white),
-                          ),
+                          child: codeSent
+                              ? Text(
+                                  "Verify",
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              : Text(
+                                  "Submit",
+                                  style: TextStyle(color: Colors.white),
+                                ),
                         ),
                         onPressed: () {
-                          verifyPhone(phoneNo);
+                          codeSent
+                              ? Authservice()
+                                  .signinWithOTP(smsCode, verificationID)
+                              : verifyPhone(phoneNo);
                         },
                       ),
                     ),

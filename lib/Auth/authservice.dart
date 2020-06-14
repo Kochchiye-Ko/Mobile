@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:kochchiye_ko/Auth/Signin.dart';
+import 'package:kochchiye_ko/Auth/Signup.dart';
+import 'package:kochchiye_ko/Auth/dashboard.dart';
 import 'package:kochchiye_ko/Testhome.dart';
 
 class Authservice {
@@ -25,5 +27,10 @@ class Authservice {
     AuthCredential authCredential = PhoneAuthProvider.getCredential(
         verificationId: verID, smsCode: smsCode);
     signIn(authCredential);
+    
+  }
+
+  signOut(){
+    FirebaseAuth.instance.signOut();
   }
 }
