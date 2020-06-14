@@ -1,16 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Auth/authservice.dart';
+import 'package:kochchiye_ko/Auth/model/database.dart';
+import 'package:kochchiye_ko/User/User.dart';
 
-class Signup extends StatefulWidget {
+class UserDetailsRegister extends StatefulWidget {
   @override
-  _SignupState createState() => _SignupState();
+  _UserDetailsRegisterState createState() => _UserDetailsRegisterState();
 }
 
-class _SignupState extends State<Signup> {
+class _UserDetailsRegisterState extends State<UserDetailsRegister> {
   final _formKey = GlobalKey<FormState>();
-  String phoneNo, verificationID, smsCode;
-  bool codeSent = false;
+  String firstNme, lastName, email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,47 +27,80 @@ class _SignupState extends State<Signup> {
               child: Form(
                 key: _formKey,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Container(
                       child: Text(
-                        "Create Account",
+                        "User Details",
                         style: TextStyle(
                           fontSize: 30.0,
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
                     Padding(
-                      padding: EdgeInsets.only(left: 25.0, right: 25.0),
+                      padding: EdgeInsets.only(left: 10.0, right: 10.0),
                       child: TextFormField(
-                        keyboardType: TextInputType.phone,
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter First Name' : null,
                         decoration: InputDecoration(
-                          prefixText: " +94 \t ",
-                          hintText: "  Enter your mobile number",
+                          fillColor: Colors.black.withOpacity(0.2),
+                          filled: true,
+                          hintText: "First Name",
                         ),
+                        style: TextStyle(color: Colors.white),
                         onChanged: (val) {
                           setState(() {
-                            this.phoneNo = "+94" + val;
+                            this.firstNme = val;
                           });
                         },
                       ),
                     ),
-                    codeSent
-                        ? Padding(
-                            padding: EdgeInsets.only(left: 25.0, right: 25.0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                hintText: "  Enter OTP",
-                              ),
-                              onChanged: (val) {
-                                setState(() {
-                                  this.smsCode = val;
-                                });
-                              },
-                            ),
-                          )
-                        : Container(),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: "Last Name",
+                          fillColor: Colors.black.withOpacity(0.2),
+                          filled: true,
+                        ),
+                        style: TextStyle(color: Colors.white),
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter Last Name' : null,
+                        onChanged: (val) {
+                          setState(() {
+                            this.lastName = val;
+                          });
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: "Email",
+                          fillColor: Colors.black.withOpacity(0.2),
+                          filled: true,
+                        ),
+                        style: TextStyle(color: Colors.white),
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (val) =>
+                            val.isEmpty ? 'Enter your Email' : null,
+                        onChanged: (val) {
+                          setState(() {
+                            this.email = val;
+                          });
+                        },
+                      ),
+                    ),
                     SizedBox(
                       height: 20.0,
                     ),
@@ -77,26 +109,23 @@ class _SignupState extends State<Signup> {
                       child: RaisedButton(
                         color: Colors.grey[900],
                         child: Center(
-                          child: codeSent
-                              ? Text(
-                                  "Verify",
-                                  style: TextStyle(color: Colors.white),
-                                )
-                              : Text(
-                                  "Submit",
-                                  style: TextStyle(color: Colors.white),
-                                ),
+                          child: Text(
+                            "Submit",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                         onPressed: () {
-                          codeSent
-                              ? Authservice()
-                                  .signinWithOTP(smsCode, verificationID)
-                              : verifyPhone(phoneNo);
+                          if (_formKey.currentState.validate()) {
+                            DatabaseService()
+                                .addUserInfo(firstNme, lastName, email);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Userhome()),
+                            );
+                          }
                         },
                       ),
-                    ),
-                    SizedBox(
-                      height: 40.0,
                     ),
                   ],
                 ),
@@ -106,36 +135,6 @@ class _SignupState extends State<Signup> {
         ],
       ),
     );
-  }
-
-  Future<void> verifyPhone(phoneNo) async {
-    final PhoneVerificationCompleted verified = (AuthCredential authResult) {
-      Authservice().signIn(authResult);
-    };
-
-    final PhoneVerificationFailed verificationfailed =
-        (AuthException authException) {
-      print('${authException.message}');
-    };
-
-    final PhoneCodeSent smsSent = (String verId, [int forceResend]) {
-      this.verificationID = verId;
-      setState(() {
-        this.codeSent = true;
-      });
-    };
-
-    final PhoneCodeAutoRetrievalTimeout autoTimeout = (String verId) {
-      this.verificationID = verId;
-    };
-
-    await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: phoneNo,
-        timeout: const Duration(seconds: 5),
-        verificationCompleted: verified,
-        verificationFailed: verificationfailed,
-        codeSent: smsSent,
-        codeAutoRetrievalTimeout: autoTimeout);
   }
 }
 

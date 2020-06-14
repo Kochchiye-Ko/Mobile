@@ -8,7 +8,6 @@ import 'package:kochchiye_ko/Admin/createNotification.dart';
 import 'package:kochchiye_ko/Admin/map.dart';
 import 'package:kochchiye_ko/Admin/trainsgedule.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
-import 'package:kochchiye_ko/Auth/wrapper.dart';
 import 'package:kochchiye_ko/constants/constants.dart';
 
 class Adminhome extends StatefulWidget {
@@ -22,10 +21,7 @@ class _AdminhomeState extends State<Adminhome> {
   void choiceAction(String choice) async {
     if (choice == Constant.signout) {
       await _auth.signOut();
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Wrapper()),
-      );
+     
     } else if (choice == Constant.resetPassword) {
       Navigator.push(
         context,

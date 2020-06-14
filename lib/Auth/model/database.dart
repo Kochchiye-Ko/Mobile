@@ -9,23 +9,32 @@ class DatabaseService {
   final CollectionReference userCollection =
       Firestore.instance.collection("UserTB");
 
-  Future updateUserData(String email, String accounttype) async {
-    return await userCollection.document(uid).setData({
+  // Future updateUserData(String email, String accounttype) async {
+  //   return await userCollection.document(uid).setData({
+  //     'email': email,
+  //     'accounttype': accounttype,
+  //   });
+  // }
+
+  // UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
+  //   return UserData(
+  //     uid: uid,
+  //     email: snapshot.data['email'],
+  //     accountType: snapshot.data['accounttype'],
+  //   );
+  // }
+
+  // Stream<UserData> get userData {
+  //   return userCollection.document(uid).snapshots().map(_userDataFromSnapshot);
+  // }
+
+  Future addUserInfo(String firstName, String lastName, String email) async {
+    return await userCollection.document(firstName).setData({
+      'firstname': firstName,
+      'lastname': lastName,
       'email': email,
-      'accounttype': accounttype,
+      'accountType': "passanger",
+      'dateTime': DateTime.now()
     });
   }
-
-  UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
-    return UserData(
-      uid: uid,
-      email: snapshot.data['email'],
-      accountType: snapshot.data['accounttype'],
-    );
-  }
-
-  Stream<UserData> get userData {
-    return userCollection.document(uid).snapshots().map(_userDataFromSnapshot);
-  }
-  
 }

@@ -1,11 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:kochchiye_ko/Auth/Signin.dart';
-import 'package:kochchiye_ko/Auth/Signup.dart';
-import 'package:kochchiye_ko/Auth/dashboard.dart';
 import 'package:kochchiye_ko/Testhome.dart';
 
 class Authservice {
+  
   handleAuth() {
     return StreamBuilder(
       stream: FirebaseAuth.instance.onAuthStateChanged,
@@ -23,14 +22,13 @@ class Authservice {
     FirebaseAuth.instance.signInWithCredential(authCreds);
   }
 
-  signinWithOTP(smsCode, verID) {
+  signinWithOTP(smsCode, verID, phoneNo) {
     AuthCredential authCredential = PhoneAuthProvider.getCredential(
         verificationId: verID, smsCode: smsCode);
     signIn(authCredential);
-    
   }
 
-  signOut(){
+  signOut() {
     FirebaseAuth.instance.signOut();
   }
 }
