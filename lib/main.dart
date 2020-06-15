@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Auth/authservice.dart';
-import 'package:provider/provider.dart';
-import 'package:kochchiye_ko/Auth/model/user.dart';
-import 'package:kochchiye_ko/Auth/Auth.dart';
+import 'package:kochchiye_ko/Testhome.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,18 +11,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Kochiye Ko',
       debugShowCheckedModeBanner: false,
-      home: Authservice().handleAuth(),
+      // home: Authservice().handleAuth(),
+      home: TestHome(),
     );
-    // return StreamProvider<User>.value(
-    //   value: AuthService().user,
-    //   child: MaterialApp(
-    //     title: 'Kochiye Ko',
-    //     debugShowCheckedModeBanner: false,
-    //     theme: ThemeData(
-    //       primarySwatch: Colors.blue,
-    //     ),
-    //     home:Authservice().handleAuth(),
-    //   ),
-    // );
   }
 }
