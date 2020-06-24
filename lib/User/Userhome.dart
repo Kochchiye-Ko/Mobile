@@ -5,6 +5,7 @@ import 'package:kochchiye_ko/User/User.dart';
 import 'package:kochchiye_ko/User/Usertesthome.dart';
 import 'package:kochchiye_ko/User/Usertrainschdule.dart';
 
+
 class Userhome extends StatefulWidget {
   Userhome({Key key}) : super(key: key);
 
@@ -13,11 +14,21 @@ class Userhome extends StatefulWidget {
 }
 
 class _UserhomeState extends State<Userhome> {
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-         appBar: AppBar(
+      appBar: AppBar(
         title: Text("User Home"),
+        actions: <Widget>[
+          FlatButton.icon(
+            icon: Icon(Icons.person),
+            label: new Text("Logout"),
+            onPressed: () async {
+              await _auth.signOut();
+            },
+          ),
+        ],
       ),
       body: Column(
         children: <Widget>[
@@ -35,16 +46,18 @@ class _UserhomeState extends State<Userhome> {
               SizedBox(
                 height: 10.0,
               ),
-                RaisedButton(
-                child: Text("Go to Indviudla Train Details"),
+
+              RaisedButton(
+                child: Text("Go to UserTrain Deatils"),
+
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Usertraindetail()),
+                    MaterialPageRoute(builder: (context) => Usertraindetail()),
                   );
                 },
               ),
-              SizedBox(
+SizedBox(
                 height: 10.0,
               ),
                 RaisedButton(
@@ -59,7 +72,7 @@ class _UserhomeState extends State<Userhome> {
             SizedBox(
                 height: 10.0,
               ),
-                RaisedButton(
+               RaisedButton(
                 child: Text("See running trains"),
                 onPressed: () {
                   Navigator.push(
