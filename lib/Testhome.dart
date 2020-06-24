@@ -78,15 +78,7 @@ class _TestHomeState extends State<TestHome> {
                SizedBox(
                 height: 10.0,
               ),
-              RaisedButton(
-                child: Text("Go to Driverhome"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Driverhome()),
-                  );
-                },
-              ),
+         
               SizedBox(
                 height: 10.0,
               ),
