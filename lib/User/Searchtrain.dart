@@ -10,7 +10,7 @@ class _SearchtrainState extends State<Searchtrain> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: AppBar(title: Text("Serach Trains"),),
+      appBar: AppBar(title: Text("Serach Trains"),backgroundColor: Colors.amber,),
       body: Center(
         child:ListView.builder(itemCount: 10,itemBuilder: (context,index){
           return  Trainview();
