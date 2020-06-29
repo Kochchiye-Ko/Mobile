@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Kochiye Ko',
       debugShowCheckedModeBanner: false,
-      // home: Authservice().handleAuth(),
-      home: UserDetailsRegister(),
+      home: Authservice().handleAuth(),
+      // home: UserDetailsRegister(),
     );
   }
 }
