@@ -9,35 +9,230 @@ class _UsertraindetailState extends State<Usertraindetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Train Details"),
+        backgroundColor: Colors.amber,
+      ),
       resizeToAvoidBottomPadding: false,
       backgroundColor: Color(0xFFFf6f5fb),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
-            margin: EdgeInsets.only(left: 30, top: 40, bottom: 60),
+            margin: EdgeInsets.only(
+              left: 30,
+              top: 40,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(horizontal: 20),
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   width: MediaQuery.of(context).size.width * 0.85,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(14))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(
-                        width: 10,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          SizedBox(
+                            width: 10,
+                          ),
+                          _iconDestination(),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          orginandDestination(),
+                        ],
                       ),
-                      _iconDestination(),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      orginandDestination()
                     ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text("Detailed info"),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: <Widget>[
+                                desty(Colors.greenAccent, Icons.check),
+                                desty(Colors.greenAccent, Icons.check),
+                                desty(Colors.greenAccent, Icons.check),
+                                desty(Colors.red, Icons.close),
+                                desty(Colors.red, Icons.close),
+                                desty(Colors.red, Icons.close),
+                                
+                                //   radius: 10,
+                                //   backgroundColor: Colors.greenAccent,
+                                //   child: Icon(
+                                //     Icons.check,
+                                //     color: Colors.white,
+                                //     size: 14,
+                                //   ),
+                                // ),
+                                // Container(
+                                //   height: 100,
+                                //   width: 3,
+                                //   decoration: BoxDecoration(color: Colors.red),
+                                // ),
+                                CircleAvatar(
+                                  radius: 10,
+                                  backgroundColor: Colors.red,
+                                  child: Icon(
+                                    Icons.close,
+                                    color: Colors.white,
+                                    size: 14,
+                                  ),
+                                 ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 8,
+                          child: SingleChildScrollView(
+                            padding: EdgeInsets.zero,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Colombo Fort",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 16),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                             
+                                      Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Mardana",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 16),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                      Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Gampha",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 12),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                      Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Pollghawela",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 16),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                
+                                     Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Galgamuwa",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 16),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                  
+                                     Container(
+                                  height: 120,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        "Anuradhapura",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 16),
+                                        child: Text("Arrived At 8 pm"),
+                                      ),
+                                    ],
+                                  ),
+                                ), 
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -121,7 +316,11 @@ Widget orginandDestination() {
             text: "Colombo Fort",
             style: TextStyle(fontSize: 17, color: Colors.black)),
       ])),
-   
+      Icon(
+        Icons.swap_vert,
+        color: Colors.indigo,
+        size: 70,
+      ),
       RichText(
           text: TextSpan(children: <TextSpan>[
         TextSpan(
@@ -131,6 +330,27 @@ Widget orginandDestination() {
             text: "Anuradhapura",
             style: TextStyle(fontSize: 17, color: Colors.black)),
       ])),
+    ],
+  );
+}
+
+Widget desty(color, icon) {
+  return Column(
+    children: <Widget>[
+      CircleAvatar(
+        radius: 10,
+        backgroundColor: color,
+        child: Icon(
+          icon,
+          color: Colors.white,
+          size: 14,
+        ),
+      ),
+      Container(
+        height: 100,
+        width: 3,
+        decoration: BoxDecoration(color: color),
+      ),
     ],
   );
 }

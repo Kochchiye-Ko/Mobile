@@ -17,6 +17,13 @@ class _TestHomeState extends State<TestHome> {
   Geoflutterfire geo = Geoflutterfire();
     final AuthService _auth = AuthService();
 
+    
+  @override
+  void initState() {
+    super.initState();
+ 
+  }
+
   getaa() async {
     BackgroundLocation.startLocationService();
     BackgroundLocation.getLocationUpdates((location) {
@@ -72,15 +79,7 @@ class _TestHomeState extends State<TestHome> {
                SizedBox(
                 height: 10.0,
               ),
-              RaisedButton(
-                child: Text("Go to Driverhome"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Driverhome()),
-                  );
-                },
-              ),
+         
               SizedBox(
                 height: 10.0,
               ),

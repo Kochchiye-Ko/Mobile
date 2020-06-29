@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kochchiye_ko/Testhome.dart';
+import 'package:kochchiye_ko/User/Testhome2.dart';
 import 'package:kochchiye_ko/User/User.dart';
-import 'package:kochchiye_ko/Auth/Auth.dart';
+import 'package:kochchiye_ko/User/Usertesthome.dart';
 import 'package:kochchiye_ko/User/Usertrainschdule.dart';
 
 
@@ -44,8 +46,10 @@ class _UserhomeState extends State<Userhome> {
               SizedBox(
                 height: 10.0,
               ),
+
               RaisedButton(
                 child: Text("Go to UserTrain Deatils"),
+
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -57,11 +61,11 @@ SizedBox(
                 height: 10.0,
               ),
                 RaisedButton(
-                child: Text("Go to UserTrain Schduele"),
+                child: Text("Search Train Schudules"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Usertrainschdule()),
+                    MaterialPageRoute(builder: (context) =>Searchtrain()),
                   );
                 },
               ),
@@ -73,7 +77,31 @@ SizedBox(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Searchtrain()),
+                    MaterialPageRoute(builder: (context) =>Usertrainschdule()),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+                RaisedButton(
+                child: Text("See home"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>Usertesthome()),
+                  );
+                },
+              ),
+                 SizedBox(
+                height: 10.0,
+              ),
+                RaisedButton(
+                child: Text("Test home 2"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>Testhome2()),
                   );
                 },
               ),
