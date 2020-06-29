@@ -4,9 +4,22 @@ import 'package:kochchiye_ko/Auth/Signin.dart';
 import 'package:kochchiye_ko/Auth/aa.dart';
 import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
 import 'package:kochchiye_ko/Testhome.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Authservice {
   String name = "";
+
+  int counter = 0;
+  incrementCounter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    this.counter = (prefs.getInt('counter') ?? 0) + 1;
+    prefs.setInt('counter', counter);
+  }
+
+  getCounter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    this.counter = prefs.getInt('counter');
+  }
 
   handleAuth(counter) {
     return StreamBuilder(
@@ -14,17 +27,26 @@ class Authservice {
       builder: (BuildContext context, snapshot) {
         if (snapshot.hasData) {
           // return TestHome();
-          print(this.name);
-          return Test1();
-          
+          // print("if");
+          // getCounter();
+          print(getCounter());
+          // print(this.counter);
+
+          // return Test1();
+          if (counter == 1) {
+            return UserDetailsRegister();
+          } else {
+            return TestHome();
+          }
         } else {
-          // if (counter == 0) {
-          //   return UserDetailsRegister();
-          // } else {
-          //   return Signin();
-          // }
-          print(this.name);
-          return Signin();
+          if (counter == 1) {
+            return UserDetailsRegister();
+          } else {
+            return Signin();
+          }
+          // print("if");
+          // print(this.counter);
+          // return Signin();
         }
       },
     );
@@ -39,9 +61,7 @@ class Authservice {
   signinWithOTP(smsCode, verID, phoneNo, xx) {
     AuthCredential authCredential = PhoneAuthProvider.getCredential(
         verificationId: verID, smsCode: smsCode);
-
-    this.name = xx;
-    print(name+"sds");
+    incrementCounter();
     signIn(authCredential);
   }
 
