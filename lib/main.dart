@@ -3,6 +3,7 @@ import 'package:kochchiye_ko/Auth/wrapper.dart';
 import 'package:provider/provider.dart';
 import 'package:kochchiye_ko/Auth/model/user.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
+import 'Testhome.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Wrapper(),
+        home: TestHome(),
       ),
     );
   }

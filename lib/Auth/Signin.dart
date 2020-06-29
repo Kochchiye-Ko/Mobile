@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
+import 'package:kochchiye_ko/Auth/model/foggotpassword.dart';
 import 'package:kochchiye_ko/constants/constants.dart';
 import 'package:kochchiye_ko/constants/loading.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
@@ -98,7 +99,7 @@ class _SigninState extends State<Signin> {
 
   _sButton() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
+      padding: EdgeInsets.symmetric(vertical: 5.0),
       width: 150,
       child: RaisedButton(
         elevation: 5.0,
@@ -203,12 +204,35 @@ class _SigninState extends State<Signin> {
                           _email(),
                           SizedBox(height: 20.0),
                           _password(),
+                          SizedBox(height: 5.0),
+                          Padding(
+                            padding: EdgeInsets.only(right: 20.0),
+                            child: Container(
+                              width: double.infinity,
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ForgotPassword(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "Forgot password?",
+                                  style: TextStyle(color: Colors.blue[900]),
+                                  textAlign: TextAlign.right,
+                                ),
+                              ),
+                            ),
+                          ),
                           SizedBox(height: 10.0),
                           Text(
                             error,
                             style: TextStyle(color: Colors.red, fontSize: 14.0),
                           ),
                           _sButton(),
+                          SizedBox(height: 20.0),
                           Text(
                             "Don't have an account?",
                             style: TextStyle(color: Colors.white70),

@@ -14,22 +14,32 @@ class Usertrainmap extends StatefulWidget {
   @override
   _UsertrainmapState createState() => _UsertrainmapState();
 }
-
+  BitmapDescriptor pinLocationIcon;
 class _UsertrainmapState extends State<Usertrainmap> {
+
+  @override
+  void initState() {
+    super.initState();
+    setCustomMapPin();
+  }
+
+  void setCustomMapPin() async {
+    pinLocationIcon = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(devicePixelRatio: 2.5),
+        'assets/destination_map_marker.png');
+  }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-       appBar: AppBar(
-        title: Text("Test Home"),
-      ),
-      body: Geomap()
-      
-   
-    
-    
-     );
+        appBar: AppBar(
+          title: Text("Live location Map"),
+          backgroundColor: Colors.amber,
+        ),
+        body: Geomap());
   }
+
+  
 }
 
 class Geomap extends StatefulWidget {
@@ -41,19 +51,18 @@ class Geomap extends StatefulWidget {
 
 class _GeomapState extends State<Geomap> {
   //all the varaibles
-
   Geoflutterfire geo = Geoflutterfire();
   Location location = new Location();
   GoogleMapController myController;
   Firestore firestore = Firestore.instance;
   Map<MarkerId, Marker> markerslist = <MarkerId, Marker>{};
   Uint8List imageData;
+
   void initState() {
     super.initState();
     setState(() {
       getMarker();
     });
-    //gettrainlocations();
   }
 
   // Future<Uint8List> getMarker() async {
@@ -62,7 +71,7 @@ class _GeomapState extends State<Geomap> {
   //   return byteData.buffer.asUint8List();
   // }
 
-Future<Uint8List> getMarker() async {
+  Future<Uint8List> getMarker() async {
     ByteData data = await rootBundle.load("assets/Train_icon.png");
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
         targetWidth: 200);
@@ -72,49 +81,11 @@ Future<Uint8List> getMarker() async {
         .asUint8List();
   }
 
-  // gettrainlocations() {
-  //   Firestore.instance
-  //       .collection('trainlocations')
-  //       .getDocuments()
-  //       .then((docs) async {
-  //     var pos = await location.getLocation();
-  //     if (docs.documents.isNotEmpty) {
-  //       // Uint8List imageData = await getMarker();
-  //       final Uint8List imageData =
-  //           await getMarker('assets/images/flutter.png', 200);
-  //       setState(() {
-  //         for (int i = 0; i < docs.documents.length; i++) {
-  //           print(docs.documents.length);
-  //           var train = docs.documents[i].data;
-  //           GeoPoint geoPoint = train['position']['geopoint'];
-  //           double lat = geoPoint.latitude;
-  //           double long = geoPoint.longitude;
-
-  //           var id = MarkerId(i.toString());
-  //           Marker mark = Marker(
-  //               markerId: id,
-  //               position: LatLng(lat, long),
-  //               draggable: false,
-  //               rotation: pos.heading,
-  //               zIndex: 2,
-  //               flat: true,
-  //               anchor: Offset(0.5, 0.5),
-  //               icon: BitmapDescriptor.fromBytes(imageData));
-  //           markerslist[id] = mark;
-  //         }
-  //         _progressController = false;
-  //       });
-  //     }
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: <Widget>[
-          loadMap(),
-        ],
+        children: <Widget>[loadMap()],
       ),
     );
   }
@@ -159,7 +130,10 @@ Future<Uint8List> getMarker() async {
                 rotation: lat,
                 anchor: Offset(0.5, 0.5),
                 infoWindow: InfoWindow(title: train['info']),
-                 icon: BitmapDescriptor.fromBytes(imageData),
+              icon:pinLocationIcon,
+              
+              //  BitmapDescriptor.defaultMarkerWithHue(
+              //       BitmapDescriptor.hueViolet)
               );
               markerslist[id] = mark;
             }
@@ -175,7 +149,7 @@ Future<Uint8List> getMarker() async {
               myLocationEnabled: true,
               mapType: MapType.hybrid,
               compassEnabled: true,
-              markers: Set<Marker>.of(markerslist.values),
+               markers: Set<Marker>.of(markerslist.values),
             );
           },
         ),
@@ -195,4 +169,3 @@ Future<Uint8List> getMarker() async {
     );
   }
 }
-
