@@ -14,7 +14,7 @@ class Userhome extends StatefulWidget {
 }
 
 class _UserhomeState extends State<Userhome> {
-  final AuthService _auth = AuthService();
+  // final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,7 @@ class _UserhomeState extends State<Userhome> {
             icon: Icon(Icons.person),
             label: new Text("Logout"),
             onPressed: () async {
-              await _auth.signOut();
+              // await _auth.signOut();
             },
           ),
         ],
