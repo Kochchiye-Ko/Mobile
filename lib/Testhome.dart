@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:kochchiye_ko/Admin/Admin.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
+import 'package:kochchiye_ko/Auth/authservice.dart';
 import 'package:kochchiye_ko/Driver/Driver.dart';
 import 'package:kochchiye_ko/User/User.dart';
 
@@ -44,8 +45,8 @@ class _TestHomeState extends State<TestHome> {
             FlatButton.icon(
               icon: Icon(Icons.person),
               label: new Text("Logout"),
-              onPressed: () async {
-                await _auth.signOut();
+              onPressed: () {
+                Authservice().signOut();
               },
             ),
           ],
