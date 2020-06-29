@@ -13,6 +13,7 @@ class TrainSheduleState extends State<TrainShedule> {
   String dropdown2Value = "Select Time";
   String dropdown3StartStaion = "Select Start Staion";
   String dropdown4EndStaion = "Select End Staion";
+  String dropdown5selectStaion = "Select Staion";
   DateTime selectedDate1 = DateTime.now();
   DateTime selectedDate2 = DateTime.now();
   final DateFormat dateFormat = DateFormat('HH:mm');
@@ -344,6 +345,9 @@ class TrainSheduleState extends State<TrainShedule> {
               backgroundColor: Colors.black.withOpacity(0.2)),
         ),
         RaisedButton(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+              side: BorderSide(color: Colors.black)),
           child: Text('Choose Start Time'),
           color: Colors.grey[300],
           onPressed: () async {
@@ -379,13 +383,16 @@ class TrainSheduleState extends State<TrainShedule> {
               backgroundColor: Colors.black.withOpacity(0.2)),
         ),
         RaisedButton(
-          child: Text('Choose Start Time'),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+            side: BorderSide(color: Colors.black),
+          ),
+          child: Text('Choose End Time  '),
           color: Colors.grey[300],
           onPressed: () async {
             final selectedTime = await _selectTime(context);
             if (selectedTime == null) return;
             print(selectedTime);
-
             setState(() {
               this.selectedDate2 = DateTime(
                 selectedDate2.year,
@@ -421,6 +428,118 @@ class TrainSheduleState extends State<TrainShedule> {
               ],
             )
           ],
+        ),
+      ],
+    );
+  }
+
+  _viewSubtrainStations() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Card(
+          color: Colors.grey[300].withOpacity(0.1),
+          margin: EdgeInsets.fromLTRB(15.0, 6.0, 15.0, 0),
+          child: ListTile(
+            title: Text(""),
+            subtitle: Text(
+              "",
+              style: TextStyle(color: Colors.blueGrey, height: 10.0),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  _insertSubtrainStations() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Card(
+          color: Colors.grey[300].withOpacity(0.1),
+          margin: EdgeInsets.fromLTRB(15.0, 6.0, 15.0, 0),
+          child: Row(
+            children: <Widget>[
+              DropdownButton<String>(
+                isExpanded: false,
+                value: dropdown5selectStaion,
+                icon: Icon(Icons.arrow_downward, color: Colors.blue[200]),
+                iconSize: 24,
+                elevation: 0,
+                style: TextStyle(color: Colors.blue[200], fontSize: 18.0),
+                underline: Container(
+                  height: 2,
+                  color: Colors.grey[800],
+                ),
+                dropdownColor: Colors.grey[900],
+                onChanged: (String newValue) {
+                  setState(() {
+                    dropdown5selectStaion = newValue;
+                  });
+                },
+                items: <String>[
+                  "Select Staion",
+                  'Colombo Fort',
+                  'Maradana ',
+                  'Ragama ',
+                  'Gampaha ',
+                  'Veyangoda',
+                  'Polgahawela',
+                  'Rambukkana',
+                  'Peradeniya',
+                  'Nawalapitiya',
+                  'Hatton',
+                  'Nanu Oya ',
+                  'Bandarawela',
+                  'Badulla',
+                  'Kandy',
+                  'Katugastota',
+                  'Matale',
+                  'Negombo',
+                  'Chilaw',
+                  'Puttalam ',
+                  'Avissawella',
+                  'Anuradhapura ',
+                  'Vavuniya',
+                  'Kilinochchi',
+                  'Kodikamamam',
+                  'Chavakachcheri',
+                  'Jaffna',
+                  'Kankesanthurai',
+                  'Medawachchiya',
+                  'Mannar',
+                  'Talaimannar',
+                  'Maho',
+                  'Polonnaruwa',
+                  'Valaichchenai',
+                  'Kollupitiya',
+                  'Moratuwa',
+                  'Panadura',
+                  'Aluthgama',
+                  'Bentota',
+                  'Balapitiya',
+                  'Ambalangoda',
+                  'Hikkaduwa',
+                  'Galle',
+                  'Matara',
+                  'Hambantota ',
+                  'Beliatta ',
+                  'Kataragama ',
+                ].map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              Row(
+                children: <Widget>[
+                  endTime(),
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -499,22 +618,40 @@ class TrainSheduleState extends State<TrainShedule> {
                     SizedBox(
                       height: 10.0,
                     ),
+                    _insertSubtrainStations(),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    _viewSubtrainStations(),
                     SizedBox(
                       height: 20.0,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 75.0, right: 75.0),
-                      child: RaisedButton(
-                        color: Colors.orange,
-                        child: Center(
-                          child: Text(
-                            "Add",
-                            style: TextStyle(color: Colors.white),
+                      padding: EdgeInsets.only(left: 25.0, right: 25.0),
+                      child: ButtonTheme(
+                        height: 50.0,
+                        minWidth: 150.0,
+                        child: RaisedButton.icon(
+                          icon: Icon(
+                            Icons.train,
+                            color: Colors.white,
+                            size: 30.0,
                           ),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              side: BorderSide(color: Colors.orange[100])),
+                          color: Colors.orange,
+                          label: Center(
+                            child: Text(
+                              "Add",
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 25.0),
+                            ),
+                          ),
+                          onPressed: () {
+                            if (_formKey.currentState.validate()) {}
+                          },
                         ),
-                        onPressed: () {
-                          if (_formKey.currentState.validate()) {}
-                        },
                       ),
                     ),
                   ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Auth/authservice.dart';
+import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
 import 'package:kochchiye_ko/Testhome.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Kochiye Ko',
       debugShowCheckedModeBanner: false,
       // home: Authservice().handleAuth(),
-      home: TestHome(),
+      home: UserDetailsRegister(),
     );
   }
 }
