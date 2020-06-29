@@ -3,11 +3,11 @@ import 'package:flutter/rendering.dart';
 import 'package:kochchiye_ko/Admin/DriversAdmin.dart';
 import 'package:kochchiye_ko/Admin/UsersAdmin.dart';
 import 'package:kochchiye_ko/Admin/about.dart';
+import 'package:kochchiye_ko/Admin/changepassword.dart';
 import 'package:kochchiye_ko/Admin/createNotification.dart';
 import 'package:kochchiye_ko/Admin/map.dart';
 import 'package:kochchiye_ko/Admin/trainsgedule.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
-import 'package:kochchiye_ko/Auth/wrapper.dart';
 import 'package:kochchiye_ko/constants/constants.dart';
 
 class Adminhome extends StatefulWidget {
@@ -21,11 +21,12 @@ class _AdminhomeState extends State<Adminhome> {
   void choiceAction(String choice) async {
     if (choice == Constant.signout) {
       await _auth.signOut();
+     
+    } else if (choice == Constant.resetPassword) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Wrapper()),
+        MaterialPageRoute(builder: (context) => ChangePassword()),
       );
-    } else if (choice == Constant.resetPassword) {
     } else if (choice == Constant.changeEmail) {}
   }
 
@@ -36,7 +37,6 @@ class _AdminhomeState extends State<Adminhome> {
         title: Text("Home"),
         backgroundColor: Colors.grey[900],
         actions: <Widget>[
-          
           // Container(
           //   // alignment: AlignmentDirectional.bottomEnd,
           //   padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
