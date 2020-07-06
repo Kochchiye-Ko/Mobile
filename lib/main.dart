@@ -15,11 +15,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Kochiye Ko',
-      debugShowCheckedModeBanner: false,
-      home: Authservice().handleAuth(),
-      // home: UserDetailsRegister(),
-      // home: TestHome(),
-    );
+        title: 'Kochiye Ko',
+        theme: ThemeData(accentColor: Colors.amber),
+        debugShowCheckedModeBanner: false,
+        home: Authservice().handleAuth());
+    // home: UserDetailsRegister(),
+    //home: TestHome());
+
   }
 }
