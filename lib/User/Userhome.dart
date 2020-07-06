@@ -34,7 +34,7 @@ class _UserhomeState extends State<Userhome> {
           Center(
             child: Column(children: <Widget>[
               RaisedButton(
-                child: Text("Go to UserMap"),
+                child: Text("UserMap"),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -46,7 +46,7 @@ class _UserhomeState extends State<Userhome> {
                 height: 10.0,
               ),
               RaisedButton(
-                child: Text("Go to UserTrain Deatils"),
+                child: Text("Indvidual Train details"),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -58,7 +58,7 @@ class _UserhomeState extends State<Userhome> {
                 height: 10.0,
               ),
               RaisedButton(
-                child: Text("Search Train Schudules"),
+                child: Text("Train Schudules"),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -70,11 +70,11 @@ class _UserhomeState extends State<Userhome> {
                 height: 10.0,
               ),
               RaisedButton(
-                child: Text("See running trains"),
+                child: Text("User Profile"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Usertrainschdule()),
+                    MaterialPageRoute(builder: (context) => UserProfile()),
                   );
                 },
               ),

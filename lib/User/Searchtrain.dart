@@ -10,11 +10,16 @@ class _SearchtrainState extends State<Searchtrain> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: AppBar(title: Text("Serach Trains"),backgroundColor: Colors.amber,),
+      appBar: AppBar(
+        title: Text("Serach Trains"),
+        backgroundColor: Colors.amber,
+      ),
       body: Center(
-        child:ListView.builder(itemCount: 10,itemBuilder: (context,index){
-          return  Trainview();
-        }),
+        child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Trainview();
+            }),
       ),
     );
   }
@@ -245,7 +250,7 @@ class Trainview extends StatelessWidget {
           ),
           Container(
             height: 50,
-            padding: EdgeInsets.only(left: 16,right: 16,bottom: 8),
+            padding: EdgeInsets.only(left: 16, right: 16, bottom: 8),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -253,18 +258,26 @@ class Trainview extends StatelessWidget {
                     bottomRight: Radius.circular(24))),
             child: Row(
               children: <Widget>[
-
                 Container(
-                   padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.amber.shade50,
-                    borderRadius:BorderRadius.circular(20)
+                      color: Colors.amber.shade50,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Icon(
+                    Icons.train,
+                    color: Colors.amber,
                   ),
-                  child: Icon(Icons.train,color: Colors.amber,),
-
                 ),
-                SizedBox(width: 15,),
-                Text("Intercity",style: TextStyle(fontSize:16,fontWeight: FontWeight.bold,color: Colors.grey),)
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  "Intercity",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey),
+                )
               ],
             ),
           )

@@ -5,7 +5,7 @@ import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:kochchiye_ko/Admin/Admin.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/authservice.dart';
-import 'package:kochchiye_ko/Driver/Driver.dart';
+
 import 'package:kochchiye_ko/User/User.dart';
 
 class TestHome extends StatefulWidget {
@@ -15,13 +15,11 @@ class TestHome extends StatefulWidget {
 
 class _TestHomeState extends State<TestHome> {
   Geoflutterfire geo = Geoflutterfire();
-    final AuthService _auth = AuthService();
+  final AuthService _auth = AuthService();
 
-    
   @override
   void initState() {
     super.initState();
- 
   }
 
   getaa() async {
@@ -42,14 +40,14 @@ class _TestHomeState extends State<TestHome> {
       appBar: AppBar(
         title: Text("Test Home"),
         actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: new Text("Logout"),
-              onPressed: () {
-                Authservice().signOut();
-              },
-            ),
-          ],
+          FlatButton.icon(
+            icon: Icon(Icons.person),
+            label: new Text("Logout"),
+            onPressed: () {
+              Authservice().signOut();
+            },
+          ),
+        ],
       ),
       body: Column(
         children: <Widget>[
@@ -76,10 +74,9 @@ class _TestHomeState extends State<TestHome> {
                   );
                 },
               ),
-               SizedBox(
+              SizedBox(
                 height: 10.0,
               ),
-         
               SizedBox(
                 height: 10.0,
               ),
