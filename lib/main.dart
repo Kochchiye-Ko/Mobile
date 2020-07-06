@@ -10,10 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Kochiye Ko',
-      debugShowCheckedModeBanner: false,
-      // home: Authservice().handleAuth(),
-      home: UserDetailsRegister(),
-    );
+        title: 'Kochiye Ko',
+        theme: ThemeData(accentColor: Colors.amber),
+        debugShowCheckedModeBanner: false,
+        home: Authservice().handleAuth());
+    // home: UserDetailsRegister(),
+    //home: TestHome());
   }
 }

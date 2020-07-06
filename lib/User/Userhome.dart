@@ -5,7 +5,6 @@ import 'package:kochchiye_ko/User/User.dart';
 import 'package:kochchiye_ko/User/Usertesthome.dart';
 import 'package:kochchiye_ko/User/Usertrainschdule.dart';
 
-
 class Userhome extends StatefulWidget {
   Userhome({Key key}) : super(key: key);
 
@@ -14,7 +13,7 @@ class Userhome extends StatefulWidget {
 }
 
 class _UserhomeState extends State<Userhome> {
-  final AuthService _auth = AuthService();
+  // final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +24,7 @@ class _UserhomeState extends State<Userhome> {
             icon: Icon(Icons.person),
             label: new Text("Logout"),
             onPressed: () async {
-              await _auth.signOut();
+              //    await _auth.signOut();
             },
           ),
         ],
@@ -35,7 +34,7 @@ class _UserhomeState extends State<Userhome> {
           Center(
             child: Column(children: <Widget>[
               RaisedButton(
-                child: Text("Go to UserMap"),
+                child: Text("UserMap"),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -46,10 +45,8 @@ class _UserhomeState extends State<Userhome> {
               SizedBox(
                 height: 10.0,
               ),
-
               RaisedButton(
-                child: Text("Go to UserTrain Deatils"),
-
+                child: Text("Indvidual Train details"),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -57,51 +54,51 @@ class _UserhomeState extends State<Userhome> {
                   );
                 },
               ),
-SizedBox(
+              SizedBox(
                 height: 10.0,
               ),
-                RaisedButton(
-                child: Text("Search Train Schudules"),
+              RaisedButton(
+                child: Text("Train Schudules"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Searchtrain()),
-                  );
-                },
-              ),
-            SizedBox(
-                height: 10.0,
-              ),
-               RaisedButton(
-                child: Text("See running trains"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>Usertrainschdule()),
+                    MaterialPageRoute(builder: (context) => Searchtrain()),
                   );
                 },
               ),
               SizedBox(
                 height: 10.0,
               ),
-                RaisedButton(
+              RaisedButton(
+                child: Text("User Profile"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UserProfile()),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              RaisedButton(
                 child: Text("See home"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Usertesthome()),
+                    MaterialPageRoute(builder: (context) => Usertesthome()),
                   );
                 },
               ),
-                 SizedBox(
+              SizedBox(
                 height: 10.0,
               ),
-                RaisedButton(
+              RaisedButton(
                 child: Text("Test home 2"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Testhome2()),
+                    MaterialPageRoute(builder: (context) => Testhome2()),
                   );
                 },
               ),
