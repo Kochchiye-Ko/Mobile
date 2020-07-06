@@ -37,4 +37,15 @@ class DatabaseService {
       'dateTime': DateTime.now()
     });
   }
+
+  Future addAccount(String phoneno) async {
+    return await userCollection.document(phoneno).setData({
+      'phoneNumber': phoneno,
+      'firstname': "",
+      'lastname': "",
+      'email': "",
+      'accountType': "passanger",
+      'dateTime': DateTime.now()
+    });
+  }
 }

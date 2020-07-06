@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:kochchiye_ko/Admin/database/database.dart';
 
 class TrainShedule extends StatefulWidget {
   @override
@@ -8,7 +9,10 @@ class TrainShedule extends StatefulWidget {
 
 class TrainSheduleState extends State<TrainShedule> {
   final _formKey = GlobalKey<FormState>();
-  String firstNme, lastName, email;
+  final nameHolder1 = TextEditingController();
+  final nameHolder2 = TextEditingController();
+  String _trainNumber = "";
+  String _trainName = "";
   String dropdown1Value = "Select Train type";
   String dropdown2Value = "Select Time";
   String dropdown3StartStaion = "Select Start Staion";
@@ -36,9 +40,12 @@ class TrainSheduleState extends State<TrainShedule> {
               filled: true,
               hintText: "Train Number",
             ),
+            controller: nameHolder1,
             style: TextStyle(color: Colors.blue[200]),
             onChanged: (val) {
-              setState(() {});
+              setState(() {
+                this._trainNumber = val;
+              });
             },
           ),
         ),
@@ -63,9 +70,12 @@ class TrainSheduleState extends State<TrainShedule> {
               filled: true,
               hintText: "Train Name",
             ),
+            controller: nameHolder2,
             style: TextStyle(color: Colors.blue[200]),
             onChanged: (val) {
-              setState(() {});
+              setState(() {
+                this._trainName = val;
+              });
             },
           ),
         ),
@@ -332,6 +342,8 @@ class TrainSheduleState extends State<TrainShedule> {
     );
   }
 
+  String selectstartTime = "";
+
   startTime() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -354,7 +366,7 @@ class TrainSheduleState extends State<TrainShedule> {
             final selectedTime = await _selectTime(context);
             if (selectedTime == null) return;
             print(selectedTime);
-
+            // selectstartTime = selectedTime.toString();
             setState(() {
               this.selectedDate1 = DateTime(
                 selectedDate1.year,
@@ -419,9 +431,7 @@ class TrainSheduleState extends State<TrainShedule> {
                 startTime(),
               ],
             ),
-            SizedBox(
-              width: 20.0,
-            ),
+            
             Column(
               children: <Widget>[
                 endTime(),
@@ -618,11 +628,11 @@ class TrainSheduleState extends State<TrainShedule> {
                     SizedBox(
                       height: 10.0,
                     ),
-                    _insertSubtrainStations(),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    _viewSubtrainStations(),
+                    // _insertSubtrainStations(),
+                    // SizedBox(
+                    //   height: 10.0,
+                    // ),
+                    // _viewSubtrainStations(),
                     SizedBox(
                       height: 20.0,
                     ),
@@ -643,13 +653,36 @@ class TrainSheduleState extends State<TrainShedule> {
                           color: Colors.orange,
                           label: Center(
                             child: Text(
-                              "Add",
+                              "Add a train",
                               style: TextStyle(
                                   color: Colors.white, fontSize: 25.0),
                             ),
                           ),
                           onPressed: () {
-                            if (_formKey.currentState.validate()) {}
+                            if (_formKey.currentState.validate()) {
+                              DatabaseService().addTrains(
+                                  _trainNumber,
+                                  _trainName,
+                                  dropdown1Value,
+                                  dropdown2Value,
+                                  dropdown3StartStaion,
+                                  dropdown4EndStaion,
+                                  selectedDate1.toString(),
+                                  selectedDate2.toString());
+
+                              nameHolder1.clear();
+                              nameHolder2.clear();
+                              setState(() {
+                                this.dropdown1Value = "Select Train type";
+                                this.dropdown2Value = "Select Time";
+                                this.dropdown3StartStaion =
+                                    "Select Start Staion";
+                                this.dropdown4EndStaion = "Select End Staion";
+                                this.dropdown5selectStaion = "Select Staion";
+                                this.selectedDate1 = DateTime.now();
+                                this.selectedDate2 = DateTime.now();
+                              });
+                            }
                           },
                         ),
                       ),

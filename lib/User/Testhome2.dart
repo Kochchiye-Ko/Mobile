@@ -89,6 +89,7 @@ class CustomeHeader extends StatelessWidget {
                     onPressed: () {},
                   ),
                   IconButton(
+                    onPressed: (){},
                     icon: Icon(
                       Icons.power_settings_new,
                       color: Colors.white,

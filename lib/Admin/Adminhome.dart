@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:kochchiye_ko/Admin/DriversAdmin.dart';
+import 'package:kochchiye_ko/Admin/DisplayTrainsData.dart';
 import 'package:kochchiye_ko/Admin/UsersAdmin.dart';
 import 'package:kochchiye_ko/Admin/about.dart';
 import 'package:kochchiye_ko/Admin/changepassword.dart';
 import 'package:kochchiye_ko/Admin/createNotification.dart';
+import 'package:kochchiye_ko/Admin/displaytrains/trainlist.dart';
 import 'package:kochchiye_ko/Admin/map.dart';
 import 'package:kochchiye_ko/Admin/trainsgedule.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
@@ -163,7 +164,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "   Train Schedule",
+                                  "   Train",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),
@@ -270,7 +271,7 @@ class _AdminhomeState extends State<Adminhome> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => DriversAdminpanel()),
+                                    builder: (context) => DisplayTrainsData()),
                               );
                             },
                             child: Container(
@@ -284,7 +285,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "   Drivers",
+                                  "   View Train List",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),
@@ -294,7 +295,7 @@ class _AdminhomeState extends State<Adminhome> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            DriversAdminpanel()),
+                                            TrainList()),
                                   );
                                 },
                               ),

@@ -12,27 +12,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int count = 0;
-  @override
-  void initState() {
-    super.initState();
-    _loadCounter();
-  }
-
-  _loadCounter() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      count = (prefs.getInt('counter') ?? 0);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Kochiye Ko',
       debugShowCheckedModeBanner: false,
-      home: Authservice().handleAuth(count),
+      home: Authservice().handleAuth(),
       // home: UserDetailsRegister(),
+      // home: TestHome(),
     );
   }
 }

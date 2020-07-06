@@ -5,6 +5,7 @@ import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:kochchiye_ko/Admin/Admin.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/authservice.dart';
+import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
 import 'package:kochchiye_ko/Driver/Driver.dart';
 import 'package:kochchiye_ko/User/User.dart';
 
@@ -107,6 +108,18 @@ class _TestHomeState extends State<TestHome> {
                   //   ),
                   // );
                 },
+              ),
+               RaisedButton(
+                child: Text("User details form"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UserDetailsRegister()),
+                  );
+                },
+              ),
+               SizedBox(
+                height: 10.0,
               ),
               Text(
                   "All of these are in testing mode to tese]t.UI's will be added leter")

@@ -1,23 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kochchiye_ko/Admin/models/notification.dart';
+import 'package:kochchiye_ko/Admin/models/trains.dart';
 
 class DatabaseService {
   final String uid;
   DatabaseService({this.uid});
 
   final CollectionReference notificationCollection =
-      Firestore.instance.collection("AdminNotifications");
+      Firestore.instance.collection("Notification");
 
-  Future addNotifications(String msg, String accounttype) async {
+  Future addNotifications(String msg, String subject) async {
     return await notificationCollection.document(uid).setData({
-      'Message': msg,
-      'To Account': accounttype,
+      'message': msg,
+      'subject': subject,
+      'author': "admin",
       'dateTime': DateTime.now()
     });
   }
 
   Stream<List<Notifications>> get allNotifications {
-    return notificationCollection.orderBy("dateTime", descending: true)
+    return notificationCollection
+        .orderBy("dateTime", descending: true)
         .snapshots()
         .map(_notificationListFromSnapshot);
   }
@@ -25,12 +28,57 @@ class DatabaseService {
   List<Notifications> _notificationListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
       return Notifications(
-        message: doc.data['Message'],
-        toaccount: doc.data['To Account'],
+        message: doc.data['message'],
+        subject: doc.data['subjectTo Account'],
         dateTime: doc.data['dateTime'],
       );
     }).toList();
   }
 
+  final CollectionReference trainCollection =
+      Firestore.instance.collection("TrainDetails");
 
+  Future addTrains(
+    String trainNumber,
+    String trainName,
+    String trainType,
+    String dailyOrweekend,
+    String startStaion,
+    String endStaion,
+    String startTime,
+    String endTime,
+  ) async {
+    return await trainCollection.document(trainNumber).setData({
+      'trainNumber': trainNumber,
+      'trainName': trainName,
+      'trainType': trainType,
+      'dailyOrweekend': dailyOrweekend,
+      'startStaion': startStaion,
+      'endStaion': endStaion,
+      'startTime': startTime,
+      'endTime': endTime,
+    });
+  }
+
+  Stream<List<Trains>> get allTrains {
+    return trainCollection
+        .orderBy("trainNumber", descending: true)
+        .snapshots()
+        .map(_trainListFromSnapshot);
+  }
+
+  List<Trains> _trainListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return Trains(
+        dailyOrweekend: doc.data['dailyOrweekend'],
+        endStaion: doc.data['endStaion'],
+        endTime: doc.data['endTime'],
+        startStaion: doc.data['startStaion'],
+        startTime: doc.data['startTime'],
+        trainName: doc.data['trainName'],
+        trainNumber: doc.data['trainNumber'],
+        trainType: doc.data['trainType'],
+      );
+    }).toList();
+  }
 }
