@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Auth/authservice.dart';
-import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Signin extends StatefulWidget {
   @override

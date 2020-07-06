@@ -201,6 +201,7 @@ class CustomeHeader extends StatelessWidget {
                     onPressed: () {},
                   ),
                   IconButton(
+                    onPressed: (){},
                     icon: Icon(
                       LineAwesomeIcons.anchor,
                       color: Colors.redAccent,

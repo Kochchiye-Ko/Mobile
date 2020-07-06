@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:kochchiye_ko/Auth/Signin.dart';
+import 'package:kochchiye_ko/Auth/model/database.dart';
+import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
 import 'package:kochchiye_ko/Testhome.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Authservice {
-  
   handleAuth() {
     return StreamBuilder(
       stream: FirebaseAuth.instance.onAuthStateChanged,
@@ -25,6 +27,7 @@ class Authservice {
   signinWithOTP(smsCode, verID, phoneNo) {
     AuthCredential authCredential = PhoneAuthProvider.getCredential(
         verificationId: verID, smsCode: smsCode);
+    // DatabaseService().addAccount(phoneNo);
     signIn(authCredential);
   }
 

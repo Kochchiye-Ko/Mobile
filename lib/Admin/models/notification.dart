@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Notifications {
   final String message;
-  final String toaccount;
+  final String subject;
   final Timestamp dateTime;
-  Notifications({this.message, this.toaccount, this.dateTime});
+  Notifications({this.message, this.subject, this.dateTime});
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Admin/models/notification.dart';
+import 'package:kochchiye_ko/Admin/models/trains.dart';
 
-class NotificationTile extends StatelessWidget {
-  final Notifications notification;
-  NotificationTile({this.notification});
+class TrainsTile extends StatelessWidget {
+  final Trains trains;
+  TrainsTile({this.trains});
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +18,7 @@ class NotificationTile extends StatelessWidget {
             backgroundColor: Colors.orange[300],
             backgroundImage: AssetImage('assets/adminicons/ps.png'),
           ),
-          title: Text(notification.message), 
-          subtitle: Text(
-            notification.dateTime.toDate().toString(),
-            style: TextStyle(color: Colors.blueGrey, height: 2.0),
-          ),
+          title: Text(trains.trainName),
         ),
       ),
     );
