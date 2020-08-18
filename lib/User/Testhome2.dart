@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kochchiye_ko/User/User.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
+import '../Animation/FadeAnimation.dart';
 
 class Testhome2 extends StatefulWidget {
   @override
@@ -15,9 +18,14 @@ class _Testhome2State extends State<Testhome2> {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
     return Stack(children: <Widget>[
+      Image.asset(
+        "assets/User/bghome.jpg",
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        fit: BoxFit.cover,
+      ),
       new Scaffold(
-        backgroundColor: Colors.white,
-
+        backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: Stack(
             children: <Widget>[
@@ -37,17 +45,121 @@ class Homebody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(top: 340),
+        margin: EdgeInsets.only(top: 320),
         child: Column(
           children: <Widget>[
-            Card(title: "Live location Map",),
-            Card(title: "Trains on tracks",),
-            Card(title: "Train Schdules",),
-         
+            FadeAnimation(
+              1.2,
+              Items(
+                  name: " Live Location Map",
+                  image: 'assets/User/location.jpg',
+                  path: Usertrainmap()),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            FadeAnimation(
+              1.5,
+              Items(
+                  name: "Trains on tracks ",
+                  image: 'assets/User/item2.jpg',
+                  path: Userrunning()),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            FadeAnimation(
+              1.8,
+              Items(
+                  name: "Schedules",
+                  image: 'assets/User/table.jpg',
+                  path: Searchtrain()),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            FadeAnimation(
+              1.8,
+              Items(
+                  name: "Route Details",
+                  image: 'assets/User/214.png',
+                  path: Usertrainmap()),
+            ),
           ],
         ));
   }
 }
+
+class Items extends StatelessWidget {
+  final name, des, image, path;
+
+  const Items({Key key, this.name, this.des, this.image, this.path})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            (context), MaterialPageRoute(builder: (context) => path));
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10),
+        child: Stack(
+          children: <Widget>[
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 150.0,
+                  height: 120.0,
+                  decoration: new BoxDecoration(
+                      border: Border.all(color: Colors.yellow),
+                      borderRadius: BorderRadius.circular(50.0),
+                      image: DecorationImage(
+                        image: AssetImage(image),
+                        fit: BoxFit.cover,
+                      )),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Text(
+                  name,
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// class Homebody extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//         margin: EdgeInsets.only(top: 340),
+//         child: Column(
+//           children: <Widget>[
+//             Card(
+//               title: "Live location Map",
+//             ),
+//             Card(
+//               title: "Trains on tracks",
+//             ),
+//             Card(
+//               title: "Train Schdules",
+//             ),
+//           ],
+//         ));
+//   }
+// }
 
 class CustomBody extends StatelessWidget {
   // CustomBody(GlobalKey<ScaffoldState> scaffoldKey);
@@ -89,9 +201,10 @@ class CustomeHeader extends StatelessWidget {
                     onPressed: () {},
                   ),
                   IconButton(
+                    onPressed: () {},
                     icon: Icon(
-                      Icons.power_settings_new,
-                      color: Colors.white,
+                      LineAwesomeIcons.anchor,
+                      color: Colors.redAccent,
                       size: 30,
                     ),
                   )
@@ -102,7 +215,10 @@ class CustomeHeader extends StatelessWidget {
                 textAlign: TextAlign.center,
                 text: TextSpan(
                     text: "Where is the train",
-                    style: TextStyle(fontSize: 35, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 40,
+                        color: Colors.amber,
+                        fontWeight: FontWeight.bold),
                     children: <TextSpan>[
                       TextSpan(
                           text: '\n\nA Way to make your journey easy',
@@ -140,7 +256,9 @@ class HeaderBackground extends StatelessWidget {
                     image: AssetImage("assets/User/userbg2.jpg"),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
-                        Colors.black.withOpacity(0.6), BlendMode.darken))),
+                      Colors.amberAccent.withOpacity(0.4),
+                      BlendMode.darken,
+                    ))),
           ),
         )
       ],
@@ -199,9 +317,7 @@ class Card extends StatelessWidget {
                       text: TextSpan(
                           style: TextStyle(color: Colors.white),
                           children: [
-                        TextSpan(
-                            text: title,
-                            style: TextStyle(fontSize: 16))
+                        TextSpan(text: title, style: TextStyle(fontSize: 16))
                       ])),
                 )),
           ),
