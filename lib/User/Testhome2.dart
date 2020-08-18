@@ -73,7 +73,7 @@ class Homebody extends StatelessWidget {
               Items(
                   name: "Schedules",
                   image: 'assets/User/table.jpg',
-                  path: Usertraindetail()),
+                  path: Searchtrain()),
             ),
             SizedBox(
               height: 10,
@@ -201,7 +201,7 @@ class CustomeHeader extends StatelessWidget {
                     onPressed: () {},
                   ),
                   IconButton(
-                    onPressed: (){},
+                    onPressed: () {},
                     icon: Icon(
                       LineAwesomeIcons.anchor,
                       color: Colors.redAccent,

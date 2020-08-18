@@ -29,9 +29,10 @@ class _TestHomeState extends State<TestHome> {
           geo.point(latitude: location.latitude, longitude: location.longitude);
       Firestore.instance
           .collection('trainlocations')
-          .document('train3')
+          .document('train1')
           .setData({'position': point.data});
     });
+    print("Done");
   }
 
   @override
@@ -105,16 +106,17 @@ class _TestHomeState extends State<TestHome> {
                   // );
                 },
               ),
-               RaisedButton(
+              RaisedButton(
                 child: Text("User details form"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => UserDetailsRegister()),
+                    MaterialPageRoute(
+                        builder: (context) => UserDetailsRegister()),
                   );
                 },
               ),
-               SizedBox(
+              SizedBox(
                 height: 10.0,
               ),
               Text(

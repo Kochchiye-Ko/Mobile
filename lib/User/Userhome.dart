@@ -33,15 +33,27 @@ class _UserhomeState extends State<Userhome> {
         children: <Widget>[
           Center(
             child: Column(children: <Widget>[
+              SizedBox(
+                height: 10.0,
+              ),
               RaisedButton(
-                child: Text("UserMap"),
+                child: Text("User Home"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Usertrainmap()),
+                    MaterialPageRoute(builder: (context) => Testhome2()),
                   );
                 },
               ),
+              // RaisedButton(
+              //   child: Text("UserMap"),
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(builder: (context) => Usertrainmap()),
+              //     );
+              //   },
+              // ),
               SizedBox(
                 height: 10.0,
               ),
@@ -54,18 +66,32 @@ class _UserhomeState extends State<Userhome> {
                   );
                 },
               ),
-              SizedBox(
-                height: 10.0,
-              ),
-              RaisedButton(
-                child: Text("Train Schudules"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Searchtrain()),
-                  );
-                },
-              ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // RaisedButton(
+              //   child: Text("Train Schudules"),
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(builder: (context) => Searchtrain()),
+              //     );
+              //   },
+              // ),
+
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // RaisedButton(
+              //   child: Text("See home"),
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(builder: (context) => Usertesthome()),
+              //     );
+              //   },
+              // ),
+
               SizedBox(
                 height: 10.0,
               ),
@@ -75,30 +101,6 @@ class _UserhomeState extends State<Userhome> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => UserProfile()),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              RaisedButton(
-                child: Text("See home"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Usertesthome()),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              RaisedButton(
-                child: Text("Test home 2"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Testhome2()),
                   );
                 },
               ),

@@ -20,7 +20,6 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         home: Authservice().handleAuth());
     // home: UserDetailsRegister(),
-    //home: TestHome());
-
+    // home: TestHome());
   }
 }

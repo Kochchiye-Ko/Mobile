@@ -137,8 +137,8 @@ class _GeomapState extends State<Geomap> {
             }
 
             return GoogleMap(
-              initialCameraPosition: CameraPosition(
-                  target: LatLng(6.9337601, 79.8500765), zoom: 15),
+              initialCameraPosition:
+                  CameraPosition(target: LatLng(8.343966, 80.410869), zoom: 18),
               onMapCreated: (controller) {
                 setState(() {
                   myController = controller;
