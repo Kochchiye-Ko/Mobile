@@ -114,9 +114,16 @@ class _GeomapState extends State<Geomap> {
 
             for (int i = 0; i < snapshot.data.documents.length; i++) {
               var train = snapshot.data.documents[i];
-              GeoPoint geoPoint = train['position']['geopoint'];
-              double lat = geoPoint.latitude;
-              double long = geoPoint.longitude;
+              var lat, long;
+              print("Kalnaa");
+              print(train['Lat']);
+              if (train['Lat'] == 0 || train['Long'] == 0) {
+                lat = 0.0;
+                long = 0.0;
+              } else {
+                lat = train['Lat'];
+                long = train['Long'];
+              }
 
               var id = MarkerId(i.toString());
               Marker mark = Marker(
