@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:foldable_sidebar/foldable_sidebar.dart';
+import 'package:kochchiye_ko/Auth/Auth.dart';
+import 'package:kochchiye_ko/Auth/Signin.dart';
 import 'package:kochchiye_ko/User/User.dart';
-import 'package:line_awesome_icons/line_awesome_icons.dart';
 import '../Animation/FadeAnimation.dart';
 
 class Userhome extends StatefulWidget {
@@ -12,6 +14,7 @@ class Userhome extends StatefulWidget {
 
 final Color primary = Color(0xffEBBb13);
 final Color active = Color(0xffffffff);
+final AuthService auth = AuthService();
 
 class _UserhomeState extends State<Userhome> {
   FSBStatus drawerStatus;
@@ -364,7 +367,7 @@ class CustomDrawer extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  Text("RetroPortal Studio")
+                  Text()
                 ],
               )),
           ListTile(
@@ -414,8 +417,14 @@ class CustomDrawer extends StatelessWidget {
             color: Colors.grey,
           ),
           ListTile(
-            onTap: () {
-              debugPrint("Tapped Log Out");
+            onTap: () async {
+              FirebaseAuth.instance.signOut();
+              // await auth.signOut();
+              Navigator.pop(context);
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => Signin()),
+              // );
             },
             leading: Icon(Icons.exit_to_app),
             title: Text("Log Out"),

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Testhome.dart';
 import 'package:kochchiye_ko/User/Userhome.dart';
 import 'package:kochchiye_ko/User/User.dart';
-import 'package:kochchiye_ko/User/Usertesthome.dart';
-import 'package:kochchiye_ko/User/Usertrainschdule.dart';
 
 class Testhome2 extends StatefulWidget {
   Testhome2({Key key}) : super(key: key);
@@ -13,7 +10,6 @@ class Testhome2 extends StatefulWidget {
 }
 
 class _Testhome2State extends State<Testhome2> {
-  // final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +35,7 @@ class _Testhome2State extends State<Testhome2> {
               RaisedButton(
                 child: Text("User Home"),
                 onPressed: () {
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Userhome()),
