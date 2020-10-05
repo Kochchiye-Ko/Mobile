@@ -75,37 +75,37 @@ class _TestHomeState extends State<TestHome> {
                   );
                 },
               ),
-              SizedBox(
-                height: 10.0,
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              RaisedButton(
-                child: Text("Start send location"),
-                onPressed: () {
-                  getaa();
-                },
-              ),
-              RaisedButton(
-                child: Text("Stop send location"),
-                onPressed: () {
-                  BackgroundLocation.stopLocationService();
-                },
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              RaisedButton(
-                child: Text("Stop send location"),
-                onPressed: () {
-                  //   Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) =>  Signin()
-                  //   ),
-                  // );
-                },
-              ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // RaisedButton(
+              //   child: Text("Start send location"),
+              //   onPressed: () {
+              //     getaa();
+              //   },
+              // ),
+              // RaisedButton(
+              //   child: Text("Stop send location"),
+              //   onPressed: () {
+              //     BackgroundLocation.stopLocationService();
+              //   },
+              // ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // RaisedButton(
+              //   child: Text("Stop send location"),
+              //   onPressed: () {
+              //     //   Navigator.push(
+              //     //   context,
+              //     //   MaterialPageRoute(builder: (context) =>  Signin()
+              //     //   ),
+              //     // );
+              //   },
+              // ),
               RaisedButton(
                 child: Text("User details form"),
                 onPressed: () {

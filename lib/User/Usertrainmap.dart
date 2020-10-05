@@ -26,7 +26,7 @@ class _UsertrainmapState extends State<Usertrainmap> {
 
   void setCustomMapPin() async {
     pinLocationIcon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 2.5), 'assets/Train_icon.png');
+        ImageConfiguration(devicePixelRatio: 3.5), 'assets/Train_icon.png');
   }
 
   @override
