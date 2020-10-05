@@ -367,12 +367,15 @@ class CustomDrawer extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  Text()
+                  Text("0765694916")
                 ],
               )),
           ListTile(
             onTap: () {
-              debugPrint("Tapped Profile");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserProfile()),
+              );
             },
             leading: Icon(Icons.person),
             title: Text(
@@ -429,6 +432,31 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.exit_to_app),
             title: Text("Log Out"),
           ),
+          Divider(
+            height: 1,
+            color: Colors.grey,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+              width: double.infinity,
+              height: 100,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    "assets/logo.png",
+                    width: 50,
+                    height: 50,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text("Version 1.0.0"),
+                  Text("Developed By Group 28")
+                ],
+              ))
         ],
       ),
     );

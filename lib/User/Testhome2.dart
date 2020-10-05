@@ -42,7 +42,6 @@ class _Testhome2State extends State<Testhome2> {
                   );
                 },
               ),
-
               SizedBox(
                 height: 10.0,
               ),
@@ -55,32 +54,6 @@ class _Testhome2State extends State<Testhome2> {
                   );
                 },
               ),
-              // SizedBox(
-              //   height: 10.0,
-              // ),
-              // RaisedButton(
-              //   child: Text("Train Schudules"),
-              //   onPressed: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(builder: (context) => Searchtrain()),
-              //     );
-              //   },
-              // ),
-
-              // SizedBox(
-              //   height: 10.0,
-              // ),
-              // RaisedButton(
-              //   child: Text("See home"),
-              //   onPressed: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(builder: (context) => Usertesthome()),
-              //     );
-              //   },
-              // ),
-
               SizedBox(
                 height: 10.0,
               ),
