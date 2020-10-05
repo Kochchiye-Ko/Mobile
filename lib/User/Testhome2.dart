@@ -25,6 +25,18 @@ class _Testhome2State extends State<Testhome2> {
         fit: BoxFit.cover,
       ),
       new Scaffold(
+        floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.deepOrange,
+            child: Icon(
+              Icons.menu,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // To Open/Close Sidebar
+              setState(() {
+                // drawerStatus = drawerStatus == FDBStatus.FDB_OPEN ? FDBStatus.FDB_CLOSE : FDBStatus.FDB_OPEN;
+              });
+            }),
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: Stack(
