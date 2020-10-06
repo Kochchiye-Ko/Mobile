@@ -12,7 +12,7 @@ class _InboxListState extends State<InboxList> {
   @override
   Widget build(BuildContext context) {
     final notificationsInbox =
-        Provider.of<List<NotificationsInbox>>(context) ?? [];
+        Provider.of<List<InboxNotification>>(context) ?? [];
 
     return ListView.builder(
       itemCount: notificationsInbox.length,

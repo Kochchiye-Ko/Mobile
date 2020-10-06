@@ -192,7 +192,7 @@ class DatabaseService {
 
   // notification inbox
 
-  Stream<List<NotificationsInbox>> get allNotificationsInbox {
+  Stream<List<InboxNotification>> get allNotificationsInbox {
     return notificationCollection
         .where("author", isEqualTo: "user")
         .orderBy("dateTime", descending: true)
@@ -200,13 +200,13 @@ class DatabaseService {
         .map(_notificationInboxListFromSnapshot);
   }
 
-  List<NotificationsInbox> _notificationInboxListFromSnapshot(
+  List<InboxNotification> _notificationInboxListFromSnapshot(
       QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
-      return NotificationsInbox(
-        message1: doc.data['message'],
-        subject1: doc.data['subjectTo Account'],
-        dateTime1: doc.data['dateTime'],
+      return InboxNotification(
+        message: doc.data['message'],
+        subject: doc.data['subjectTo Account'],
+        dateTime: doc.data['dateTime'],
       );
     }).toList();
   }

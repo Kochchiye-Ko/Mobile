@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Admin/inboxob.dart';
 
 class InboxTile extends StatelessWidget {
-  final NotificationsInbox notificationsInbox;
+  final InboxNotification notificationsInbox;
   InboxTile({this.notificationsInbox});
 
   @override
@@ -19,11 +19,11 @@ class InboxTile extends StatelessWidget {
             backgroundImage: AssetImage('assets/adminicons/ps.png'),
           ),
           title: Text(
-            notificationsInbox.message1,
+            notificationsInbox.message,
             style: TextStyle(color: Colors.blue[800]),
           ),
           subtitle: Text(
-            notificationsInbox.dateTime1.toString(),
+            notificationsInbox.dateTime.toString(),
             style: TextStyle(color: Colors.white, height: 2.0),
           ),
         ),
