@@ -17,9 +17,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Kochiye Ko',
       debugShowCheckedModeBanner: false,
-      home: Authservice().handleAuth(),
+      // home: Authservice().handleAuth(),
       // home: UserDetailsRegister(),
-      // home: TestHome(),
+      home: TestHome(),
     );
   }
 }

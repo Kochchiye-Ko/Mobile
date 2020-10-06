@@ -5,7 +5,6 @@ import 'package:kochchiye_ko/User/User.dart';
 import 'package:kochchiye_ko/User/Usertesthome.dart';
 import 'package:kochchiye_ko/User/Usertrainschdule.dart';
 
-
 class Userhome extends StatefulWidget {
   Userhome({Key key}) : super(key: key);
 
@@ -46,10 +45,8 @@ class _UserhomeState extends State<Userhome> {
               SizedBox(
                 height: 10.0,
               ),
-
               RaisedButton(
                 child: Text("Go to UserTrain Deatils"),
-
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -57,51 +54,51 @@ class _UserhomeState extends State<Userhome> {
                   );
                 },
               ),
-SizedBox(
+              SizedBox(
                 height: 10.0,
               ),
-                RaisedButton(
+              RaisedButton(
                 child: Text("Search Train Schudules"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Searchtrain()),
-                  );
-                },
-              ),
-            SizedBox(
-                height: 10.0,
-              ),
-               RaisedButton(
-                child: Text("See running trains"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>Usertrainschdule()),
+                    MaterialPageRoute(builder: (context) => Searchtrain()),
                   );
                 },
               ),
               SizedBox(
                 height: 10.0,
               ),
-                RaisedButton(
+              RaisedButton(
+                child: Text("See running trains"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Usertrainschdule()),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              RaisedButton(
                 child: Text("See home"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Usertesthome()),
+                    MaterialPageRoute(builder: (context) => Usertesthome()),
                   );
                 },
               ),
-                 SizedBox(
+              SizedBox(
                 height: 10.0,
               ),
-                RaisedButton(
+              RaisedButton(
                 child: Text("Test home 2"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>Testhome2()),
+                    MaterialPageRoute(builder: (context) => Testhome2()),
                   );
                 },
               ),
