@@ -6,7 +6,6 @@ import 'package:kochchiye_ko/Admin/Admin.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/authservice.dart';
 import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
-import 'package:kochchiye_ko/Driver/Driver.dart';
 import 'package:kochchiye_ko/User/User.dart';
 
 class TestHome extends StatefulWidget {
@@ -16,13 +15,11 @@ class TestHome extends StatefulWidget {
 
 class _TestHomeState extends State<TestHome> {
   Geoflutterfire geo = Geoflutterfire();
-    final AuthService _auth = AuthService();
+  final AuthService _auth = AuthService();
 
-    
   @override
   void initState() {
     super.initState();
- 
   }
 
   getaa() async {
@@ -32,9 +29,10 @@ class _TestHomeState extends State<TestHome> {
           geo.point(latitude: location.latitude, longitude: location.longitude);
       Firestore.instance
           .collection('trainlocations')
-          .document('train3')
+          .document('train1')
           .setData({'position': point.data});
     });
+    print("Done");
   }
 
   @override
@@ -43,14 +41,14 @@ class _TestHomeState extends State<TestHome> {
       appBar: AppBar(
         title: Text("Test Home"),
         actions: <Widget>[
-            FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: new Text("Logout"),
-              onPressed: () {
-                Authservice().signOut();
-              },
-            ),
-          ],
+          FlatButton.icon(
+            icon: Icon(Icons.person),
+            label: new Text("Logout"),
+            onPressed: () {
+              Authservice().signOut();
+            },
+          ),
+        ],
       ),
       body: Column(
         children: <Widget>[
@@ -61,7 +59,7 @@ class _TestHomeState extends State<TestHome> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Userhome()),
+                    MaterialPageRoute(builder: (context) => Testhome2()),
                   );
                 },
               ),
@@ -77,48 +75,48 @@ class _TestHomeState extends State<TestHome> {
                   );
                 },
               ),
-               SizedBox(
-                height: 10.0,
-              ),
-         
-              SizedBox(
-                height: 10.0,
-              ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // RaisedButton(
+              //   child: Text("Start send location"),
+              //   onPressed: () {
+              //     getaa();
+              //   },
+              // ),
+              // RaisedButton(
+              //   child: Text("Stop send location"),
+              //   onPressed: () {
+              //     BackgroundLocation.stopLocationService();
+              //   },
+              // ),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // RaisedButton(
+              //   child: Text("Stop send location"),
+              //   onPressed: () {
+              //     //   Navigator.push(
+              //     //   context,
+              //     //   MaterialPageRoute(builder: (context) =>  Signin()
+              //     //   ),
+              //     // );
+              //   },
+              // ),
               RaisedButton(
-                child: Text("Start send location"),
-                onPressed: () {
-                  getaa();
-                },
-              ),
-              RaisedButton(
-                child: Text("Stop send location"),
-                onPressed: () {
-                  BackgroundLocation.stopLocationService();
-                },
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              RaisedButton(
-                child: Text("Stop send location"),
-                onPressed: () {
-                  //   Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) =>  Signin()
-                  //   ),
-                  // );
-                },
-              ),
-               RaisedButton(
                 child: Text("User details form"),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => UserDetailsRegister()),
+                    MaterialPageRoute(
+                        builder: (context) => UserDetailsRegister()),
                   );
                 },
               ),
-               SizedBox(
+              SizedBox(
                 height: 10.0,
               ),
               Text(

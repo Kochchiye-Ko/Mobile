@@ -202,6 +202,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.7"
+  flutter_screenutil:
+    dependency: "direct main"
+    description:
+      name: flutter_screenutil
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -219,6 +226,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  foldable_sidebar:
+    dependency: "direct main"
+    description:
+      name: foldable_sidebar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   geoflutterfire:
     dependency: "direct main"
     description:
@@ -296,6 +310,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.1+1"
+  line_awesome_icons:
+    dependency: "direct main"
+    description:
+      name: line_awesome_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4+2"
   location:
     dependency: "direct main"
     description:
@@ -415,6 +436,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2+7"
+  simple_animations:
+    dependency: "direct main"
+    description:
+      name: simple_animations
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.3.12"
   sky_engine:
     dependency: transitive
     description: flutter

@@ -14,9 +14,10 @@ class Usertrainmap extends StatefulWidget {
   @override
   _UsertrainmapState createState() => _UsertrainmapState();
 }
-  BitmapDescriptor pinLocationIcon;
-class _UsertrainmapState extends State<Usertrainmap> {
 
+BitmapDescriptor pinLocationIcon;
+
+class _UsertrainmapState extends State<Usertrainmap> {
   @override
   void initState() {
     super.initState();
@@ -25,8 +26,7 @@ class _UsertrainmapState extends State<Usertrainmap> {
 
   void setCustomMapPin() async {
     pinLocationIcon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 2.5),
-        'assets/destination_map_marker.png');
+        ImageConfiguration(devicePixelRatio: 3.5), 'assets/Train_icon.png');
   }
 
   @override
@@ -38,8 +38,6 @@ class _UsertrainmapState extends State<Usertrainmap> {
         ),
         body: Geomap());
   }
-
-  
 }
 
 class Geomap extends StatefulWidget {
@@ -116,9 +114,16 @@ class _GeomapState extends State<Geomap> {
 
             for (int i = 0; i < snapshot.data.documents.length; i++) {
               var train = snapshot.data.documents[i];
-              GeoPoint geoPoint = train['position']['geopoint'];
-              double lat = geoPoint.latitude;
-              double long = geoPoint.longitude;
+              var lat, long;
+              print("Kalnaa");
+              print(train['Lat']);
+              if (train['Lat'] == 0 || train['Long'] == 0) {
+                lat = 0.0;
+                long = 0.0;
+              } else {
+                lat = train['Lat'];
+                long = train['Long'];
+              }
 
               var id = MarkerId(i.toString());
               Marker mark = Marker(
@@ -130,17 +135,17 @@ class _GeomapState extends State<Geomap> {
                 rotation: lat,
                 anchor: Offset(0.5, 0.5),
                 infoWindow: InfoWindow(title: train['info']),
-              icon:pinLocationIcon,
-              
-              //  BitmapDescriptor.defaultMarkerWithHue(
-              //       BitmapDescriptor.hueViolet)
+                icon: pinLocationIcon,
+
+                //  BitmapDescriptor.defaultMarkerWithHue(
+                //       BitmapDescriptor.hueViolet)
               );
               markerslist[id] = mark;
             }
 
             return GoogleMap(
-              initialCameraPosition: CameraPosition(
-                  target: LatLng(6.9337601, 79.8500765), zoom: 15),
+              initialCameraPosition:
+                  CameraPosition(target: LatLng(8.343966, 80.410869), zoom: 18),
               onMapCreated: (controller) {
                 setState(() {
                   myController = controller;
@@ -149,7 +154,7 @@ class _GeomapState extends State<Geomap> {
               myLocationEnabled: true,
               mapType: MapType.hybrid,
               compassEnabled: true,
-               markers: Set<Marker>.of(markerslist.values),
+              markers: Set<Marker>.of(markerslist.values),
             );
           },
         ),
