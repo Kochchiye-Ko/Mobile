@@ -57,15 +57,6 @@ class _Testhome2State extends State<Testhome2> {
               SizedBox(
                 height: 10.0,
               ),
-              RaisedButton(
-                child: Text("User Profile"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => UserProfile()),
-                  );
-                },
-              ),
             ]),
           )
         ],
