@@ -117,6 +117,16 @@ class Homebody extends StatelessWidget {
                   image: 'assets/User/214.png',
                   path: Usertrainmap()),
             ),
+            SizedBox(
+              height: 10,
+            ),
+            FadeAnimation(
+              2.0,
+              Items(
+                  name: "Lost and Found",
+                  image: 'assets/User/lofo.png',
+                  path: Usertrainmap()),
+            ),
           ],
         ));
   }
