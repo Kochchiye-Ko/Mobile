@@ -38,7 +38,17 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
       body: Stack(
         children: <Widget>[
           Container(
-            color: Colors.grey[600],
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              image: new DecorationImage(
+                image: new AssetImage("assets/User/userbgdark.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            // color: Colors.grey[600],
             height: double.infinity,
             child: SingleChildScrollView(
               physics: AlwaysScrollableScrollPhysics(),
@@ -52,7 +62,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                     TextFormField(
                       decoration: InputDecoration(
                         hintText: "Subject",
-                        fillColor: Colors.grey[300],
+                        fillColor: Colors.grey[300].withOpacity(0.5),
                         filled: true,
                       ),
                       controller: subjectholder,
@@ -64,7 +74,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                       height: 20.0,
                     ),
                     Card(
-                      color: Colors.grey[300],
+                      color: Colors.grey[300].withOpacity(0.5),
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
@@ -108,7 +118,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                           subjectholder.clear();
                           errorMsg1 = "";
                         });
-                        // _showSnackBar();
+                        _showSnackBar();
                       },
                     ),
                   ],

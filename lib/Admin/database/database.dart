@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:kochchiye_ko/Admin/models/notification/notification.dart';
+import 'package:kochchiye_ko/Admin/notification.dart';
 import 'package:kochchiye_ko/Admin/models/trains.dart';
 
 class DatabaseService {
@@ -20,6 +20,7 @@ class DatabaseService {
 
   Stream<List<Notifications>> get allNotifications {
     return notificationCollection
+        .where("author", isEqualTo: "admin")
         .orderBy("dateTime", descending: true)
         .snapshots()
         .map(_notificationListFromSnapshot);
@@ -28,6 +29,26 @@ class DatabaseService {
   List<Notifications> _notificationListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
       return Notifications(
+        message: doc.data['message'],
+        subject: doc.data['subjectTo Account'],
+        dateTime: doc.data['dateTime'],
+      );
+    }).toList();
+  }
+
+  // notification inbox
+
+   Stream<List<NotificationsInbox>> get allNotificationsinbox {
+    return notificationCollection
+        .where("author", isEqualTo: "user")
+        .orderBy("dateTime", descending: true)
+        .snapshots()
+        .map(_notificationInboxListFromSnapshot);
+  }
+
+  List<NotificationsInbox> _notificationInboxListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return NotificationsInbox(
         message: doc.data['message'],
         subject: doc.data['subjectTo Account'],
         dateTime: doc.data['dateTime'],

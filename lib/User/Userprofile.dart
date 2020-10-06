@@ -151,11 +151,11 @@ class ProfileListItem extends StatelessWidget {
           ),
           Text(this.text, style: TextStyle(fontWeight: FontWeight.w500)),
           Spacer(),
-          if (this.hasNavigation)
-            Icon(
-              LineAwesomeIcons.angle_right,
-              size: 25,
-            ),
+          // if (this.hasNavigation)
+          //   Icon(
+          //     LineAwesomeIcons.angle_right,
+          //     size: 25,
+            // ),
         ],
       ),
     );
