@@ -29,6 +29,8 @@ class _UsertrainmapState extends State<Usertrainmap> {
         ImageConfiguration(devicePixelRatio: 3.5), 'assets/Train_icon.png');
   }
 
+  List<LatLng> points;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
