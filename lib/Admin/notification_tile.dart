@@ -24,7 +24,7 @@ class NotificationTile extends StatelessWidget {
           ),
           subtitle: Text(
             notification.dateTime.toString(),
-            style: TextStyle(color: Colors.blueGrey, height: 2.0),
+            style: TextStyle(color: Colors.white, height: 2.0),
           ),
         ),
       ),

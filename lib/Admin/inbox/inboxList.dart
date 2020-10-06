@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Admin/notification.dart';
+import 'package:kochchiye_ko/Admin/inboxob.dart';
 import 'package:provider/provider.dart';
 import 'package:kochchiye_ko/Admin/inbox/inboxTile.dart';
 
@@ -11,12 +11,13 @@ class InboxList extends StatefulWidget {
 class _InboxListState extends State<InboxList> {
   @override
   Widget build(BuildContext context) {
-    final notifications = Provider.of<List<NotificationsInbox>>(context) ?? [];
+    final notificationsInbox =
+        Provider.of<List<NotificationsInbox>>(context) ?? [];
 
     return ListView.builder(
-      itemCount: notifications.length,
+      itemCount: notificationsInbox.length,
       itemBuilder: (context, index) {
-        return InboxTile(notification: notifications[index]);
+        return InboxTile(notificationsInbox: notificationsInbox[index]);
       },
     );
   }

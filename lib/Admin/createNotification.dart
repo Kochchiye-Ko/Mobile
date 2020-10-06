@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Admin/createNotificationPanel.dart';
 import 'package:kochchiye_ko/Admin/database/database.dart';
+import 'package:kochchiye_ko/Admin/notification_tile.dart';
 import 'package:kochchiye_ko/Admin/notification.dart';
 import 'package:kochchiye_ko/Admin/notiList.dart';
 import 'package:provider/provider.dart';
-import 'package:kochchiye_ko/Admin/inbox/inboxList.dart';
+import 'package:kochchiye_ko/Admin/inboxob.dart';
 
 class CreateNotifications extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _CreateNotificationsState extends State<CreateNotifications> {
         ),
       ),
       alignment: Alignment.bottomRight,
-      child: InboxList(),
+      child: NotificationTile(),
     ),
     Container(
       decoration: BoxDecoration(
@@ -40,7 +41,7 @@ class _CreateNotificationsState extends State<CreateNotifications> {
     return StreamProvider<List<Notifications>>.value(
       value: DatabaseService().allNotifications,
       child: StreamProvider<List<NotificationsInbox>>.value(
-        value: DatabaseService().allNotificationsinbox,
+        value: DatabaseService().allNotificationsInbox,
         child: DefaultTabController(
           length: 2,
           child: Scaffold(

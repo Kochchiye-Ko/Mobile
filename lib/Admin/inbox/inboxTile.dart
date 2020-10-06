@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Admin/notification.dart';
+import 'package:kochchiye_ko/Admin/inboxob.dart';
 
 class InboxTile extends StatelessWidget {
-  final NotificationsInbox notification;
-  InboxTile({this.notification});
+  final NotificationsInbox notificationsInbox;
+  InboxTile({this.notificationsInbox});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,12 +19,12 @@ class InboxTile extends StatelessWidget {
             backgroundImage: AssetImage('assets/adminicons/ps.png'),
           ),
           title: Text(
-            notification.message,
+            notificationsInbox.message1,
             style: TextStyle(color: Colors.blue[800]),
           ),
           subtitle: Text(
-            notification.dateTime.toString(),
-            style: TextStyle(color: Colors.blueGrey, height: 2.0),
+            notificationsInbox.dateTime1.toString(),
+            style: TextStyle(color: Colors.white, height: 2.0),
           ),
         ),
       ),
