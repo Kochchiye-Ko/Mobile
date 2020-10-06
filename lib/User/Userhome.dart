@@ -172,27 +172,6 @@ class Items extends StatelessWidget {
   }
 }
 
-// class Homebody extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//         margin: EdgeInsets.only(top: 340),
-//         child: Column(
-//           children: <Widget>[
-//             Card(
-//               title: "Live location Map",
-//             ),
-//             Card(
-//               title: "Trains on tracks",
-//             ),
-//             Card(
-//               title: "Train Schdules",
-//             ),
-//           ],
-//         ));
-//   }
-// }
-
 class CustomBody extends StatelessWidget {
   // CustomBody(GlobalKey<ScaffoldState> scaffoldKey);
 
@@ -388,28 +367,6 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              debugPrint("Tapped settings");
-            },
-            leading: Icon(Icons.settings),
-            title: Text("Settings"),
-          ),
-          Divider(
-            height: 1,
-            color: Colors.grey,
-          ),
-          ListTile(
-            onTap: () {
-              debugPrint("Tapped Payments");
-            },
-            leading: Icon(Icons.payment),
-            title: Text("Payments"),
-          ),
-          Divider(
-            height: 1,
-            color: Colors.grey,
-          ),
-          ListTile(
-            onTap: () {
               debugPrint("Tapped Notifications");
             },
             leading: Icon(Icons.notifications),
@@ -420,14 +377,31 @@ class CustomDrawer extends StatelessWidget {
             color: Colors.grey,
           ),
           ListTile(
+            onTap: () {
+              debugPrint("Tapped Payments");
+            },
+            leading: Icon(Icons.payment),
+            title: Text("Contact us"),
+          ),
+          Divider(
+            height: 1,
+            color: Colors.grey,
+          ),
+          ListTile(
+            onTap: () {
+              debugPrint("Tapped settings");
+            },
+            leading: Icon(Icons.settings),
+            title: Text("Settings"),
+          ),
+          Divider(
+            height: 1,
+            color: Colors.grey,
+          ),
+          ListTile(
             onTap: () async {
               FirebaseAuth.instance.signOut();
-              // await auth.signOut();
               Navigator.pop(context);
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => Signin()),
-              // );
             },
             leading: Icon(Icons.exit_to_app),
             title: Text("Log Out"),
