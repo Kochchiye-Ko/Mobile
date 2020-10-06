@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Admin/createNotificationPanel.dart';
+import 'package:kochchiye_ko/Admin/models/notification/createNotificationPanel.dart';
 import 'package:kochchiye_ko/Admin/database/database.dart';
-import 'package:kochchiye_ko/Admin/models/notification.dart';
-import 'package:kochchiye_ko/Admin/notiList.dart';
+import 'package:kochchiye_ko/Admin/models/notification/notification.dart';
+import 'package:kochchiye_ko/Admin/models/notification/notiList.dart';
 import 'package:provider/provider.dart';
 
 class CreateNotifications extends StatefulWidget {

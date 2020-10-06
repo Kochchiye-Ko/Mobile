@@ -5,6 +5,8 @@ import 'package:foldable_sidebar/foldable_sidebar.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/Signin.dart';
 import 'package:kochchiye_ko/User/User.dart';
+import 'package:kochchiye_ko/User/Usertesthome.dart';
+import 'package:kochchiye_ko/User/Usertrainschdule.dart';
 import '../Animation/FadeAnimation.dart';
 
 class Userhome extends StatefulWidget {

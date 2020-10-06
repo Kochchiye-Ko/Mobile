@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Admin/models/notification.dart';
+import 'package:kochchiye_ko/Admin/models/notification/notification.dart';
 
 class NotificationTile extends StatelessWidget {
   final Notifications notification;
@@ -18,9 +18,9 @@ class NotificationTile extends StatelessWidget {
             backgroundColor: Colors.orange[300],
             backgroundImage: AssetImage('assets/adminicons/ps.png'),
           ),
-          title: Text(notification.message), 
+          title: Text(notification.message),
           subtitle: Text(
-            notification.dateTime.toDate().toString(),
+            notification.dateTime.toString(),
             style: TextStyle(color: Colors.blueGrey, height: 2.0),
           ),
         ),
