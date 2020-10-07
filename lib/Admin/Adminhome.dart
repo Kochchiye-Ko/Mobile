@@ -248,6 +248,47 @@ class _AdminhomeState extends State<Adminhome> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
+                                    builder: (context) => DisplayTrainsData()),
+                              );
+                            },
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              width: double.infinity,
+                              height: 80.0,
+                              child: FlatButton.icon(
+                                icon: Icon(
+                                  Icons.directions_transit,
+                                  size: 30.0,
+                                  color: Colors.orange[200],
+                                ),
+                                label: new Text(
+                                  "   VIEW TRAINS",
+                                  style: TextStyle(
+                                      color: Colors.orange[100],
+                                      fontSize: 30.0),
+                                ),
+                                onPressed: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            DisplayTrainsData()),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Card(
+                          color: new Color(0xFF333231).withOpacity(0.5),
+                          child: InkWell(
+                            splashColor: Colors.grey,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
                                     builder: (context) => MapAdminpanel()),
                               );
                             },
@@ -313,46 +354,6 @@ class _AdminhomeState extends State<Adminhome> {
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             UsersAdminpanel()),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        child: Card(
-                          color: new Color(0xFF333231).withOpacity(0.5),
-                          child: InkWell(
-                            splashColor: Colors.grey,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DisplayTrainsData()),
-                              );
-                            },
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              width: double.infinity,
-                              height: 80.0,
-                              child: FlatButton.icon(
-                                icon: Icon(
-                                  Icons.directions_transit,
-                                  size: 30.0,
-                                  color: Colors.orange[200],
-                                ),
-                                label: new Text(
-                                  "   VIEW TRAINS",
-                                  style: TextStyle(
-                                      color: Colors.orange[100],
-                                      fontSize: 30.0),
-                                ),
-                                onPressed: () async {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => TrainList()),
                                   );
                                 },
                               ),

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Admin/models/inboxob.dart';
 
 class InboxTile extends StatelessWidget {
-  final Inboxmessage notification;
-  InboxTile({this.notification});
+  
+    final Inboxmessage notification;
+    InboxTile({this.notification});
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: EdgeInsets.only(top: 8.0),
       child: Card(
