@@ -5,6 +5,7 @@ import 'package:kochchiye_ko/Admin/UsersAdmin.dart';
 import 'package:kochchiye_ko/Admin/about.dart';
 import 'package:kochchiye_ko/Admin/changepassword.dart';
 import 'package:kochchiye_ko/Admin/createNotification.dart';
+import 'package:kochchiye_ko/Admin/createNotificationPanel.dart';
 import 'package:kochchiye_ko/Admin/displaytrains/trainlist.dart';
 import 'package:kochchiye_ko/Admin/inbox.dart';
 import 'package:kochchiye_ko/Admin/map.dart';
@@ -47,12 +48,12 @@ class _AdminhomeState extends State<Adminhome> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CreateNotifications(),
+                    builder: (context) => CreateNotificationPanel(),
                   ),
                 );
               },
               child: Icon(
-                Icons.notification_important,
+                Icons.add_comment,
                 color: Colors.orange,
               ),
               backgroundColor: Colors.grey[800],
@@ -147,8 +148,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            CreateNotifications()),
+                                        builder: (context) => Inbox()),
                                   );
                                 },
                               ),
