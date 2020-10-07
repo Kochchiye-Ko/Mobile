@@ -4,7 +4,7 @@ import 'package:kochchiye_ko/Admin/DisplayTrainsData.dart';
 import 'package:kochchiye_ko/Admin/UsersAdmin.dart';
 import 'package:kochchiye_ko/Admin/about.dart';
 import 'package:kochchiye_ko/Admin/changepassword.dart';
-import 'package:kochchiye_ko/Admin/models/notification/createNotification.dart';
+import 'package:kochchiye_ko/Admin/createNotification.dart';
 import 'package:kochchiye_ko/Admin/displaytrains/trainlist.dart';
 import 'package:kochchiye_ko/Admin/map.dart';
 import 'package:kochchiye_ko/Admin/trainsgedule.dart';
@@ -115,6 +115,7 @@ class _AdminhomeState extends State<Adminhome> {
                       ),
                       Container(
                         child: Card(
+                          borderOnForeground: true,
                           color: new Color(0xFF333231).withOpacity(0.5),
                           child: InkWell(
                             splashColor: Colors.grey,
@@ -178,7 +179,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "   TRAIN",
+                                  "   ADD TRAIN",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),
