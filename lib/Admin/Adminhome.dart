@@ -22,7 +22,6 @@ class _AdminhomeState extends State<Adminhome> {
   void choiceAction(String choice) async {
     if (choice == Constant.signout) {
       await _auth.signOut();
-     
     } else if (choice == Constant.resetPassword) {
       Navigator.push(
         context,
@@ -35,28 +34,29 @@ class _AdminhomeState extends State<Adminhome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Home"),
         backgroundColor: Colors.grey[900],
         actions: <Widget>[
-          // Container(
-          //   // alignment: AlignmentDirectional.bottomEnd,
-          //   padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-          //   child: FloatingActionButton(
-          //     onPressed: () {
-          //       Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //           builder: (context) => CreateNotifications(),
-          //         ),
-          //       );
-          //     },
-          //     child: Icon(
-          //       Icons.notification_important,
-          //       color: Colors.orange,
-          //     ),
-          //     backgroundColor: Colors.grey[800],
-          //   ),
-          // ),
+          Container(
+            // alignment: AlignmentDirectional.bottomEnd,
+            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+            child: FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CreateNotifications(),
+                  ),
+                );
+              },
+              child: Icon(
+                Icons.notification_important,
+                color: Colors.orange,
+              ),
+              backgroundColor: Colors.grey[800],
+            ),
+          ),
           PopupMenuButton<String>(
             onSelected: choiceAction,
             itemBuilder: (BuildContext context) {
@@ -73,7 +73,21 @@ class _AdminhomeState extends State<Adminhome> {
       body: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color: Colors.grey[800]),
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              image: new DecorationImage(
+                image: new AssetImage("assets/User/userbg.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: Color(0xFF333231).withOpacity(0.7),
+            ),
           ),
           Container(
             height: double.infinity,
@@ -88,20 +102,21 @@ class _AdminhomeState extends State<Adminhome> {
                       SizedBox(height: 20.0),
                       Container(
                         child: Card(
-                          color: Colors.grey[700],
+                          color: new Color(0xFF333231).withOpacity(0.5),
                           child: InkWell(
                             splashColor: Colors.grey,
                             child: Container(
                               width: double.infinity,
                               height: 200.0,
-                              // child: Text('A card that can be tapped'),
+                              child: Image.asset("assets/background/2.png"),
                             ),
                           ),
                         ),
                       ),
                       Container(
                         child: Card(
-                          color: Colors.grey[700],
+                          borderOnForeground: true,
+                          color: new Color(0xFF333231).withOpacity(0.5),
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
@@ -123,7 +138,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "   Notifications",
+                                  "   NOTIFICATIONS",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),
@@ -143,9 +158,9 @@ class _AdminhomeState extends State<Adminhome> {
                       ),
                       Container(
                         child: Card(
-                          color: Colors.grey[700],
+                          color: new Color(0xFF333231).withOpacity(0.5),
                           child: InkWell(
-                            splashColor: Colors.grey,
+                            splashColor: Colors.grey[900],
                             onTap: () {
                               Navigator.push(
                                 context,
@@ -164,7 +179,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "   Train",
+                                  "   ADD TRAIN",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),
@@ -183,7 +198,7 @@ class _AdminhomeState extends State<Adminhome> {
                       ),
                       Container(
                         child: Card(
-                          color: Colors.grey[700],
+                          color: new Color(0xFF333231).withOpacity(0.5),
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
@@ -204,7 +219,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "   Map",
+                                  "   MAP",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),
@@ -223,7 +238,7 @@ class _AdminhomeState extends State<Adminhome> {
                       ),
                       Container(
                         child: Card(
-                          color: Colors.grey[700],
+                          color: new Color(0xFF333231).withOpacity(0.5),
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
@@ -244,7 +259,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "   Users",
+                                  "   USERS",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),
@@ -264,7 +279,7 @@ class _AdminhomeState extends State<Adminhome> {
                       ),
                       Container(
                         child: Card(
-                          color: Colors.grey[700],
+                          color: new Color(0xFF333231).withOpacity(0.5),
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
@@ -285,7 +300,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "   View Train List",
+                                  "   VIEW TRAINS",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),
@@ -294,8 +309,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            TrainList()),
+                                        builder: (context) => TrainList()),
                                   );
                                 },
                               ),
@@ -305,7 +319,7 @@ class _AdminhomeState extends State<Adminhome> {
                       ),
                       Container(
                         child: Card(
-                          color: Colors.grey[700],
+                          color: new Color(0xFF333231).withOpacity(0.5),
                           child: InkWell(
                             splashColor: Colors.grey,
                             onTap: () {
@@ -326,7 +340,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "   About",
+                                  "   ABOUT",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Admin/models/notification.dart';
+import 'package:kochchiye_ko/Admin/models/inboxob.dart';
 
-class NotificationTile extends StatelessWidget {
-  final Notifications notification;
-  NotificationTile({this.notification});
+class InboxTile extends StatelessWidget {
+  final InboxNotification notificationsInbox;
+  InboxTile({this.notificationsInbox});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +19,11 @@ class NotificationTile extends StatelessWidget {
             backgroundImage: AssetImage('assets/adminicons/ps.png'),
           ),
           title: Text(
-            notification.message,
+            notificationsInbox.message,
             style: TextStyle(color: Colors.blue[800]),
           ),
           subtitle: Text(
-            notification.dateTime.toString(),
+            notificationsInbox.dateTime.toString(),
             style: TextStyle(color: Colors.white, height: 2.0),
           ),
         ),
