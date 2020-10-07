@@ -105,9 +105,9 @@
 // }
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:kochchiye_ko/Admin/notification.dart';
+import 'package:kochchiye_ko/Admin/models/notification.dart';
 import 'package:kochchiye_ko/Admin/models/trains.dart';
-import 'package:kochchiye_ko/Admin/inboxob.dart';
+import 'package:kochchiye_ko/Admin/models/inboxob.dart';
 
 class DatabaseService {
   final String uid;

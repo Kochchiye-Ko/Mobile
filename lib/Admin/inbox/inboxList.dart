@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Admin/inboxob.dart';
+import 'package:kochchiye_ko/Admin/models/inboxob.dart';
 import 'package:provider/provider.dart';
 import 'package:kochchiye_ko/Admin/inbox/inboxTile.dart';
 

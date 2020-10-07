@@ -431,7 +431,6 @@ class TrainSheduleState extends State<TrainShedule> {
                 startTime(),
               ],
             ),
-            
             Column(
               children: <Widget>[
                 endTime(),
@@ -561,7 +560,12 @@ class TrainSheduleState extends State<TrainShedule> {
       body: Stack(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color: Colors.grey[600]),
+            decoration: BoxDecoration(
+              image: new DecorationImage(
+                image: new AssetImage("assets/User/userbgdark.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           Container(
             height: double.infinity,

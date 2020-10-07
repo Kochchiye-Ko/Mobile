@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Admin/createNotificationPanel.dart';
 import 'package:kochchiye_ko/Admin/database/database.dart';
 import 'package:kochchiye_ko/Admin/inbox/inboxList.dart';
-import 'package:kochchiye_ko/Admin/notification.dart';
+import 'package:kochchiye_ko/Admin/models/notification.dart';
 import 'package:kochchiye_ko/Admin/notiList.dart';
 import 'package:provider/provider.dart';
-import 'package:kochchiye_ko/Admin/inboxob.dart';
+import 'package:kochchiye_ko/Admin/models/inboxob.dart';
 
 class CreateNotifications extends StatefulWidget {
   @override

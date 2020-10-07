@@ -115,6 +115,7 @@ class _AdminhomeState extends State<Adminhome> {
                       ),
                       Container(
                         child: Card(
+                          borderOnForeground: true,
                           color: new Color(0xFF333231).withOpacity(0.5),
                           child: InkWell(
                             splashColor: Colors.grey,
@@ -178,7 +179,7 @@ class _AdminhomeState extends State<Adminhome> {
                                   color: Colors.orange,
                                 ),
                                 label: new Text(
-                                  "   TRAIN",
+                                  "   ADD TRAIN",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),

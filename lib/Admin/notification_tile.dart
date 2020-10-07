@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Admin/notification.dart';
+import 'package:kochchiye_ko/Admin/models/notification.dart';
 
 class NotificationTile extends StatelessWidget {
   final Notifications notification;

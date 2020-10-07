@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Admin/inboxob.dart';
+import 'package:kochchiye_ko/Admin/models/inboxob.dart';
 
 class InboxTile extends StatelessWidget {
   final InboxNotification notificationsInbox;

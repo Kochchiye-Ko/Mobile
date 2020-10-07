@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kochchiye_ko/Admin/notification.dart';
+import 'package:kochchiye_ko/Admin/models/notification.dart';
 import 'package:provider/provider.dart';
 import 'package:kochchiye_ko/Admin/notification_tile.dart';
 
