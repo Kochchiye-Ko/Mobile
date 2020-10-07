@@ -9,6 +9,8 @@ import 'package:kochchiye_ko/User/FoundandLost.dart';
 import 'package:kochchiye_ko/User/Trainroutes.dart';
 
 import 'package:kochchiye_ko/User/User.dart';
+import 'package:kochchiye_ko/User/Usertesthome.dart';
+import 'package:kochchiye_ko/User/Usertrainschdule.dart';
 import '../Animation/FadeAnimation.dart';
 
 class Userhome extends StatefulWidget {

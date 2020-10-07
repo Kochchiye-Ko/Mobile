@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:kochchiye_ko/Admin/models/notification.dart';
+import 'package:kochchiye_ko/Admin/models/notification/notification.dart';
 import 'package:kochchiye_ko/Admin/models/trains.dart';
 
 class DatabaseService {
@@ -14,7 +14,7 @@ class DatabaseService {
       'message': msg,
       'subject': subject,
       'author': "admin",
-      'dateTime': DateTime.now()
+      'dateTime': DateTime.now().toString()
     });
   }
 
