@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/Admin/database/database.dart';
+import 'package:kochchiye_ko/Admin/createNotification.dart';
 
 class CreateNotificationPanel extends StatefulWidget {
   @override
@@ -117,7 +118,11 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                           subjectholder.clear();
                           errorMsg1 = "";
                         });
-
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CreateNotifications()),
+                        );
                         // _showSnackBar();
                       },
                     ),

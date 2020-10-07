@@ -38,50 +38,52 @@ class _CreateNotificationsState extends State<CreateNotifications> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<List<InboxNotification>>.value(
-      value: DatabaseService().allNotificationsInbox,
-      child: StreamProvider<List<Notifications>>.value(
-        value: DatabaseService().allNotifications,
-        child: DefaultTabController(
-          length: 2,
-          child: Scaffold(
-            appBar: AppBar(
-              title: Text("Notifications"),
-              backgroundColor: Colors.grey[900],
-              bottom: TabBar(
-                labelColor: Colors.orange,
-                tabs: <Widget>[
-                  Tab(
-                    text: 'Inbox',
-                  ),
-                  Tab(
-                    text: 'Sent',
+    return Container(
+      child: StreamProvider<List<InboxNotification>>.value(
+        value: DatabaseService().allNotificationsInbox,
+        child: StreamProvider<List<Notifications>>.value(
+          value: DatabaseService().allNotifications,
+          child: DefaultTabController(
+            length: 2,
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text("Notifications"),
+                backgroundColor: Colors.grey[900],
+                bottom: TabBar(
+                  labelColor: Colors.orange,
+                  tabs: <Widget>[
+                    Tab(
+                      text: 'Inbox',
+                    ),
+                    Tab(
+                      text: 'Sent',
+                    )
+                  ],
+                ),
+              ),
+              backgroundColor: Colors.grey[800],
+              body: Stack(
+                children: <Widget>[
+                  TabBarView(children: containers),
+                  Container(
+                    alignment: AlignmentDirectional.bottomEnd,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                    child: FloatingActionButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CreateNotificationPanel(),
+                          ),
+                        );
+                      },
+                      child: Icon(Icons.add_comment),
+                      backgroundColor: Colors.orange,
+                    ),
                   )
                 ],
               ),
-            ),
-            backgroundColor: Colors.grey[800],
-            body: Stack(
-              children: <Widget>[
-                TabBarView(children: containers),
-                Container(
-                  alignment: AlignmentDirectional.bottomEnd,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CreateNotificationPanel(),
-                        ),
-                      );
-                    },
-                    child: Icon(Icons.add_comment),
-                    backgroundColor: Colors.orange,
-                  ),
-                )
-              ],
             ),
           ),
         ),
