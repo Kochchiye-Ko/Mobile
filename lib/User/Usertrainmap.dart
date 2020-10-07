@@ -18,16 +18,26 @@ class Usertrainmap extends StatefulWidget {
 BitmapDescriptor pinLocationIcon;
 
 class _UsertrainmapState extends State<Usertrainmap> {
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   setCustomMapPin();
+  // }
+
   @override
   void initState() {
-    super.initState();
-    setCustomMapPin();
+    BitmapDescriptor.fromAssetImage(
+      ImageConfiguration(size: Size(100, 100)),
+      'assets/12.png',
+    ).then((onValue) {
+      pinLocationIcon = onValue;
+    });
   }
 
-  void setCustomMapPin() async {
-    pinLocationIcon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 3.5), 'assets/Train_icon.png');
-  }
+  // void setCustomMapPin() async {
+  //   pinLocationIcon = await BitmapDescriptor.fromAssetImage(
+  //       ImageConfiguration(devicePixelRatio: 3.5), 'assets/Train_icon.png');
+  // }
 
   List<LatLng> points;
 
@@ -90,17 +100,17 @@ class _GeomapState extends State<Geomap> {
     );
   }
 
-  Future<DocumentReference> _addGeoPoint() async {
-    var pos = await location.getLocation();
-    var lat = pos.latitude;
-    var lng = pos.longitude;
-    GeoFirePoint point = geo.point(latitude: lat, longitude: lng);
-    firestore
-        .collection('trainlocations')
-        .document('train3')
-        .setData({'position': point.data});
-    print(point.data);
-  }
+  // Future<DocumentReference> _addGeoPoint() async {
+  //   var pos = await location.getLocation();
+  //   var lat = pos.latitude;
+  //   var lng = pos.longitude;
+  //   GeoFirePoint point = geo.point(latitude: lat, longitude: lng);
+  //   firestore
+  //       .collection('trainlocations')
+  //       .document('train3')
+  //       .setData({'position': point.data});
+  //   print(point.data);
+  // }
 
   Widget loadMap() {
     return Stack(
@@ -123,8 +133,8 @@ class _GeomapState extends State<Geomap> {
                 lat = 0.0;
                 long = 0.0;
               } else {
-                lat = train['Lat'];
-                long = train['Long'];
+                lat = train['Lat'].toDouble();
+                long = train['Long'].toDouble();
               }
 
               var id = MarkerId(i.toString());
@@ -169,7 +179,7 @@ class _GeomapState extends State<Geomap> {
               color: Colors.white,
             ),
             color: Colors.green,
-            onPressed: _addGeoPoint,
+            // onPressed: _addGeoPoint,
           ),
         )
       ],

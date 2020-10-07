@@ -174,9 +174,28 @@ class Card extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: <Widget>[
-                        Text(
-                          "Uttara Devi",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              "Train Name :- ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "Uttara Devi",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "Orgin:-  ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "Colombo Fort(At 5.30) ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
                         Text(
                           "Uttara Devi",

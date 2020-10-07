@@ -2,8 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:foldable_sidebar/foldable_sidebar.dart';
+import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/Signin.dart';
+import 'package:kochchiye_ko/User/FoundandLost.dart';
+import 'package:kochchiye_ko/User/Trainroutes.dart';
+
 import 'package:kochchiye_ko/User/User.dart';
 import 'package:kochchiye_ko/User/Usertesthome.dart';
 import 'package:kochchiye_ko/User/Usertrainschdule.dart';
@@ -117,7 +121,7 @@ class Homebody extends StatelessWidget {
               Items(
                   name: "Route Details",
                   image: 'assets/User/214.png',
-                  path: Usertrainmap()),
+                  path: Trainroute()),
             ),
             SizedBox(
               height: 10,
@@ -127,7 +131,7 @@ class Homebody extends StatelessWidget {
               Items(
                   name: "Lost and Found",
                   image: 'assets/User/lofo.png',
-                  path: Usertrainmap()),
+                  path: Foundandlost()),
             ),
           ],
         ));
@@ -390,7 +394,24 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              debugPrint("Tapped Payments");
+              showDialog(
+                  context: context,
+                  builder: (_) => FlareGiffyDialog(
+                        flarePath: 'assets/space_demo.flr',
+                        flareAnimation: 'loading',
+                        title: Text(
+                          'Space Reloading',
+                          style: TextStyle(
+                              fontSize: 22.0, fontWeight: FontWeight.w600),
+                        ),
+                        description: Text(
+                          "This is a space reloading dialog box",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(),
+                        ),
+                        entryAnimation: EntryAnimation.DEFAULT,
+                        onOkButtonPressed: () {},
+                      ));
             },
             leading: Icon(Icons.payment),
             title: Text("Contact us"),
