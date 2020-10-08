@@ -16,8 +16,9 @@ class _NotificationsState extends State<Notifications> {
   //Subscribing for post details
   StreamSubscription<QuerySnapshot> subscription;
   List<DocumentSnapshot> snapshot;
-  CollectionReference collectionReference =
-      Firestore.instance.collection("Notification");
+  Query collectionReference = Firestore.instance
+      .collection("Notification")
+      .orderBy("dateTime", descending: true);
 
   @override
   void initState() {

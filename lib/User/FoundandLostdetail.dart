@@ -16,8 +16,9 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
   //Subscribing for post details
   StreamSubscription<QuerySnapshot> subscription;
   List<DocumentSnapshot> snapshot;
-  CollectionReference collectionReference =
-      Firestore.instance.collection("Notification");
+  Query collectionReference = Firestore.instance
+      .collection("Notification")
+      .orderBy("dateTime", descending: true);
 
   @override
   void initState() {
@@ -26,9 +27,12 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
       setState(() {
         snapshot = datasnapshot.documents;
       });
-    });
-    setState(() {
-      _progressController = false;
+
+      setState(() {
+        if (snapshot.length != 0) {
+          _progressController = false;
+        }
+      });
     });
   }
 
@@ -66,7 +70,7 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
                           style: Theme.of(context).textTheme.subhead,
                         ),
                         subtitle: new Text(
-                          "Okay",
+                          snapshot[index].data['message'],
                           // snapshot[index].data['message'],
                           style: Theme.of(context).textTheme.caption,
                           maxLines: 1,
@@ -85,12 +89,8 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
                               SizedBox(
                                 width: 5.0,
                               ),
-                              Icon(
-                                Icons.comment,
-                                color: Colors.red,
-                                size: 15.0,
-                              ),
-                              new Text('22'),
+
+                              new Text(snapshot[index].data['dateTime']),
                             ])),
                   );
                 },
