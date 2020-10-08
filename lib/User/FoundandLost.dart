@@ -35,7 +35,7 @@ class _FoundandlostState extends State<Foundandlost> {
                 decoration: BoxDecoration(
                     borderRadius:
                         BorderRadius.only(bottomLeft: Radius.circular(175.0)),
-                    color: Color(0xFFd4e329)),
+                    color: Color(0x61e2ff)),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 15.0, left: 10.0),

@@ -17,8 +17,8 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
   StreamSubscription<QuerySnapshot> subscription;
   List<DocumentSnapshot> snapshot;
   Query collectionReference = Firestore.instance
-      .collection("Notification")
-      .orderBy("dateTime", descending: true);
+      .collection("Lostitems")
+      .where("state", isEqualTo: "lost");
 
   @override
   void initState() {
@@ -33,6 +33,19 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
           _progressController = false;
         }
       });
+    });
+  }
+
+  Future<void> addlost() async {
+    Firestore.instance.collection('Lostitems').add({
+      'date': DateTime.now(),
+      'state': 'lost',
+      'descriptions': "Oka",
+      'itemtitle': "mAC",
+      'uid': "ras",
+      'userphonenumber': 1243
+    }).catchError((e) {
+      print(e);
     });
   }
 
@@ -66,11 +79,11 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
                         ),
                         title: new Text(
                           // "Okay",
-                          snapshot[index].data['subject'],
+                          snapshot[index].data['itemtitle'],
                           style: Theme.of(context).textTheme.subhead,
                         ),
                         subtitle: new Text(
-                          snapshot[index].data['message'],
+                          snapshot[index].data['descriptions'],
                           // snapshot[index].data['message'],
                           style: Theme.of(context).textTheme.caption,
                           maxLines: 1,
@@ -90,7 +103,7 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
                                 width: 5.0,
                               ),
 
-                              new Text(snapshot[index].data['dateTime']),
+                              // new Text(snapshot[index].data['Date'].toString()),
                             ])),
                   );
                 },
@@ -100,9 +113,9 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
         onPressed: () {
           addDialog(context);
         },
-        label: Text('Add New Post'),
+        label: Text('Add About Lost Item details'),
         icon: Icon(Icons.add),
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.green,
       ),
     );
   }
@@ -118,13 +131,30 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
           content: new Row(
             children: <Widget>[
               new Expanded(
-                  child: new TextField(
-                autofocus: true,
-                decoration: new InputDecoration(
-                    labelText: 'Post Title', hintText: 'Enter your title'),
-                onChanged: (value) {
-                  this.title = value;
-                },
+                  child: Container(
+                height: 150,
+                child: Column(
+                  children: <Widget>[
+                    new TextField(
+                      autofocus: true,
+                      decoration: new InputDecoration(
+                          labelText: 'Post Title',
+                          hintText: 'Enter your title'),
+                      onChanged: (value) {
+                        this.title = value;
+                      },
+                    ),
+                    new TextField(
+                      autofocus: true,
+                      decoration: new InputDecoration(
+                          labelText: 'Description',
+                          hintText: 'Enter your title'),
+                      onChanged: (value) {
+                        this.title = value;
+                      },
+                    ),
+                  ],
+                ),
               )),
             ],
           ),
@@ -141,58 +171,7 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
               textColor: Colors.blue,
               onPressed: () {
                 Navigator.of(context).pop();
-                addDialog2(context);
-              },
-            )
-          ],
-        );
-      },
-    );
-  }
-
-  Future<bool> addDialog2(BuildContext context) async {
-    return showDialog(
-      context: context,
-      barrierDismissible:
-          false, // dialog is dismissible with a tap on the barrier
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('New Post'),
-          content: new Row(
-            children: <Widget>[
-              new Expanded(
-                  child: new TextField(
-                keyboardType: TextInputType.multiline,
-                maxLines: 10,
-                autofocus: true,
-                decoration: new InputDecoration(labelText: 'Content'),
-                onChanged: (value) {
-                  this.content = value;
-                },
-              )),
-            ],
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('Cancel'),
-              textColor: Colors.blue,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            FlatButton(
-              child: Text('Post New Thread'),
-              textColor: Colors.blue,
-              onPressed: () {
-                dialogTrigger(context);
-                Navigator.of(context).pop();
-                // dbcrud
-                //     .addData(this.title, this.content, _userProfile['PhotoURL'])
-                //     .then((result) {
-
-                // }).catchError((e) {
-                //   print(e);
-                // });
+                addlost().then((value) => dialogTrigger(context));
               },
             )
           ],

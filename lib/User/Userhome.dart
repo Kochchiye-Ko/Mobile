@@ -24,6 +24,7 @@ final Color active = Color(0xffffffff);
 final AuthService auth = AuthService();
 
 class _UserhomeState extends State<Userhome> {
+  String title, content;
   FSBStatus drawerStatus;
   @override
   Widget build(BuildContext context) {
@@ -417,6 +418,7 @@ class CustomDrawer extends StatelessWidget {
               //           entryAnimation: EntryAnimation.DEFAULT,
               //           onOkButtonPressed: () {},
               //         ));
+              // addDialog(context);
             },
             leading: Icon(Icons.payment),
             title: Text("Contact us"),
@@ -471,49 +473,6 @@ class CustomDrawer extends StatelessWidget {
               ))
         ],
       ),
-    );
-  }
-
-  Future<bool> addDialog(BuildContext context) async {
-    return showDialog(
-      context: context,
-      barrierDismissible:
-          false, // dialog is dismissible with a tap on the barrier
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('New Post'),
-          content: new Row(
-            children: <Widget>[
-              new Expanded(
-                  child: new TextField(
-                autofocus: true,
-                decoration: new InputDecoration(
-                    labelText: 'Post Title', hintText: 'Enter your title'),
-                onChanged: (value) {
-                  // this.title = value;
-                },
-              )),
-            ],
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('Cancel'),
-              textColor: Colors.blue,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            FlatButton(
-              child: Text('Next'),
-              textColor: Colors.blue,
-              onPressed: () {
-                Navigator.of(context).pop();
-                // addDialog2(context);
-              },
-            )
-          ],
-        );
-      },
     );
   }
 }
