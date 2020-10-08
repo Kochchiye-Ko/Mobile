@@ -19,7 +19,7 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
         "Your message was sent",
         style: TextStyle(fontSize: 20.0),
       ),
-      duration: Duration(seconds: 3),
+      duration: Duration(seconds: 10),
       backgroundColor: Colors.green[300],
     );
     _sKey.currentState.showSnackBar(snackBar);
@@ -118,12 +118,12 @@ class _CreateNotificationPanelState extends State<CreateNotificationPanel> {
                           subjectholder.clear();
                           errorMsg1 = "";
                         });
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CreateNotifications()),
-                        );
-                        // _showSnackBar();
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) => CreateNotifications()),
+                        // );
+                        _showSnackBar();
                       },
                     ),
                   ],
