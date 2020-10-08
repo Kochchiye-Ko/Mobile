@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kochchiye_ko/User/FoundandLostdetail.dart';
 
 class Foundandlost extends StatefulWidget {
   @override
@@ -81,45 +82,54 @@ class _FoundandlostState extends State<Foundandlost> {
               SizedBox(
                 height: 20,
               ),
-              AspectRatio(
-                  aspectRatio: 1.55,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(35),
-                          color: Color(0xFF90AF17)),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                              child: Padding(
-                            padding: const EdgeInsets.only(top: 80),
-                            child: Column(
-                              children: <Widget>[
-                                Text(
-                                  "Lost Items",
-                                  style: TextStyle(
-                                      fontSize: 35, color: Colors.white),
-                                ),
-                                Text(
-                                  "Post about your lost items",
-                                  style: TextStyle(
-                                      fontSize: 15, color: Colors.white),
-                                )
-                              ],
-                            ),
-                          )),
-                          AspectRatio(
-                            aspectRatio: 0.71,
-                            child: Image.asset(
-                              "assets/User/lost.png",
-                              alignment: Alignment.center,
-                            ),
-                          )
-                        ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FoundandLostdetail()),
+                  );
+                },
+                child: AspectRatio(
+                    aspectRatio: 1.55,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(35),
+                            color: Color(0xFF90AF17)),
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.only(top: 80),
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    "Lost Items",
+                                    style: TextStyle(
+                                        fontSize: 35, color: Colors.white),
+                                  ),
+                                  Text(
+                                    "Post about your lost items",
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.white),
+                                  )
+                                ],
+                              ),
+                            )),
+                            AspectRatio(
+                              aspectRatio: 0.71,
+                              child: Image.asset(
+                                "assets/User/lost.png",
+                                alignment: Alignment.center,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  )),
+                    )),
+              ),
               AspectRatio(
                   aspectRatio: 1.55,
                   child: Padding(
