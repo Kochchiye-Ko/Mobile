@@ -33,8 +33,8 @@ class _FoundandlostState extends State<Foundandlost> {
                 height: 285.0,
                 decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.only(bottomRight: Radius.circular(75.0)),
-                    color: Colors.white30),
+                        BorderRadius.only(bottomLeft: Radius.circular(175.0)),
+                    color: Color(0xFFd4e329)),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 15.0, left: 10.0),
@@ -87,9 +87,8 @@ class _FoundandlostState extends State<Foundandlost> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(defaultSize * 1.0),
-                          color: Color(0xFFD82D40)),
+                          borderRadius: BorderRadius.circular(35),
+                          color: Color(0xFF90AF17)),
                       child: Row(
                         children: <Widget>[
                           Expanded(
@@ -101,6 +100,11 @@ class _FoundandlostState extends State<Foundandlost> {
                                   "Lost Items",
                                   style: TextStyle(
                                       fontSize: 35, color: Colors.white),
+                                ),
+                                Text(
+                                  "Post about your lost items",
+                                  style: TextStyle(
+                                      fontSize: 15, color: Colors.white),
                                 )
                               ],
                             ),
@@ -122,20 +126,24 @@ class _FoundandlostState extends State<Foundandlost> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(defaultSize * 1.0),
-                          color: Color(0xFF90AF17)),
+                          borderRadius: BorderRadius.circular(35),
+                          color: Color(0xFF295EE3)),
                       child: Row(
                         children: <Widget>[
                           Expanded(
                               child: Padding(
-                            padding: const EdgeInsets.only(top: 80),
+                            padding: const EdgeInsets.only(top: 80, left: 10),
                             child: Column(
                               children: <Widget>[
                                 Text(
                                   "Found Items",
                                   style: TextStyle(
                                       fontSize: 35, color: Colors.white),
+                                ),
+                                Text(
+                                  "See weather some one have found it",
+                                  style: TextStyle(
+                                      fontSize: 15, color: Colors.white),
                                 )
                               ],
                             ),
