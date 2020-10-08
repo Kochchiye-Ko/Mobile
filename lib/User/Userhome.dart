@@ -394,24 +394,25 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              showDialog(
-                  context: context,
-                  builder: (_) => FlareGiffyDialog(
-                        flarePath: 'assets/space_demo.flr',
-                        flareAnimation: 'loading',
-                        title: Text(
-                          'Space Reloading',
-                          style: TextStyle(
-                              fontSize: 22.0, fontWeight: FontWeight.w600),
-                        ),
-                        description: Text(
-                          "This is a space reloading dialog box",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(),
-                        ),
-                        entryAnimation: EntryAnimation.DEFAULT,
-                        onOkButtonPressed: () {},
-                      ));
+              // addDialog(context);
+              // showDialog(
+              //     context: context,
+              //     builder: (_) => FlareGiffyDialog(
+              //           flarePath: 'assets/space_demo.flr',
+              //           flareAnimation: 'loading',
+              //           title: Text(
+              //             'Space Reloading',
+              //             style: TextStyle(
+              //                 fontSize: 22.0, fontWeight: FontWeight.w600),
+              //           ),
+              //           description: Text(
+              //             "This is a space reloading dialog box",
+              //             textAlign: TextAlign.center,
+              //             style: TextStyle(),
+              //           ),
+              //           entryAnimation: EntryAnimation.DEFAULT,
+              //           onOkButtonPressed: () {},
+              //         ));
             },
             leading: Icon(Icons.payment),
             title: Text("Contact us"),
@@ -466,6 +467,49 @@ class CustomDrawer extends StatelessWidget {
               ))
         ],
       ),
+    );
+  }
+
+  Future<bool> addDialog(BuildContext context) async {
+    return showDialog(
+      context: context,
+      barrierDismissible:
+          false, // dialog is dismissible with a tap on the barrier
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('New Post'),
+          content: new Row(
+            children: <Widget>[
+              new Expanded(
+                  child: new TextField(
+                autofocus: true,
+                decoration: new InputDecoration(
+                    labelText: 'Post Title', hintText: 'Enter your title'),
+                onChanged: (value) {
+                  // this.title = value;
+                },
+              )),
+            ],
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Cancel'),
+              textColor: Colors.blue,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Text('Next'),
+              textColor: Colors.blue,
+              onPressed: () {
+                Navigator.of(context).pop();
+                // addDialog2(context);
+              },
+            )
+          ],
+        );
+      },
     );
   }
 }
