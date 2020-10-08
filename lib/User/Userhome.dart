@@ -6,6 +6,7 @@ import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/Signin.dart';
 import 'package:kochchiye_ko/User/FoundandLost.dart';
+import 'package:kochchiye_ko/User/Notifications.dart';
 import 'package:kochchiye_ko/User/Trainroutes.dart';
 
 import 'package:kochchiye_ko/User/User.dart';
@@ -383,7 +384,10 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              debugPrint("Tapped Notifications");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Notifications()),
+              );
             },
             leading: Icon(Icons.notifications),
             title: Text("Notifications"),
