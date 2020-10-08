@@ -5,7 +5,9 @@ import 'package:kochchiye_ko/Admin/UsersAdmin.dart';
 import 'package:kochchiye_ko/Admin/about.dart';
 import 'package:kochchiye_ko/Admin/changepassword.dart';
 import 'package:kochchiye_ko/Admin/createNotification.dart';
+import 'package:kochchiye_ko/Admin/createNotificationPanel.dart';
 import 'package:kochchiye_ko/Admin/displaytrains/trainlist.dart';
+import 'package:kochchiye_ko/Admin/inbox.dart';
 import 'package:kochchiye_ko/Admin/map.dart';
 import 'package:kochchiye_ko/Admin/trainsgedule.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
@@ -46,12 +48,12 @@ class _AdminhomeState extends State<Adminhome> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CreateNotifications(),
+                    builder: (context) => CreateNotificationPanel(),
                   ),
                 );
               },
               child: Icon(
-                Icons.notification_important,
+                Icons.add_comment,
                 color: Colors.orange,
               ),
               backgroundColor: Colors.grey[800],
@@ -102,13 +104,54 @@ class _AdminhomeState extends State<Adminhome> {
                       SizedBox(height: 20.0),
                       Container(
                         child: Card(
-                          color: new Color(0xFF333231).withOpacity(0.5),
+                          color: new Color(0xFFAEADAC).withOpacity(0.5),
                           child: InkWell(
                             splashColor: Colors.grey,
                             child: Container(
                               width: double.infinity,
                               height: 200.0,
                               child: Image.asset("assets/background/2.png"),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Card(
+                          borderOnForeground: true,
+                          color: new Color(0xFF333231).withOpacity(0.5),
+                          child: InkWell(
+                            splashColor: Colors.grey,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Inbox()),
+                              );
+                            },
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              width: double.infinity,
+                              height: 80.0,
+                              child: FlatButton.icon(
+                                icon: Icon(
+                                  Icons.inbox,
+                                  size: 30.0,
+                                  color: Colors.orange[200],
+                                ),
+                                label: new Text(
+                                  "   INBOX",
+                                  style: TextStyle(
+                                      color: Colors.orange[100],
+                                      fontSize: 30.0),
+                                ),
+                                onPressed: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Inbox()),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),
@@ -133,12 +176,12 @@ class _AdminhomeState extends State<Adminhome> {
                               height: 80.0,
                               child: FlatButton.icon(
                                 icon: Icon(
-                                  Icons.add_alert,
-                                  size: 50.0,
-                                  color: Colors.orange,
+                                  Icons.send,
+                                  size: 30.0,
+                                  color: Colors.orange[200],
                                 ),
                                 label: new Text(
-                                  "   NOTIFICATIONS",
+                                  "   SENT",
                                   style: TextStyle(
                                       color: Colors.orange[100],
                                       fontSize: 30.0),
@@ -175,8 +218,8 @@ class _AdminhomeState extends State<Adminhome> {
                               child: FlatButton.icon(
                                 icon: Icon(
                                   Icons.train,
-                                  size: 50.0,
-                                  color: Colors.orange,
+                                  size: 30.0,
+                                  color: Colors.orange[200],
                                 ),
                                 label: new Text(
                                   "   ADD TRAIN",
@@ -205,6 +248,47 @@ class _AdminhomeState extends State<Adminhome> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
+                                    builder: (context) => DisplayTrainsData()),
+                              );
+                            },
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              width: double.infinity,
+                              height: 80.0,
+                              child: FlatButton.icon(
+                                icon: Icon(
+                                  Icons.directions_transit,
+                                  size: 30.0,
+                                  color: Colors.orange[200],
+                                ),
+                                label: new Text(
+                                  "   VIEW TRAINS",
+                                  style: TextStyle(
+                                      color: Colors.orange[100],
+                                      fontSize: 30.0),
+                                ),
+                                onPressed: () async {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            DisplayTrainsData()),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Card(
+                          color: new Color(0xFF333231).withOpacity(0.5),
+                          child: InkWell(
+                            splashColor: Colors.grey,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
                                     builder: (context) => MapAdminpanel()),
                               );
                             },
@@ -215,8 +299,8 @@ class _AdminhomeState extends State<Adminhome> {
                               child: FlatButton.icon(
                                 icon: Icon(
                                   Icons.map,
-                                  size: 50.0,
-                                  color: Colors.orange,
+                                  size: 30.0,
+                                  color: Colors.orange[200],
                                 ),
                                 label: new Text(
                                   "   MAP",
@@ -255,8 +339,8 @@ class _AdminhomeState extends State<Adminhome> {
                               child: FlatButton.icon(
                                 icon: Icon(
                                   Icons.people,
-                                  size: 50.0,
-                                  color: Colors.orange,
+                                  size: 30.0,
+                                  color: Colors.orange[200],
                                 ),
                                 label: new Text(
                                   "   USERS",
@@ -286,46 +370,6 @@ class _AdminhomeState extends State<Adminhome> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => DisplayTrainsData()),
-                              );
-                            },
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              width: double.infinity,
-                              height: 80.0,
-                              child: FlatButton.icon(
-                                icon: Icon(
-                                  Icons.directions_transit,
-                                  size: 50.0,
-                                  color: Colors.orange,
-                                ),
-                                label: new Text(
-                                  "   VIEW TRAINS",
-                                  style: TextStyle(
-                                      color: Colors.orange[100],
-                                      fontSize: 30.0),
-                                ),
-                                onPressed: () async {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => TrainList()),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        child: Card(
-                          color: new Color(0xFF333231).withOpacity(0.5),
-                          child: InkWell(
-                            splashColor: Colors.grey,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
                                     builder: (context) => About()),
                               );
                             },
@@ -336,8 +380,8 @@ class _AdminhomeState extends State<Adminhome> {
                               child: FlatButton.icon(
                                 icon: Icon(
                                   Icons.info,
-                                  size: 50.0,
-                                  color: Colors.orange,
+                                  size: 30.0,
+                                  color: Colors.orange[200],
                                 ),
                                 label: new Text(
                                   "   ABOUT",

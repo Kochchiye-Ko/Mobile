@@ -11,11 +11,12 @@ class TrainList extends StatefulWidget {
 class _TrainListState extends State<TrainList> {
   @override
   Widget build(BuildContext context) {
-    final trains = Provider.of<List<Trains>>(context) ?? [];
+    final notifications = Provider.of<List<Trains>>(context) ?? [];
+
     return ListView.builder(
-      itemCount: trains.length,
+      itemCount: notifications.length,
       itemBuilder: (context, index) {
-        return TrainsTile(trains: trains[index]);
+        return TrainsTile(notification: notifications[index]);
       },
     );
   }
