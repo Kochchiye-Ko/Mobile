@@ -177,7 +177,7 @@ class Card extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             Text(
-                              "Train Name :- ",
+                              "Train Name:- ",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Text(
@@ -187,13 +187,22 @@ class Card extends StatelessWidget {
                             SizedBox(
                               width: 5,
                             ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
                             Text(
                               "Orgin:-  ",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            Text(
-                              "Colombo Fort(At 5.30) ",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                            Column(
+                              children: <Widget>[
+                                Text(
+                                  "Colombo Fort",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text("(At 5.30) ")
+                              ],
                             ),
                           ],
                         ),

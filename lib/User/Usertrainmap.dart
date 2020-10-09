@@ -127,8 +127,6 @@ class _GeomapState extends State<Geomap> {
             for (int i = 0; i < snapshot.data.documents.length; i++) {
               var train = snapshot.data.documents[i];
               var lat, long;
-              print("Kalnaa");
-              print(train['Lat']);
               if (train['Lat'] == 0 || train['Long'] == 0) {
                 lat = 0.0;
                 long = 0.0;

@@ -1,5 +1,5 @@
-import 'package:background_location/background_location.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:background_location/background_location.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:kochchiye_ko/Admin/Admin.dart';
@@ -7,6 +7,7 @@ import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/authservice.dart';
 import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
 import 'package:kochchiye_ko/User/User.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class TestHome extends StatefulWidget {
   @override
@@ -17,23 +18,18 @@ class _TestHomeState extends State<TestHome> {
   Geoflutterfire geo = Geoflutterfire();
   final AuthService _auth = AuthService();
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  getaa() async {
-    BackgroundLocation.startLocationService();
-    BackgroundLocation.getLocationUpdates((location) {
-      GeoFirePoint point =
-          geo.point(latitude: location.latitude, longitude: location.longitude);
-      Firestore.instance
-          .collection('trainlocations')
-          .document('train1')
-          .setData({'position': point.data});
-    });
-    print("Done");
-  }
+  // getaa() async {
+  //   BackgroundLocation.startLocationService();
+  //   BackgroundLocation.getLocationUpdates((location) {
+  //     GeoFirePoint point =
+  //         geo.point(latitude: location.latitude, longitude: location.longitude);
+  //     Firestore.instance
+  //         .collection('trainlocations')
+  //         .document('train1')
+  //         .setData({'position': point.data});
+  //   });
+  //   print("Done");
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -81,12 +77,12 @@ class _TestHomeState extends State<TestHome> {
               // SizedBox(
               //   height: 10.0,
               // ),
-              // RaisedButton(
-              //   child: Text("Start send location"),
-              //   onPressed: () {
-              //     getaa();
-              //   },
-              // ),
+              RaisedButton(
+                child: Text("Send Notificatins"),
+                onPressed: () {
+                  // getaa();
+                },
+              ),
               // RaisedButton(
               //   child: Text("Stop send location"),
               //   onPressed: () {
@@ -127,4 +123,6 @@ class _TestHomeState extends State<TestHome> {
       ),
     );
   }
+
+  Future notifyme(String payload) async {}
 }
