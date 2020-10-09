@@ -113,7 +113,6 @@ class _UserProfileState extends State<UserProfile> {
               double distanceInMeters = distanceBetween(
                   position.latitude, position.longitude, 8.1540, 80.3046);
 
-                  if()
               showNotification("NAme", 1, "Delay");
               userlocation();
               print(distanceInMeters);
