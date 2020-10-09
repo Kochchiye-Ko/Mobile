@@ -21,6 +21,7 @@ class _UserrunningState extends State<Userrunning> {
   bool _progressController = true;
   StreamSubscription<QuerySnapshot> subscription;
   List<DocumentSnapshot> snapshot;
+
   CollectionReference collectionReference =
       Firestore.instance.collection("TrainDetails");
 
@@ -44,6 +45,7 @@ class _UserrunningState extends State<Userrunning> {
     int num = snapshot?.length ?? 0;
     Size size = MediaQuery.of(context).size;
 
+    if (selected == 0) {}
     return Scaffold(
       backgroundColor: Colors.amber,
       appBar: AppBar(

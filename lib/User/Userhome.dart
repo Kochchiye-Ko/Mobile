@@ -5,6 +5,7 @@ import 'package:foldable_sidebar/foldable_sidebar.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/Signin.dart';
+import 'package:kochchiye_ko/User/Contactus.dart';
 import 'package:kochchiye_ko/User/FoundandLost.dart';
 import 'package:kochchiye_ko/User/Notifications.dart';
 import 'package:kochchiye_ko/User/Trainroutes.dart';
@@ -399,26 +400,10 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              // addDialog(context);
-              // showDialog(
-              //     context: context,
-              //     builder: (_) => FlareGiffyDialog(
-              //           flarePath: 'assets/space_demo.flr',
-              //           flareAnimation: 'loading',
-              //           title: Text(
-              //             'Space Reloading',
-              //             style: TextStyle(
-              //                 fontSize: 22.0, fontWeight: FontWeight.w600),
-              //           ),
-              //           description: Text(
-              //             "This is a space reloading dialog box",
-              //             textAlign: TextAlign.center,
-              //             style: TextStyle(),
-              //           ),
-              //           entryAnimation: EntryAnimation.DEFAULT,
-              //           onOkButtonPressed: () {},
-              //         ));
-              // addDialog(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Contactus()),
+              );
             },
             leading: Icon(Icons.payment),
             title: Text("Contact us"),

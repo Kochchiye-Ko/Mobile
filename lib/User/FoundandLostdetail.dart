@@ -26,11 +26,10 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
     subscription = collectionReference.snapshots().listen((datasnapshot) {
       setState(() {
         snapshot = datasnapshot.documents;
-      });
-
-      setState(() {
-        if (snapshot.length != 0) {
-          _progressController = false;
+        if (snapshot != null) {
+          setState(() {
+            _progressController = false;
+          });
         }
       });
     });
@@ -52,13 +51,15 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
   @override
   Widget build(BuildContext context) {
     int num = snapshot?.length ?? 0;
-    print(snapshot.length);
+
     return Scaffold(
-      appBar: AppBar(title: Text('Lost Items '), backgroundColor: Colors.amber),
+      appBar: AppBar(title: Text('Lost Items'), backgroundColor: Colors.amber),
       body: Center(
         child: _progressController
-            ? CircularProgressIndicator(
-                backgroundColor: Colors.purpleAccent,
+            ? Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.purpleAccent,
+                ),
               )
             : new ListView.builder(
                 itemCount: num,
@@ -148,7 +149,7 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
                       autofocus: true,
                       decoration: new InputDecoration(
                           labelText: 'Description',
-                          hintText: 'Enter your title'),
+                          hintText: 'Enter the event descriptions'),
                       onChanged: (value) {
                         this.title = value;
                       },
