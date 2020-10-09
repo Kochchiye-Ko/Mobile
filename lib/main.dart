@@ -16,18 +16,29 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
-  Future showNotification(String name, index) async {
+  Future showNotification(String name, index, type) async {
     print(index);
     var details = new AndroidNotificationDetails(
         index.toString(), "Desi", "THis ",
         importance: Importance.max,
         priority: Priority.high,
         ongoing: true,
-        autoCancel: false);
+        autoCancel: true);
     var generatenotiofication = new NotificationDetails(android: details);
-
-    await flutterLocalNotificationsPlugin.show(index, "Alert",
-        "Train will be" + name + "to late", generatenotiofication);
+    if (type == "Delay") {
+      await flutterLocalNotificationsPlugin.show(
+          index,
+          type + " Notice",
+          name + "Train will be to Delayed.Check notification for more details",
+          generatenotiofication);
+    } else {
+      await flutterLocalNotificationsPlugin.show(
+          index,
+          type + " Notice",
+          name +
+              " Has an emergency breakdown.\nSee notification for more details ",
+          generatenotiofication);
+    }
   }
 
   @override
@@ -49,8 +60,12 @@ class _MyAppState extends State<MyApp> {
           for (int i = 0; i < snapshot.data.documents.length; i++) {
             var train = snapshot.data.documents[i];
             var lat, long;
-            if (train['delay'] == 1) {
-              showNotification(train['Train Name'], i);
+            if (train['Delay'] == 1) {
+              showNotification(train['Train Name'], i, "Delay");
+            }
+
+            if (train['Emergency'] == 1) {
+              showNotification(train['Train Name'], i, "Emergency");
             }
           }
           return MaterialApp(
