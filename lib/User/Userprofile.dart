@@ -6,6 +6,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class UserProfile extends StatefulWidget {
   @override
@@ -118,6 +119,22 @@ class _UserProfileState extends State<UserProfile> {
               print(distanceInMeters);
             },
           ),
+          RaisedButton(
+            child: Text("Sinhala"),
+            onPressed: () {
+              setState(() {
+                EasyLocalization.of(context).locale = Locale("si", "SN");
+              });
+            },
+          ),
+          RaisedButton(
+            child: Text("English"),
+            onPressed: () {
+              setState(() {
+                EasyLocalization.of(context).locale = Locale("en", "EN");
+              });
+            },
+          ),
           Container(
             height: 40,
             width: 200,
@@ -165,11 +182,11 @@ class _UserProfileState extends State<UserProfile> {
               children: <Widget>[
                 ProfileListItem(
                   icon: LineAwesomeIcons.adjust,
-                  text: "Delete my account",
+                  text: "Delete my account".tr().toString(),
                 ),
                 ProfileListItem(
                   icon: LineAwesomeIcons.users,
-                  text: "Invite Friends",
+                  text: "Invite Friends".tr().toString(),
                 ),
                 ProfileListItem(
                   icon: LineAwesomeIcons.train,

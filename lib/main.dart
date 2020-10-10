@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geolocator/geolocator.dart';
@@ -7,7 +8,12 @@ import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
 import 'package:kochchiye_ko/Testhome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(EasyLocalization(
+      child: MyApp(),
+      path: "resources/langs",
+      saveLocale: true,
+      supportedLocales: [Locale("si", "SN"), Locale("en", "EN")],
+    ));
 
 class MyApp extends StatefulWidget {
   @override
@@ -16,9 +22,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+  bool _progressController = true;
 
   Future showNotification(String name, index, type) async {
-    print(index);
     var details = new AndroidNotificationDetails(
         index.toString(), "Desi", "THis ",
         importance: Importance.max,
@@ -85,16 +91,27 @@ class _MyAppState extends State<MyApp> {
 
               double check = distanceInMeters / 1000.0;
               print(check);
-              if (check <= 3.0) {
+              if (check <= 5.0) {
                 showNotification(check.toString(), check.toInt() + 10, "Near");
               }
-              return MaterialApp(
-                title: 'Kochiye Ko',
-                debugShowCheckedModeBanner: false,
-                // home: Authservice().handleAuth(),
-                // home: UserDetailsRegister(),
-                home: TestHome(),
-              );
+              if (snapshot != null) {
+                return MaterialApp(
+                  title: 'Kochiye Ko',
+                  localizationsDelegates: context.localizationDelegates,
+                  supportedLocales: context.supportedLocales,
+                  locale: context.locale,
+                  debugShowCheckedModeBanner: false,
+                  // home: Authservice().handleAuth(),
+                  // home: UserDetailsRegister(),
+                  home: TestHome(),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.purpleAccent,
+                  ),
+                );
+              }
             },
           );
         });

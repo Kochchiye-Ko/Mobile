@@ -9,7 +9,7 @@ import 'package:kochchiye_ko/User/Contactus.dart';
 import 'package:kochchiye_ko/User/FoundandLost.dart';
 import 'package:kochchiye_ko/User/Notifications.dart';
 import 'package:kochchiye_ko/User/Trainroutes.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:kochchiye_ko/User/User.dart';
 import 'package:kochchiye_ko/User/Usertesthome.dart';
 import 'package:kochchiye_ko/User/Usertrainschdule.dart';
@@ -92,7 +92,7 @@ class Homebody extends StatelessWidget {
             FadeAnimation(
               1.2,
               Items(
-                  name: " Live Location Map",
+                  name: " Live Location Map".tr().toString(),
                   image: 'assets/User/location.jpg',
                   path: Usertrainmap()),
             ),
@@ -102,7 +102,7 @@ class Homebody extends StatelessWidget {
             FadeAnimation(
               1.5,
               Items(
-                  name: "Trains on tracks ",
+                  name: "Trains on tracks ".tr().toString(),
                   image: 'assets/User/item2.jpg',
                   path: Userrunning()),
             ),
@@ -112,7 +112,7 @@ class Homebody extends StatelessWidget {
             FadeAnimation(
               1.8,
               Items(
-                  name: "Schedules",
+                  name: "Schedules".tr().toString(),
                   image: 'assets/User/table.jpg',
                   path: Searchtrain()),
             ),
@@ -122,7 +122,7 @@ class Homebody extends StatelessWidget {
             FadeAnimation(
               1.8,
               Items(
-                  name: "Route Details",
+                  name: "Route Details".tr().toString(),
                   image: 'assets/User/214.png',
                   path: Trainroute()),
             ),
@@ -132,7 +132,7 @@ class Homebody extends StatelessWidget {
             FadeAnimation(
               2.0,
               Items(
-                  name: "Lost and Found",
+                  name: "Lost and Found".tr().toString(),
                   image: 'assets/User/lofo.png',
                   path: Foundandlost()),
             ),
