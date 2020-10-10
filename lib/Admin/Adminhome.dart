@@ -6,7 +6,6 @@ import 'package:kochchiye_ko/Admin/about.dart';
 import 'package:kochchiye_ko/Admin/changepassword.dart';
 import 'package:kochchiye_ko/Admin/createNotification.dart';
 import 'package:kochchiye_ko/Admin/createNotificationPanel.dart';
-import 'package:kochchiye_ko/Admin/displaytrains/trainlist.dart';
 import 'package:kochchiye_ko/Admin/inbox.dart';
 import 'package:kochchiye_ko/Admin/map.dart';
 import 'package:kochchiye_ko/Admin/trainsgedule.dart';

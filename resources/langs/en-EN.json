@@ -1,14 +1,31 @@
 {
     "Delete my account":"Delete my account",
     "Invite Friends":"Invite Friends",
-
+    
+    "Where is the train":"Where is the train",
     "Your Profile":"Your Profile",
     "Notifications":"Notifications",
     "Contact us":"Contact us",
+    "Log Out":"Log Out",
+    "Developed By Group 28":"Developed By Group 28",
     " Live Location Map":" Live Location Map",
     "Trains on tracks ":"Trains on tracks ",
     "Schedules":"Schedules",
     "Route Details":"Route Details",
-    "Lost and Found":"Lost and Found"
+    "Lost and Found":"Lost and Found",
+
+
+
+
+
+
+    "Settings":"Settings",
+    "Change Profile Details":"Change Profile Details",
+    "Change langauage":"Change langauage",
+    "Change my account details":"Change my account details",
+     
+    "Train Routes":"Train Routes",
+    "Main Line":"Main Line"
+
 
 }

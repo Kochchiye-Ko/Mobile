@@ -119,22 +119,6 @@ class _UserProfileState extends State<UserProfile> {
               print(distanceInMeters);
             },
           ),
-          RaisedButton(
-            child: Text("Sinhala"),
-            onPressed: () {
-              setState(() {
-                EasyLocalization.of(context).locale = Locale("si", "SN");
-              });
-            },
-          ),
-          RaisedButton(
-            child: Text("English"),
-            onPressed: () {
-              setState(() {
-                EasyLocalization.of(context).locale = Locale("en", "EN");
-              });
-            },
-          ),
           Container(
             height: 40,
             width: 200,

@@ -68,33 +68,42 @@ class _MyAppState extends State<MyApp> {
     return StreamBuilder(
         stream: Firestore.instance.collection('trainlocations').snapshots(),
         builder: (context, snapshot) {
-          for (int i = 0; i < snapshot.data.documents.length; i++) {
-            var train = snapshot.data.documents[i];
-            var lat, long;
-            if (train['Delay'] == 1) {
-              showNotification(train['Train Name'], i, "Delay");
-            }
+          if (snapshot.hasData) {
+            for (int i = 0; i < snapshot.data.documents.length; i++) {
+              var train = snapshot.data.documents[i];
+              var lat, long;
+              if (train['Delay'] == 1) {
+                showNotification(train['Train Name'], i, "Delay");
+              }
 
-            if (train['Emergency'] == 1) {
-              showNotification(train['Train Name'], i, "Emergency");
+              if (train['Emergency'] == 1) {
+                showNotification(train['Train Name'], i, "Emergency");
+              }
             }
+          } else {
+            return Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.purpleAccent,
+              ),
+            );
           }
           return StreamBuilder(
             stream: Firestore.instance
                 .collection('trainlocations')
                 .document("yOVBa7qOQabNthAmzeah")
                 .snapshots(),
-            builder: (context, snapshot) {
-              var train = snapshot.data["Lat"];
-              double distanceInMeters = distanceBetween(
-                  snapshot.data["Lat"], snapshot.data["Long"], 8.1540, 80.3046);
+            builder: (context, snapshot2) {
+              if (snapshot2.hasData) {
+                var train = snapshot2.data["Lat"] ?? 0;
+                double distanceInMeters = distanceBetween(snapshot2.data["Lat"],
+                    snapshot2.data["Long"], 8.1540, 80.3046);
 
-              double check = distanceInMeters / 1000.0;
-              print(check);
-              if (check <= 5.0) {
-                showNotification(check.toString(), check.toInt() + 10, "Near");
-              }
-              if (snapshot != null) {
+                double check = distanceInMeters / 1000.0;
+
+                // if (check <= 5.0) {
+                //   showNotification(
+                //       check.toString(), check.toInt() + 10, "Near");
+                // }
                 return MaterialApp(
                   title: 'Kochiye Ko',
                   localizationsDelegates: context.localizationDelegates,

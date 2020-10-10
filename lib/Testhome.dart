@@ -7,7 +7,6 @@ import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/authservice.dart';
 import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
 import 'package:kochchiye_ko/User/User.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class TestHome extends StatefulWidget {
   @override
@@ -16,7 +15,7 @@ class TestHome extends StatefulWidget {
 
 class _TestHomeState extends State<TestHome> {
   Geoflutterfire geo = Geoflutterfire();
-  final AuthService _auth = AuthService();
+  // final AuthService _auth = AuthService();
 
   // getaa() async {
   //   BackgroundLocation.startLocationService();
