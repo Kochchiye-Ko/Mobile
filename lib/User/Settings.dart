@@ -106,7 +106,13 @@ class _SettingsState extends State<Settings> {
             const SizedBox(
               height: 10.0,
             ),
-            Text("Notifications Setting")
+            Text(
+              "Notifications Setting",
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.indigo),
+            )
           ],
         ),
       ),

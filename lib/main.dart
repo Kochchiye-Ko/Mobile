@@ -85,12 +85,12 @@ class _MyAppState extends State<MyApp> {
                 .document("yOVBa7qOQabNthAmzeah")
                 .snapshots(),
             builder: (context, snapshot) {
-              var train = snapshot.data["Lat"];
+              var train = snapshot.data["Lat"] ?? 0;
               double distanceInMeters = distanceBetween(
                   snapshot.data["Lat"], snapshot.data["Long"], 8.1540, 80.3046);
 
               double check = distanceInMeters / 1000.0;
-              print(check);
+
               if (check <= 5.0) {
                 showNotification(check.toString(), check.toInt() + 10, "Near");
               }

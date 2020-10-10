@@ -219,21 +219,6 @@ class CustomeHeader extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  new DropdownButton<String>(
-                    items:
-                        <String>['Englih', 'B', 'C', 'D'].map((String value) {
-                      return new DropdownMenuItem<String>(
-                        value: value,
-                        child: new Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (_) {},
-                  ),
-                ],
-              ),
               SizedBox(height: 5),
               RichText(
                 textAlign: TextAlign.center,
@@ -458,7 +443,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           Container(
               width: double.infinity,
-              height: 100,
+              height: 200,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
