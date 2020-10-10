@@ -1,7 +1,8 @@
 {
     "Delete my account":"Delete my account",
     "Invite Friends":"Invite Friends",
-
+    
+    "Where is the train":"Where is the train",
     "Your Profile":"Your Profile",
     "Notifications":"Notifications",
     "Contact us":"Contact us",
@@ -21,7 +22,10 @@
     "Settings":"Settings",
     "Change Profile Details":"Change Profile Details",
     "Change langauage":"Change langauage",
-    "Change my account details":"Change my account details"
+    "Change my account details":"Change my account details",
+     
+    "Train Routes":"Train Routes",
+    "Main Line":"Main Line"
 
 
 }

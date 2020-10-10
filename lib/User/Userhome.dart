@@ -215,7 +215,7 @@ class CustomeHeader extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           height: 180,
-          padding: EdgeInsets.fromLTRB(10, 10, 20, 0),
+          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -223,15 +223,16 @@ class CustomeHeader extends StatelessWidget {
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                    text: "Where is the train",
+                    text: "Where is the train".tr().toString(),
                     style: TextStyle(
                         fontSize: 40,
+                        // fontStyle: FontStyle.italic,
                         color: Colors.amber,
                         fontWeight: FontWeight.bold),
                     children: <TextSpan>[
                       TextSpan(
-                          text: '\n\nA Way to make your journey easy',
-                          style: TextStyle(fontSize: 20, color: Colors.white70))
+                          text: '\nA Way to make your journey easy',
+                          style: TextStyle(fontSize: 20, color: Colors.black))
                     ]),
               ),
             ],

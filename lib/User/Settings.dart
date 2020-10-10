@@ -106,12 +106,39 @@ class _SettingsState extends State<Settings> {
             const SizedBox(
               height: 10.0,
             ),
-            Text(
-              "Notifications Setting",
-              style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.indigo),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Text(
+                "Notifications Settings",
+                style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.indigo),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: SwitchListTile(
+                activeColor: Colors.amber,
+                contentPadding: const EdgeInsets.all(0),
+                value: false,
+                title: Text("Recevied notification"),
+                onChanged: (val) {
+                  setState(() {});
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: SwitchListTile(
+                activeColor: Colors.amber,
+                contentPadding: const EdgeInsets.all(0),
+                value: false,
+                title: Text("Cancel all notofications "),
+                onChanged: (val) {
+                  setState(() {});
+                },
+              ),
             )
           ],
         ),

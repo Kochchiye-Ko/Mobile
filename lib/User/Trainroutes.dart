@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:kochchiye_ko/User/Singleroute.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class Trainroute extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _TrainrouteState extends State<Trainroute> {
 
   var items = [
     PlaceInfo(
-        'Main Line',
+        'Main Line'.tr().toString(),
         Color(0xff6DC8F3),
         Color(0xff73A1F9),
         4.4,
@@ -48,7 +49,7 @@ class _TrainrouteState extends State<Trainroute> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Train Routes"),
+        title: Text("Train Routes".tr().toString()),
         backgroundColor: Colors.amber,
       ),
       body: ListView.builder(

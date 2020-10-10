@@ -1,7 +1,7 @@
 {
     "Delete my account":"මගේ ගිණුම මකන්න",
     "Invite Friends":"මිතුරන්ට ආරාධනා කරන්න",
-
+    "Where is the train":"කෝච්චිය කෝ",
     "Your Profile":"ඔබේ පැතිකඩ",
     "Notifications":"දැනුම්දීම",
     "Contact us":"අප අමතන්න",
@@ -17,5 +17,8 @@
     "Settings":"සැකසුම්",
     "Change Profile Details":"පැතිකඩ විස්තර වෙනස් කරන්න",
     "Change langauage":"භාෂාව වෙනස් කරන්න",
-    "Change my account details":"මගේ ගිණුම් විස්තර වෙනස් කරන්න"
+    "Change my account details":"මගේ ගිණුම් විස්තර වෙනස් කරන්න",
+
+    "Train Routes":"දුම්රිය මාර්ග",
+    "Main Line":"ප්‍රධාන මාර්ගය"
 }
