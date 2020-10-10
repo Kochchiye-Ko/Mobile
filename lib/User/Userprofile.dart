@@ -1,6 +1,12 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class UserProfile extends StatefulWidget {
   @override
@@ -9,7 +15,51 @@ class UserProfile extends StatefulWidget {
 
 class _UserProfileState extends State<UserProfile> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    userlocation();
+    var androids = new AndroidInitializationSettings('app_icon');
+    var initial = new InitializationSettings(android: androids);
+    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+    flutterLocalNotificationsPlugin.initialize(initial,
+        onSelectNotification: notifyme);
+  }
+
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+
+  Position position;
+  userlocation() async {
+    LocationPermission permission = await requestPermission();
+    position = await getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  }
+
+  StreamSubscription<QuerySnapshot> subscription;
+  List<DocumentSnapshot> snapshot;
+  Query collectionReference = Firestore.instance
+      .collection("trainlocations")
+      .where("Train Name", isEqualTo: "Yal devi");
+
+  @override
   Widget build(BuildContext context) {
+    Future showNotification(String name, index, type) async {
+      print(index);
+      var details = new AndroidNotificationDetails(
+          index.toString(), "Desi", "THis ",
+          importance: Importance.max,
+          priority: Priority.high,
+          ongoing: true,
+          autoCancel: true);
+      var generatenotiofication = new NotificationDetails(android: details);
+
+      await flutterLocalNotificationsPlugin.show(
+          index,
+          type + " Notice",
+          name +
+              " Has an emergency breakdown.\nSee notification for more details ",
+          generatenotiofication);
+    }
+
     ScreenUtil.init(height: 896, width: 414, allowFontScaling: true);
     var userprofile = Expanded(
       child: Column(
@@ -58,6 +108,33 @@ class _UserProfileState extends State<UserProfile> {
           SizedBox(
             height: 15,
           ),
+          RaisedButton(
+            child: Text("Locations"),
+            onPressed: () {
+              double distanceInMeters = distanceBetween(
+                  position.latitude, position.longitude, 8.1540, 80.3046);
+
+              showNotification("NAme", 1, "Delay");
+              userlocation();
+              print(distanceInMeters);
+            },
+          ),
+          RaisedButton(
+            child: Text("Sinhala"),
+            onPressed: () {
+              setState(() {
+                EasyLocalization.of(context).locale = Locale("si", "SN");
+              });
+            },
+          ),
+          RaisedButton(
+            child: Text("English"),
+            onPressed: () {
+              setState(() {
+                EasyLocalization.of(context).locale = Locale("en", "EN");
+              });
+            },
+          ),
           Container(
             height: 40,
             width: 200,
@@ -105,11 +182,11 @@ class _UserProfileState extends State<UserProfile> {
               children: <Widget>[
                 ProfileListItem(
                   icon: LineAwesomeIcons.adjust,
-                  text: "Delete my account",
+                  text: "Delete my account".tr().toString(),
                 ),
                 ProfileListItem(
                   icon: LineAwesomeIcons.users,
-                  text: "Invite Friends",
+                  text: "Invite Friends".tr().toString(),
                 ),
                 ProfileListItem(
                   icon: LineAwesomeIcons.train,
@@ -122,6 +199,8 @@ class _UserProfileState extends State<UserProfile> {
       ),
     );
   }
+
+  Future notifyme(String payload) async {}
 }
 
 class ProfileListItem extends StatelessWidget {
@@ -155,7 +234,7 @@ class ProfileListItem extends StatelessWidget {
           //   Icon(
           //     LineAwesomeIcons.angle_right,
           //     size: 25,
-            // ),
+          // ),
         ],
       ),
     );

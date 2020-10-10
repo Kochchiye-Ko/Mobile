@@ -26,24 +26,28 @@ class _NotificationsState extends State<Notifications> {
     subscription = collectionReference.snapshots().listen((datasnapshot) {
       setState(() {
         snapshot = datasnapshot.documents;
+        if (snapshot != null) {
+          setState(() {
+            _progressController = false;
+          });
+        }
       });
-    });
-    setState(() {
-      _progressController = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     int num = snapshot?.length ?? 0;
-    print(snapshot.length);
+
     return Scaffold(
       appBar:
           AppBar(title: Text('Notifications '), backgroundColor: Colors.amber),
       body: Center(
         child: _progressController
-            ? CircularProgressIndicator(
-                backgroundColor: Colors.purpleAccent,
+            ? Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.purpleAccent,
+                ),
               )
             : new ListView.builder(
                 itemCount: num,
@@ -57,43 +61,37 @@ class _NotificationsState extends State<Notifications> {
                         },
                         leading: new IconButton(
                           icon: new Icon(
-                            Icons.gps_not_fixed,
-                            color: Colors.black,
+                            Icons.add_alert,
+                            size: 35,
+                            color: Colors.amber,
                           ),
                           onPressed: () {},
                         ),
                         title: new Text(
                           // "Okay",
                           snapshot[index].data['subject'],
-                          style: Theme.of(context).textTheme.subhead,
+                          style: TextStyle(fontSize: 20),
                         ),
                         subtitle: new Text(
-                          "Okay",
+                          snapshot[index].data['message'],
                           // snapshot[index].data['message'],
-                          style: Theme.of(context).textTheme.caption,
-                          maxLines: 1,
+                          style: TextStyle(fontSize: 15),
                         ),
-                        trailing: Row(
-                            verticalDirection: VerticalDirection.up,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Icon(
-                                Icons.remove_red_eye,
-                                color: Colors.green,
-                                size: 15.0,
-                              ),
-                              // new Text(
-                              //     snapshot[index].data['Views'].toString()),
-                              SizedBox(
-                                width: 5.0,
-                              ),
-                              Icon(
-                                Icons.comment,
-                                color: Colors.red,
-                                size: 15.0,
-                              ),
-                              new Text('22'),
-                            ])),
+                        trailing: Column(
+                          children: <Widget>[
+                            Row(
+                                verticalDirection: VerticalDirection.up,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.supervised_user_circle,
+                                    color: Colors.red,
+                                    size: 15.0,
+                                  ),
+                                ]),
+                            Text("By admin")
+                          ],
+                        )),
                   );
                 },
               ),

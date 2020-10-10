@@ -34,11 +34,6 @@ class _UsertrainmapState extends State<Usertrainmap> {
     });
   }
 
-  // void setCustomMapPin() async {
-  //   pinLocationIcon = await BitmapDescriptor.fromAssetImage(
-  //       ImageConfiguration(devicePixelRatio: 3.5), 'assets/Train_icon.png');
-  // }
-
   List<LatLng> points;
 
   @override
@@ -75,12 +70,6 @@ class _GeomapState extends State<Geomap> {
     });
   }
 
-  // Future<Uint8List> getMarker() async {
-  //   ByteData byteData =
-  //       await DefaultAssetBundle.of(context).load("assets/car_icon.png");
-  //   return byteData.buffer.asUint8List();
-  // }
-
   Future<Uint8List> getMarker() async {
     ByteData data = await rootBundle.load("assets/Train_icon.png");
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
@@ -99,18 +88,6 @@ class _GeomapState extends State<Geomap> {
       ),
     );
   }
-
-  // Future<DocumentReference> _addGeoPoint() async {
-  //   var pos = await location.getLocation();
-  //   var lat = pos.latitude;
-  //   var lng = pos.longitude;
-  //   GeoFirePoint point = geo.point(latitude: lat, longitude: lng);
-  //   firestore
-  //       .collection('trainlocations')
-  //       .document('train3')
-  //       .setData({'position': point.data});
-  //   print(point.data);
-  // }
 
   Widget loadMap() {
     return Stack(
