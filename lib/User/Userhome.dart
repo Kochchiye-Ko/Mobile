@@ -2,18 +2,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:foldable_sidebar/foldable_sidebar.dart';
-import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/Signin.dart';
+import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:kochchiye_ko/User/Contactus.dart';
 import 'package:kochchiye_ko/User/FoundandLost.dart';
 import 'package:kochchiye_ko/User/Notifications.dart';
 import 'package:kochchiye_ko/User/Trainroutes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:kochchiye_ko/User/User.dart';
-import 'package:kochchiye_ko/User/Usertesthome.dart';
 import 'package:kochchiye_ko/User/Usertrainschdule.dart';
 import '../Animation/FadeAnimation.dart';
+import 'package:kochchiye_ko/User/Settings.dart';
 
 class Userhome extends StatefulWidget {
   @override
@@ -219,7 +219,22 @@ class CustomeHeader extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  new DropdownButton<String>(
+                    items:
+                        <String>['Englih', 'B', 'C', 'D'].map((String value) {
+                      return new DropdownMenuItem<String>(
+                        value: value,
+                        child: new Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (_) {},
+                  ),
+                ],
+              ),
+              SizedBox(height: 5),
               RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
@@ -414,10 +429,13 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              debugPrint("Tapped settings");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Settings()),
+              );
             },
             leading: Icon(Icons.settings),
-            title: Text("Settings"),
+            title: Text("Settings".tr().toString()),
           ),
           Divider(
             height: 1,
@@ -429,7 +447,7 @@ class CustomDrawer extends StatelessWidget {
               Navigator.pop(context);
             },
             leading: Icon(Icons.exit_to_app),
-            title: Text("Log Out"),
+            title: Text("Log Out".tr().toString()),
           ),
           Divider(
             height: 1,
@@ -453,7 +471,7 @@ class CustomDrawer extends StatelessWidget {
                     height: 10,
                   ),
                   Text("Version 1.0.0"),
-                  Text("Developed By Group 28")
+                  Text("Developed By Group 28".tr().toString())
                 ],
               ))
         ],

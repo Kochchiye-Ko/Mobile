@@ -4,10 +4,18 @@
 
     "Your Profile":"ඔබේ පැතිකඩ",
     "Notifications":"දැනුම්දීම",
-    "Contact us":"Contact us",
+    "Contact us":"අප අමතන්න",
+    "Log Out":"ඉවත් වන්න",
+   "Developed By Group 28" :"28 වන කණ්ඩායම විසින්\n වැඩි දියුණු කරන ලදි",
     " Live Location Map":" සජීවී ස්ථාන සිතියම",
     "Trains on tracks ":"දුම්රිය මාර්ගවල\n දුම්රිය",
     "Schedules":"කාල සටහන",
     "Route Details":"මාර්ග විස්තර",
-    "Lost and Found":"නැතිවූ සහ හමු විය"
+    "Lost and Found":"නැතිවූ සහ හමු විය",
+
+
+    "Settings":"සැකසුම්",
+    "Change Profile Details":"පැතිකඩ විස්තර වෙනස් කරන්න",
+    "Change langauage":"භාෂාව වෙනස් කරන්න",
+    "Change my account details":"මගේ ගිණුම් විස්තර වෙනස් කරන්න"
 }

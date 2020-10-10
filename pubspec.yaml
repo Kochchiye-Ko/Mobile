@@ -49,6 +49,7 @@ dependencies:
   foldable_sidebar: ^1.0.0
   giffy_dialog: ^1.8.0
   flutter_local_notifications: ^2.0.0+1
+  font_awesome_flutter: ^8.10.0
 
 dev_dependencies:
   flutter_test:
