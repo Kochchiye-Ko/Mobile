@@ -377,7 +377,7 @@ class CustomDrawer extends StatelessWidget {
             },
             leading: Icon(Icons.person),
             title: Text(
-              "Your Profile",
+              "Your Profile".tr().toString(),
             ),
           ),
           Divider(
@@ -392,7 +392,7 @@ class CustomDrawer extends StatelessWidget {
               );
             },
             leading: Icon(Icons.notifications),
-            title: Text("Notifications"),
+            title: Text("Notifications".tr().toString()),
           ),
           Divider(
             height: 1,
@@ -406,7 +406,7 @@ class CustomDrawer extends StatelessWidget {
               );
             },
             leading: Icon(Icons.payment),
-            title: Text("Contact us"),
+            title: Text("Contact us".tr().toString()),
           ),
           Divider(
             height: 1,
