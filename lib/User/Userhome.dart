@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:foldable_sidebar/foldable_sidebar.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
-import 'package:kochchiye_ko/Auth/Signin.dart';
-import 'package:giffy_dialog/giffy_dialog.dart';
 import 'package:kochchiye_ko/User/Contactus.dart';
 import 'package:kochchiye_ko/User/FoundandLost.dart';
 import 'package:kochchiye_ko/User/Notifications.dart';
 import 'package:kochchiye_ko/User/Trainroutes.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:kochchiye_ko/User/User.dart';
-import 'package:kochchiye_ko/User/Usertrainschdule.dart';
+
 import '../Animation/FadeAnimation.dart';
 import 'package:kochchiye_ko/User/Settings.dart';
 
