@@ -159,7 +159,6 @@ class Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Random rnd;
     int min = 0;
     int max = 4;
     var m = new Random();

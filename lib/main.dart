@@ -3,8 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:kochchiye_ko/Auth/authservice.dart';
-import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
 import 'package:kochchiye_ko/Testhome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,7 +10,10 @@ void main() => runApp(EasyLocalization(
       child: MyApp(),
       path: "resources/langs",
       saveLocale: true,
-      supportedLocales: [Locale("si", "SN"), Locale("en", "EN")],
+      supportedLocales: [
+        Locale("en", "EN"),
+        Locale("si", "SN"),
+      ],
     ));
 
 class MyApp extends StatefulWidget {
