@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Contactus extends StatefulWidget {
@@ -8,14 +10,31 @@ class Contactus extends StatefulWidget {
 }
 
 class _ContactusState extends State<Contactus> {
+  Future fun() async {
+    final FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    return user.uid;
+  }
+
+  Future<void> contactus() async {
+    Firestore.instance.collection('UserMessages').add({
+      'dateTime': DateTime.now().toString(),
+      'Message': title,
+      'Subject': desc,
+      'User': 'id1',
+    }).catchError((e) {
+      print(e);
+    });
+  }
+
   final _formKey = GlobalKey<FormState>();
   String title, desc;
-
+  final TextEditingController titles = new TextEditingController();
+  final TextEditingController des = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.amber,
         elevation: 0,
         title: Text(
           "Contact us",
@@ -32,7 +51,7 @@ class _ContactusState extends State<Contactus> {
                 decoration: BoxDecoration(
                     borderRadius:
                         BorderRadius.only(bottomRight: Radius.circular(75.0)),
-                    color: Colors.orangeAccent),
+                    color: Colors.white),
               ),
               Container(
                 height: 185.0,
@@ -41,28 +60,14 @@ class _ContactusState extends State<Contactus> {
                         BorderRadius.only(bottomRight: Radius.circular(75.0)),
                     color: Colors.white30),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 15.0, left: 10.0),
-                child: Row(
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      color: Colors.black,
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    )
-                  ],
-                ),
-              ),
               Positioned(
                 top: 57,
-                left: 75.0,
+                left: 25.0,
                 child: Container(
                   child: Text(
-                    "You Got a \nsoultion!\nThats Great",
+                    "Got a Problem \nWe are Here to \nhelp you",
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: Colors.redAccent),
                   ),
@@ -100,19 +105,19 @@ class _ContactusState extends State<Contactus> {
                         height: 20,
                       ),
                       TextFormField(
+                        controller: titles,
                         validator: (value) => value.isEmpty
                             ? 'Problem title Cannot be blank'
                             : null,
                         onChanged: ((value) {
                           setState(() {
-                            desc = value;
+                            title = value;
                           });
                         }),
                         style: TextStyle(
                           color: Colors.amber,
                         ),
                         decoration: InputDecoration(
-                            labelText: 'Problem Title',
                             prefixIcon: Padding(
                               padding: EdgeInsets.only(top: 0),
                               child: Icon(
@@ -146,8 +151,9 @@ class _ContactusState extends State<Contactus> {
                         height: 20,
                       ),
                       TextFormField(
+                        controller: des,
                         validator: (value) => value.isEmpty
-                            ? 'Description cannot be blank'
+                            ? 'Problem Description cannot be blank'
                             : null,
                         onChanged: ((value) {
                           setState(() {
@@ -165,24 +171,20 @@ class _ContactusState extends State<Contactus> {
                           fillColor: Colors.white,
                         ),
                       ),
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Text("Submit your Problem",
-                                style: TextStyle(
-                                    fontSize: 15.0,
-                                    fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      ),
                       SizedBox(height: 10),
                       Center(
                         child: RaisedButton(
+                          color: Colors.green,
                           child: Text("Submit"),
                           onPressed: () {
                             final form = _formKey.currentState;
-                            if (form.validate()) {}
+                            if (form.validate()) {
+                              contactus().then((value) => {
+                                    titles.clear(),
+                                    des.clear(),
+                                    showAlertDialog(context),
+                                  });
+                            }
                           },
                         ),
                       )
@@ -190,6 +192,33 @@ class _ContactusState extends State<Contactus> {
               ))
         ],
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("You Problem sended Successfully "),
+      content: Text("We Will Loook into it soon"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
