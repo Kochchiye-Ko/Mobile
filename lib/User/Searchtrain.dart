@@ -11,15 +11,199 @@ class _SearchtrainState extends State<Searchtrain> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: Text("Serach Trains"),
+        title: Text("Search Trains"),
         backgroundColor: Colors.amber,
       ),
       body: Center(
-        child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return Trainview();
-            }),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Orgin:- ',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Expanded(
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      // value: dropdown4EndStaion,
+                      icon: Icon(Icons.arrow_downward, color: Colors.black),
+                      iconSize: 24,
+                      elevation: 0,
+                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                      // underline: Container(
+                      //   height: 2,
+                      //   color: Colors.grey[800],
+                      // ),
+                      // dropdownColor: Colors.grey[900],
+                      onChanged: (String newValue) {
+                        setState(() {
+                          // dropdown4EndStaion = newValue;
+                        });
+                      },
+                      items: <String>[
+                        "Select Staion",
+                        'Colombo Fort',
+                        'Maradana ',
+                        'Ragama ',
+                        'Gampaha ',
+                        'Veyangoda',
+                        'Polgahawela',
+                        'Rambukkana',
+                        'Peradeniya',
+                        'Nawalapitiya',
+                        'Hatton',
+                        'Nanu Oya ',
+                        'Bandarawela',
+                        'Badulla',
+                        'Kandy',
+                        'Katugastota',
+                        'Matale',
+                        'Negombo',
+                        'Chilaw',
+                        'Puttalam ',
+                        'Avissawella',
+                        'Anuradhapura ',
+                        'Vavuniya',
+                        'Kilinochchi',
+                        'Kodikamamam',
+                        'Chavakachcheri',
+                        'Jaffna',
+                        'Kankesanthurai',
+                        'Medawachchiya',
+                        'Mannar',
+                        'Talaimannar',
+                        'Maho',
+                        'Polonnaruwa',
+                        'Valaichchenai',
+                        'Kollupitiya',
+                        'Moratuwa',
+                        'Panadura',
+                        'Aluthgama',
+                        'Bentota',
+                        'Balapitiya',
+                        'Ambalangoda',
+                        'Hikkaduwa',
+                        'Galle',
+                        'Matara',
+                        'Hambantota ',
+                        'Beliatta ',
+                        'Kataragama ',
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Destination:- ',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Expanded(
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      // value: dropdown4EndStaion,
+                      icon: Icon(Icons.arrow_downward, color: Colors.black),
+                      iconSize: 24,
+                      elevation: 0,
+                      style: TextStyle(color: Colors.black, fontSize: 18.0),
+                      // underline: Container(
+                      //   height: 2,
+                      //   color: Colors.grey[800],
+                      // ),
+                      // dropdownColor: Colors.grey[900],
+                      onChanged: (String newValue) {
+                        setState(() {
+                          // dropdown4EndStaion = newValue;
+                        });
+                      },
+                      items: <String>[
+                        "Select Staion",
+                        'Colombo Fort',
+                        'Maradana ',
+                        'Ragama ',
+                        'Gampaha ',
+                        'Veyangoda',
+                        'Polgahawela',
+                        'Rambukkana',
+                        'Peradeniya',
+                        'Nawalapitiya',
+                        'Hatton',
+                        'Nanu Oya ',
+                        'Bandarawela',
+                        'Badulla',
+                        'Kandy',
+                        'Katugastota',
+                        'Matale',
+                        'Negombo',
+                        'Chilaw',
+                        'Puttalam ',
+                        'Avissawella',
+                        'Anuradhapura ',
+                        'Vavuniya',
+                        'Kilinochchi',
+                        'Kodikamamam',
+                        'Chavakachcheri',
+                        'Jaffna',
+                        'Kankesanthurai',
+                        'Medawachchiya',
+                        'Mannar',
+                        'Talaimannar',
+                        'Maho',
+                        'Polonnaruwa',
+                        'Valaichchenai',
+                        'Kollupitiya',
+                        'Moratuwa',
+                        'Panadura',
+                        'Aluthgama',
+                        'Bentota',
+                        'Balapitiya',
+                        'Ambalangoda',
+                        'Hikkaduwa',
+                        'Galle',
+                        'Matara',
+                        'Hambantota ',
+                        'Beliatta ',
+                        'Kataragama ',
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Trainview();
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }
