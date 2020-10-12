@@ -15,7 +15,31 @@ var items = [
       "The Main Line starts from Colombo and runs east and north past the rapidly developing centres of Ragama, Gampaha, Veyangoda, and Polgahawela. At Rambukkana, the Main Line begins its steep climb into the hills of the upcountry. Between Balana and Kadugannawa, the track clings to the side of sheer cliffs, offering passengers views of Batalegala ('Bible' Rock). From Peradeniya Junction, a branch line reaches Kandy and Matale. The Main Line then continues its climb through tea country, connecting local market centres at Gampola, Nawalapitiya, and Hatton before reaching Nanu Oya. This is the connection to the former colonial resort of Nuwara Eliya, known for its temperate climate, classic hotels, and British-style gardens. The Main Line continues its ascent to the summit at Pattipola, 1,898 m (6,227 ft) above sea level, before descending past Bandarawela to Badulla. In the upcountry, passengers can view the tea gardens, mountains and valleys, cascading torrents and waterfalls"
           .tr()
           .toString()),
-  PlaceInfo("122", "assets/User/main.jpg"),
+  PlaceInfo(
+      "Coastal line".tr().toString(),
+      "The Main Line starts from Colombo and runs east and north past the rapidly developing centres of Ragama, Gampaha, Veyangoda, and Polgahawela. At Rambukkana, the Main Line begins its steep climb into the hills of the upcountry. Between Balana and Kadugannawa, the track clings to the side of sheer cliffs, offering passengers views of Batalegala ('Bible' Rock). From Peradeniya Junction, a branch line reaches Kandy and Matale. The Main Line then continues its climb through tea country, connecting local market centres at Gampola, Nawalapitiya, and Hatton before reaching Nanu Oya. This is the connection to the former colonial resort of Nuwara Eliya, known for its temperate climate, classic hotels, and British-style gardens. The Main Line continues its ascent to the summit at Pattipola, 1,898 m (6,227 ft) above sea level, before descending past Bandarawela to Badulla. In the upcountry, passengers can view the tea gardens, mountains and valleys, cascading torrents and waterfalls"
+          .tr()
+          .toString()),
+  PlaceInfo(
+      "Puttalam line".tr().toString(),
+      "The Main Line starts from Colombo and runs east and north past the rapidly developing centres of Ragama, Gampaha, Veyangoda, and Polgahawela. At Rambukkana, the Main Line begins its steep climb into the hills of the upcountry. Between Balana and Kadugannawa, the track clings to the side of sheer cliffs, offering passengers views of Batalegala ('Bible' Rock). From Peradeniya Junction, a branch line reaches Kandy and Matale. The Main Line then continues its climb through tea country, connecting local market centres at Gampola, Nawalapitiya, and Hatton before reaching Nanu Oya. This is the connection to the former colonial resort of Nuwara Eliya, known for its temperate climate, classic hotels, and British-style gardens. The Main Line continues its ascent to the summit at Pattipola, 1,898 m (6,227 ft) above sea level, before descending past Bandarawela to Badulla. In the upcountry, passengers can view the tea gardens, mountains and valleys, cascading torrents and waterfalls"
+          .tr()
+          .toString()),
+  PlaceInfo(
+      "Kelani Valley line".tr().toString(),
+      "The Main Line starts from Colombo and runs east and north past the rapidly developing centres of Ragama, Gampaha, Veyangoda, and Polgahawela. At Rambukkana, the Main Line begins its steep climb into the hills of the upcountry. Between Balana and Kadugannawa, the track clings to the side of sheer cliffs, offering passengers views of Batalegala ('Bible' Rock). From Peradeniya Junction, a branch line reaches Kandy and Matale. The Main Line then continues its climb through tea country, connecting local market centres at Gampola, Nawalapitiya, and Hatton before reaching Nanu Oya. This is the connection to the former colonial resort of Nuwara Eliya, known for its temperate climate, classic hotels, and British-style gardens. The Main Line continues its ascent to the summit at Pattipola, 1,898 m (6,227 ft) above sea level, before descending past Bandarawela to Badulla. In the upcountry, passengers can view the tea gardens, mountains and valleys, cascading torrents and waterfalls"
+          .tr()
+          .toString()),
+  PlaceInfo(
+      "Matale line".tr().toString(),
+      "The Main Line starts from Colombo and runs east and north past the rapidly developing centres of Ragama, Gampaha, Veyangoda, and Polgahawela. At Rambukkana, the Main Line begins its steep climb into the hills of the upcountry. Between Balana and Kadugannawa, the track clings to the side of sheer cliffs, offering passengers views of Batalegala ('Bible' Rock). From Peradeniya Junction, a branch line reaches Kandy and Matale. The Main Line then continues its climb through tea country, connecting local market centres at Gampola, Nawalapitiya, and Hatton before reaching Nanu Oya. This is the connection to the former colonial resort of Nuwara Eliya, known for its temperate climate, classic hotels, and British-style gardens. The Main Line continues its ascent to the summit at Pattipola, 1,898 m (6,227 ft) above sea level, before descending past Bandarawela to Badulla. In the upcountry, passengers can view the tea gardens, mountains and valleys, cascading torrents and waterfalls"
+          .tr()
+          .toString()),
+  PlaceInfo(
+      "Northern line".tr().toString(),
+      "The Main Line starts from Colombo and runs east and north past the rapidly developing centres of Ragama, Gampaha, Veyangoda, and Polgahawela. At Rambukkana, the Main Line begins its steep climb into the hills of the upcountry. Between Balana and Kadugannawa, the track clings to the side of sheer cliffs, offering passengers views of Batalegala ('Bible' Rock). From Peradeniya Junction, a branch line reaches Kandy and Matale. The Main Line then continues its climb through tea country, connecting local market centres at Gampola, Nawalapitiya, and Hatton before reaching Nanu Oya. This is the connection to the former colonial resort of Nuwara Eliya, known for its temperate climate, classic hotels, and British-style gardens. The Main Line continues its ascent to the summit at Pattipola, 1,898 m (6,227 ft) above sea level, before descending past Bandarawela to Badulla. In the upcountry, passengers can view the tea gardens, mountains and valleys, cascading torrents and waterfalls"
+          .tr()
+          .toString()),
 ];
 
 class _SinglerouteState extends State<Singleroute> {
@@ -128,7 +152,7 @@ class _SinglerouteState extends State<Singleroute> {
                 height: 10,
               ),
               Text(
-                "About the Line",
+                "About the Line".tr().toString(),
                 style: TextStyle(
                     color: Colors.black87,
                     fontSize: 22,
