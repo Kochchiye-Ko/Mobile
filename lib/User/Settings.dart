@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:kochchiye_ko/User/Language.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:kochchiye_ko/User/Userprofile.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -29,9 +30,14 @@ class _SettingsState extends State<Settings> {
               margin: const EdgeInsets.all(15.0),
               color: Colors.amber,
               child: ListTile(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UserProfile()),
+                  );
+                },
                 title: Text(
-                  "Jon Doe",
+                  "Ravidu Wanigesekara",
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.w500),
                 ),
