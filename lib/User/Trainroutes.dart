@@ -17,31 +17,19 @@ class _TrainrouteState extends State<Trainroute> {
         Color(0xff6DC8F3),
         Color(0xff73A1F9),
         4.4,
-        'Start ·  Colombo Fort',
-        'Cosy · Casual · Good for kids',
+        'Start--->  Colombo Fort',
+        'End:---> Jaffna',
         "assets/User/main.jpg"),
-    PlaceInfo(
-        'Coastal line',
-        Color(0xffFFB157),
-        Color(0xffFFA057),
-        3.7,
-        'Start ·  Colombo Fort',
-        'All you can eat · Casual · Groups',
-        "assets/User/costal.jpg"),
+    PlaceInfo('Coastal line', Color(0xffFFB157), Color(0xffFFA057), 3.7,
+        'Start---> Colombo Fort', 'End---> Jaffna', "assets/User/costal.jpg"),
     PlaceInfo('Puttalam line', Color(0xffFF5B95), Color(0xffF8556D), 4.5,
-        'Start ·  Colombo Fort', 'Casual · Groups', "assets/User/puttlam.jpg"),
-    PlaceInfo(
-        'Kelani Valley line',
-        Color(0xffD76EF5),
-        Color(0xff8F7AFE),
-        4.1,
-        'Start ·  Colombo Fort',
-        'Casual · Good for kids · Delivery',
-        "assets/User/kelani.jpg"),
+        'Start---> Colombo Fort', 'End---> Jaffna', "assets/User/puttlam.jpg"),
+    PlaceInfo('Kelani Valley line', Color(0xffD76EF5), Color(0xff8F7AFE), 4.1,
+        'Start---> Colombo Fort', 'End---> Jaffna', "assets/User/kelani.jpg"),
     PlaceInfo('Matale line', Color(0xff42E695), Color(0xff3BB2B8), 4.2,
-        'Start ·  Colombo Fort', '...', "assets/User/costal.jpg"),
-    PlaceInfo('Northern line', Color(0xff42E695), Color(0xff3BB2B8), 4.2,
-        'Start ·  Colombo Fort', '...', "assets/User/costal.jpg")
+        'Start--->  Colombo Fort', 'End---> Jaffna', "assets/User/costal.jpg"),
+    PlaceInfo('Northern line', Color(0xffFFB157), Color(0xffFFA057), 4.2,
+        'Start--->  Colombo Fort', 'End---> Jaffna', "assets/User/costal.jpg")
   ];
 
   @override
@@ -110,13 +98,6 @@ class _TrainrouteState extends State<Trainroute> {
                               backgroundImage: AssetImage(items[index].image),
                               backgroundColor: Colors.transparent,
                             ),
-                            // child: Expanded(
-                            //   child: Image.asset(
-                            //     'assets/User/costal.jpg',
-                            //     height: 200,
-                            //     width: 75,
-                            //   ),
-                            // ),
                           ),
                           Expanded(
                             flex: 4,
@@ -129,15 +110,16 @@ class _TrainrouteState extends State<Trainroute> {
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontFamily: 'Avenir',
+                                      fontSize: 22,
                                       fontWeight: FontWeight.w700),
                                 ),
-                                Text(
-                                  items[index].category,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Avenir',
-                                  ),
-                                ),
+                                // Text(
+                                //   items[index].category,
+                                //   style: TextStyle(
+                                //     color: Colors.white,
+                                //     fontFamily: 'Avenir',
+                                //   ),
+                                // ),
                                 SizedBox(height: 16),
                                 Row(
                                   children: <Widget>[
@@ -160,6 +142,28 @@ class _TrainrouteState extends State<Trainroute> {
                                     ),
                                   ],
                                 ),
+                                SizedBox(height: 16),
+                                Row(
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.gps_fixed,
+                                      color: Colors.white,
+                                      size: 16,
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Flexible(
+                                      child: Text(
+                                        items[index].category,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'Avenir',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
@@ -169,7 +173,7 @@ class _TrainrouteState extends State<Trainroute> {
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
                                 Text(
-                                  items[index].rating.toString(),
+                                  "See More info",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontFamily: 'Avenir',

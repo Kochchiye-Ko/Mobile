@@ -28,7 +28,7 @@ class _FoundandlostState extends State<Foundandlost> {
                 decoration: BoxDecoration(
                     borderRadius:
                         BorderRadius.only(bottomRight: Radius.circular(75.0)),
-                    color: Colors.white24),
+                    color: Colors.indigoAccent),
               ),
               Container(
                 height: 285.0,
@@ -60,7 +60,7 @@ class _FoundandlostState extends State<Foundandlost> {
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
-                        color: Colors.lightBlue),
+                        color: Colors.black),
                   ),
                 ),
               ),
@@ -72,6 +72,7 @@ class _FoundandlostState extends State<Foundandlost> {
                   width: 400.0,
                   decoration: BoxDecoration(
                       image: DecorationImage(
+                          fit: BoxFit.contain,
                           image: AssetImage('assets/User/Police.png'))),
                 ),
               ),
@@ -97,7 +98,7 @@ class _FoundandlostState extends State<Foundandlost> {
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(35),
-                            color: Color(0xFF90AF17)),
+                            color: Color(0xFFe8973a)),
                         child: Row(
                           children: <Widget>[
                             Expanded(
@@ -145,7 +146,7 @@ class _FoundandlostState extends State<Foundandlost> {
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(35),
-                            color: Color(0xFF295EE3)),
+                            color: Color(0xFF9de620)),
                         child: Row(
                           children: <Widget>[
                             Expanded(
@@ -169,7 +170,7 @@ class _FoundandlostState extends State<Foundandlost> {
                             AspectRatio(
                               aspectRatio: 0.71,
                               child: Image.asset(
-                                "assets/User/lost.png",
+                                "assets/glove.png",
                                 alignment: Alignment.center,
                               ),
                             )
