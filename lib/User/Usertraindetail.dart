@@ -47,8 +47,17 @@ class _UsertraindetailState extends State<Usertraindetail> {
                             width: 15,
                           ),
                           orginandDestination(),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Row(
+                            children: <Widget>[Text("Current Speed:- ")],
+                          )
                         ],
                       ),
+                      Row(
+                        children: <Widget>[Text("Last Data Updated:- ")],
+                      )
                     ],
                   ),
                 ),
@@ -76,7 +85,7 @@ class _UsertraindetailState extends State<Usertraindetail> {
                                 desty(Colors.red, Icons.close),
                                 desty(Colors.red, Icons.close),
                                 desty(Colors.red, Icons.close),
-                                
+
                                 //   radius: 10,
                                 //   backgroundColor: Colors.greenAccent,
                                 //   child: Icon(
@@ -98,7 +107,7 @@ class _UsertraindetailState extends State<Usertraindetail> {
                                     color: Colors.white,
                                     size: 14,
                                   ),
-                                 ),
+                                ),
                               ],
                             ),
                           ),
@@ -129,8 +138,7 @@ class _UsertraindetailState extends State<Usertraindetail> {
                                     ],
                                   ),
                                 ),
-                             
-                                      Container(
+                                Container(
                                   height: 120,
                                   child: Column(
                                     crossAxisAlignment:
@@ -149,7 +157,7 @@ class _UsertraindetailState extends State<Usertraindetail> {
                                     ],
                                   ),
                                 ),
-                                      Container(
+                                Container(
                                   height: 120,
                                   child: Column(
                                     crossAxisAlignment:
@@ -168,7 +176,7 @@ class _UsertraindetailState extends State<Usertraindetail> {
                                     ],
                                   ),
                                 ),
-                                      Container(
+                                Container(
                                   height: 120,
                                   child: Column(
                                     crossAxisAlignment:
@@ -187,8 +195,7 @@ class _UsertraindetailState extends State<Usertraindetail> {
                                     ],
                                   ),
                                 ),
-                                
-                                     Container(
+                                Container(
                                   height: 120,
                                   child: Column(
                                     crossAxisAlignment:
@@ -207,8 +214,7 @@ class _UsertraindetailState extends State<Usertraindetail> {
                                     ],
                                   ),
                                 ),
-                                  
-                                     Container(
+                                Container(
                                   height: 120,
                                   child: Column(
                                     crossAxisAlignment:
@@ -226,7 +232,7 @@ class _UsertraindetailState extends State<Usertraindetail> {
                                       ),
                                     ],
                                   ),
-                                ), 
+                                ),
                               ],
                             ),
                           ),

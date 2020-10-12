@@ -15,22 +15,32 @@ class Usertrainmap extends StatefulWidget {
   _UsertrainmapState createState() => _UsertrainmapState();
 }
 
+bool _progressController = true;
 BitmapDescriptor pinLocationIcon;
+StreamSubscription<QuerySnapshot> subscription;
+List<DocumentSnapshot> snapshot2;
+CollectionReference collectionReference =
+    Firestore.instance.collection("trainlocations");
 
 class _UsertrainmapState extends State<Usertrainmap> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   setCustomMapPin();
-  // }
-
   @override
   void initState() {
     BitmapDescriptor.fromAssetImage(
       ImageConfiguration(size: Size(100, 100)),
-      'assets/12.png',
+      'assets/Train_icon.png',
     ).then((onValue) {
       pinLocationIcon = onValue;
+    });
+
+    subscription = collectionReference.snapshots().listen((datasnapshot) {
+      setState(() {
+        snapshot2 = datasnapshot.documents;
+        if (snapshot2 != null) {
+          setState(() {
+            _progressController = false;
+          });
+        }
+      });
     });
   }
 
@@ -62,6 +72,8 @@ class _GeomapState extends State<Geomap> {
   Firestore firestore = Firestore.instance;
   Map<MarkerId, Marker> markerslist = <MarkerId, Marker>{};
   Uint8List imageData;
+
+  var all;
 
   void initState() {
     super.initState();
@@ -100,7 +112,8 @@ class _GeomapState extends State<Geomap> {
                   child: CircularProgressIndicator(
                 backgroundColor: Colors.purpleAccent,
               ));
-
+            this.all = snapshot;
+            print(snapshot.data.documents);
             for (int i = 0; i < snapshot.data.documents.length; i++) {
               var train = snapshot.data.documents[i];
               var lat, long;
@@ -145,19 +158,140 @@ class _GeomapState extends State<Geomap> {
             );
           },
         ),
-        Positioned(
-          bottom: 50,
-          left: 10,
-          child: FlatButton(
-            child: Icon(
-              Icons.pin_drop,
-              color: Colors.white,
-            ),
-            color: Colors.green,
-            // onPressed: _addGeoPoint,
-          ),
-        )
+        _buildcontianer(),
+        // Positioned(
+        //   bottom: 50,
+        //   left: 10,
+        //   child: FlatButton(
+        //     child: Icon(
+        //       Icons.pin_drop,
+        //       color: Colors.white,
+        //     ),
+        //     color: Colors.green,
+        //     // onPressed: _addGeoPoint,
+        //   ),
+        // )
       ],
+    );
+  }
+
+  Widget _buildcontianer() {
+    if (_progressController) {
+      return Center(
+        child: CircularProgressIndicator(
+          backgroundColor: Colors.purpleAccent,
+        ),
+      );
+    }
+    print(snapshot2[0].data['Train Name']);
+    print("Okay");
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 20.0),
+        height: 150.0,
+        child: StreamBuilder(
+            stream: null,
+            builder: (context, snapshot) {
+              return ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      children: <Widget>[
+                        SizedBox(width: 10.0),
+                        Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: _boxes(
+                                snapshot2[index].data['imgurl'],
+                                snapshot2[index].data['Lat'].toDouble(),
+                                snapshot2[index].data['Long'].toDouble(),
+                                snapshot2[index].data['Train Name'],
+                                snapshot2[index].data['Origin'],
+                                snapshot2[index].data['Destination'])),
+                        SizedBox(width: 10.0),
+                      ],
+                    );
+                  });
+            }),
+      ),
+    );
+  }
+
+  //card animation
+  Future<void> gotolocation(double lat, double lng) async {
+    myController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+      target: LatLng(lat, lng),
+      zoom: 17.0,
+    )));
+  }
+
+  Widget _boxes(String _image, double lat, double long, String name,
+      String description, String phone) {
+    return GestureDetector(
+      onTap: () {
+        gotolocation(lat, long);
+      },
+      child: Container(
+        child: new FittedBox(
+          child: Material(
+            color: Colors.white,
+            elevation: 14.0,
+            borderRadius: BorderRadius.circular(24.0),
+            shadowColor: Color(0x802196F3),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  width: 250,
+                  height: 300,
+                  child: ClipRRect(
+                    child: Image(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(_image),
+                    ),
+                  ),
+                ),
+                Container(
+                  child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            name,
+                            style: TextStyle(
+                                fontSize: 35, fontWeight: FontWeight.bold),
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Text("Origin:-", style: TextStyle(fontSize: 25)),
+                              Text(
+                                description,
+                                style: TextStyle(fontSize: 25),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Text("Destination:-",
+                                  style: TextStyle(fontSize: 25)),
+                              Text(
+                                phone,
+                                style: TextStyle(fontSize: 25),
+                              ),
+                            ],
+                          )
+                        ],
+                      )),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

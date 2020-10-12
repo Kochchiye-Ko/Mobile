@@ -87,7 +87,7 @@ class _FoundandlostState extends State<Foundandlost> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => FoundandLostdetail()),
+                        builder: (context) => FoundandLostdetail(id: 0)),
                   );
                 },
                 child: AspectRatio(
@@ -130,45 +130,54 @@ class _FoundandlostState extends State<Foundandlost> {
                       ),
                     )),
               ),
-              AspectRatio(
-                  aspectRatio: 1.55,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(35),
-                          color: Color(0xFF295EE3)),
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                              child: Padding(
-                            padding: const EdgeInsets.only(top: 80, left: 10),
-                            child: Column(
-                              children: <Widget>[
-                                Text(
-                                  "Found Items",
-                                  style: TextStyle(
-                                      fontSize: 35, color: Colors.white),
-                                ),
-                                Text(
-                                  "See weather some one have found it",
-                                  style: TextStyle(
-                                      fontSize: 15, color: Colors.white),
-                                )
-                              ],
-                            ),
-                          )),
-                          AspectRatio(
-                            aspectRatio: 0.71,
-                            child: Image.asset(
-                              "assets/User/lost.png",
-                              alignment: Alignment.center,
-                            ),
-                          )
-                        ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FoundandLostdetail(id: 1)),
+                  );
+                },
+                child: AspectRatio(
+                    aspectRatio: 1.55,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(35),
+                            color: Color(0xFF295EE3)),
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                                child: Padding(
+                              padding: const EdgeInsets.only(top: 80, left: 10),
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    "Found Items",
+                                    style: TextStyle(
+                                        fontSize: 35, color: Colors.white),
+                                  ),
+                                  Text(
+                                    "See weather some one have found it",
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.white),
+                                  )
+                                ],
+                              ),
+                            )),
+                            AspectRatio(
+                              aspectRatio: 0.71,
+                              child: Image.asset(
+                                "assets/User/lost.png",
+                                alignment: Alignment.center,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ))
+                    )),
+              )
             ],
           ),
         ],

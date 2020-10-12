@@ -13,6 +13,13 @@ List<String> path = [
   "assets/User/train3.png",
   "assets/User/train5.png",
   "assets/User/train6.png",
+  "assets/User/train7.png",
+  "assets/User/train8.png",
+  "assets/User/train9.png",
+  "assets/User/train10.png",
+  "assets/User/train11.png",
+  "assets/User/train12.png",
+  "assets/User/train13.png",
 ];
 
 class _UserrunningState extends State<Userrunning> {
@@ -159,8 +166,9 @@ class Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(snapshot.data['startStaion']);
     int min = 0;
-    int max = 4;
+    int max = 11;
     var m = new Random();
     var r = min + m.nextInt(max - min);
     return Container(
@@ -194,8 +202,8 @@ class Card extends StatelessWidget {
               right: 0,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20),
-                height: 160,
-                width: 200,
+                height: 120,
+                width: 180,
                 child: Image.asset(
                   path[r],
                   fit: BoxFit.cover,
@@ -206,23 +214,23 @@ class Card extends StatelessWidget {
             left: 0,
             child: SizedBox(
               height: 136,
-              width: size.width - 200,
+              width: size.width - 180,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Spacer(),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Column(
                       children: <Widget>[
                         Row(
                           children: <Widget>[
                             Text(
-                              "Train Name:-",
-                              style: TextStyle(fontSize: 10),
+                              "Train Name:- ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Text(snapshot.data['trainName'],
-                                style: TextStyle(fontSize: 10)),
+                                style: TextStyle(fontWeight: FontWeight.w400)),
                             SizedBox(
                               width: 5,
                             ),
@@ -237,17 +245,36 @@ class Card extends StatelessWidget {
                             Column(
                               children: <Widget>[
                                 Text(
-                                  "Colombo Fort",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  snapshot.data['startStaion'],
+                                  style: TextStyle(fontWeight: FontWeight.w400),
                                 ),
-                                Text("(At 5.30) ")
                               ],
                             ),
                           ],
                         ),
-                        Text(
-                          "Uttara Devi",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              "Destination:- ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              snapshot.data['endStaion'],
+                              style: TextStyle(fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              "Start Time:- ",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "5.00 AM",
+                              style: TextStyle(fontWeight: FontWeight.w400),
+                            ),
+                          ],
                         ),
                       ],
                     ),

@@ -3,6 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
 
 class FoundandLostdetail extends StatefulWidget {
+  var id;
+  FoundandLostdetail({this.id});
+
   @override
   _FoundandLostdetailState createState() => _FoundandLostdetailState();
 }
@@ -16,22 +19,41 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
   //Subscribing for post details
   StreamSubscription<QuerySnapshot> subscription;
   List<DocumentSnapshot> snapshot;
-  Query collectionReference = Firestore.instance
-      .collection("Lostitems")
-      .where("state", isEqualTo: "lost");
 
   @override
   void initState() {
     super.initState();
-    subscription = collectionReference.snapshots().listen((datasnapshot) {
-      setState(() {
-        snapshot = datasnapshot.documents;
-        if (snapshot != null) {
+    setState(() {
+      if (widget.id == 0) {
+        Query collectionReference = Firestore.instance
+            .collection("Lostitems")
+            .where("state", isEqualTo: "lost");
+        subscription = collectionReference.snapshots().listen((datasnapshot) {
           setState(() {
-            _progressController = false;
+            snapshot = datasnapshot.documents;
+            if (snapshot != null) {
+              setState(() {
+                _progressController = false;
+              });
+            }
           });
-        }
-      });
+        });
+      }
+      if (widget.id == 1) {
+        Query collectionReference = Firestore.instance
+            .collection("Lostitems")
+            .where("state", isEqualTo: "found");
+        subscription = collectionReference.snapshots().listen((datasnapshot) {
+          setState(() {
+            snapshot = datasnapshot.documents;
+            if (snapshot != null) {
+              setState(() {
+                _progressController = false;
+              });
+            }
+          });
+        });
+      }
     });
   }
 
@@ -64,6 +86,20 @@ class _FoundandLostdetailState extends State<FoundandLostdetail> {
             : new ListView.builder(
                 itemCount: num,
                 itemBuilder: (context, index) {
+                  if (num == 0) {
+                    return new Center(
+                        child: Column(
+                      children: <Widget>[
+                        Image.asset(
+                          "assets/nopro.png",
+                        ),
+                        Text(
+                          "Oopps!Nothing to see here",
+                          style: TextStyle(fontSize: 30),
+                        ),
+                      ],
+                    ));
+                  }
                   return new Card(
                     elevation: 15.0,
                     margin: EdgeInsets.all(10.0),
