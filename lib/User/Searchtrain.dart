@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class Searchtrain extends StatefulWidget {
   @override
@@ -6,6 +7,16 @@ class Searchtrain extends StatefulWidget {
 }
 
 class _SearchtrainState extends State<Searchtrain> {
+  Future<void> _selectTime(BuildContext context) {
+    final now = DateTime.now();
+    DateTime selectedDate = DateTime.now();
+    return showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -191,9 +202,45 @@ class _SearchtrainState extends State<Searchtrain> {
                         );
                       }).toList(),
                     ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                        side: BorderSide(color: Colors.black)),
+                    child: Text('Choose Date'),
+                    color: Colors.white,
+                    onPressed: () async {
+                      final selectedTime = await _selectTime(context);
+                    },
+                  ),
+                  RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        side: BorderSide(color: Colors.black)),
+                    child: Text(
+                      'Search',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    color: Colors.green,
+                    onPressed: () async {
+                      final selectedTime = await _selectTime(context);
+                    },
                   )
                 ],
               ),
+            ),
+            Text(
+              "12 Results Found",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Expanded(
               child: ListView.builder(
