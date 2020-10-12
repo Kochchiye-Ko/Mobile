@@ -241,52 +241,53 @@ class _UserProfileState extends State<UserProfile> {
         elevation: 1,
         // leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: (null)),
       ),
-      body: Container(
-        child: ListView(
-          children: <Widget>[
-            Text(
-              "Edit Profile",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Center(
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    width: 130,
-                    height: 130,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              color: Colors.black.withOpacity(0.1),
-                              offset: Offset(0, 10))
-                        ],
-                        border: Border.all(width: 4, color: Colors.amber),
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                'https://picsum.photos/250?image=9'))),
-                  ),
-                  Position er(
-                      height: 40,
-                      width: 40,
-                      child: Icon(
-                        Icons.edit,
-                        color: Colors.black,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
     );
+    //   body: Container(
+    //     child: ListView(
+    //       children: <Widget>[
+    //         Text(
+    //           "Edit Profile",
+    //           style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+    //         ),
+    //         SizedBox(
+    //           height: 15,
+    //         ),
+    //         Center(
+    //           child: Stack(
+    //             children: <Widget>[
+    //               Container(
+    //                 width: 130,
+    //                 height: 130,
+    //                 decoration: BoxDecoration(
+    //                     boxShadow: [
+    //                       BoxShadow(
+    //                           spreadRadius: 2,
+    //                           blurRadius: 10,
+    //                           color: Colors.black.withOpacity(0.1),
+    //                           offset: Offset(0, 10))
+    //                     ],
+    //                     border: Border.all(width: 4, color: Colors.amber),
+    //                     shape: BoxShape.circle,
+    //                     image: DecorationImage(
+    //                         fit: BoxFit.cover,
+    //                         image: NetworkImage(
+    //                             'https://picsum.photos/250?image=9'))),
+    //               ),
+    //               // Position er(
+    //               //     height: 40,
+    //               //     width: 40,
+    //               //     child: Icon(
+    //               //       Icons.edit,
+    //               //       color: Colors.black,
+    //               //     ),
+    //               //   ),
+    //               )
+    //             ],
+    //           ),
+    //         )
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }
