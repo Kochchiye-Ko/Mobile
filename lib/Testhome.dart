@@ -6,6 +6,7 @@ import 'package:kochchiye_ko/Admin/Admin.dart';
 import 'package:kochchiye_ko/Auth/Auth.dart';
 import 'package:kochchiye_ko/Auth/authservice.dart';
 import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
+import 'package:kochchiye_ko/User/Singletrainmap.dart';
 import 'package:kochchiye_ko/User/User.dart';
 
 class TestHome extends StatefulWidget {
@@ -55,6 +56,18 @@ class _TestHomeState extends State<TestHome> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Testhome2()),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              RaisedButton(
+                child: Text("Go to UserHome"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Singletrainmap()),
                   );
                 },
               ),
