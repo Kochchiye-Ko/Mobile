@@ -27,7 +27,7 @@ class _UsertrainmapState extends State<Usertrainmap> {
   void initState() {
     BitmapDescriptor.fromAssetImage(
       ImageConfiguration(size: Size(100, 100)),
-      'assets/Train_icon.png',
+      'assets/Train_icon.png', 
     ).then((onValue) {
       pinLocationIcon = onValue;
     });

@@ -15,16 +15,52 @@ class MapAdminpanel extends StatefulWidget {
   _MapAdminpanelState createState() => _MapAdminpanelState();
 }
 
+bool _progressController = true;
+BitmapDescriptor pinLocationIcon;
+StreamSubscription<QuerySnapshot> subscription;
+List<DocumentSnapshot> snapshot2;
+CollectionReference collectionReference =
+    Firestore.instance.collection("trainlocations");
+
 class _MapAdminpanelState extends State<MapAdminpanel> {
+  @override
+  // void initState() {
+  //   BitmapDescriptor.fromAssetImage(
+  //     ImageConfiguration(size: Size.fromWidth(2)),
+  //     'assets/Train_icon.png',
+  //   ).then((onValue) {
+  //     pinLocationIcon = onValue;
+  //   });
+  void initState() {
+    BitmapDescriptor.fromAssetImage(
+      ImageConfiguration(size: Size.zero),
+      'assets/Train_icon.png',
+    ).then((onValue) {
+      pinLocationIcon = onValue;
+    });
+
+    subscription = collectionReference.snapshots().listen((datasnapshot) {
+      setState(() {
+        snapshot2 = datasnapshot.documents;
+        if (snapshot2 != null) {
+          setState(() {
+            _progressController = false;
+          });
+        }
+      });
+    });
+  }
+
+  List<LatLng> points;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Map"),
-        backgroundColor: Colors.grey[900],
-      ),
-      body: Geomap(),
-    );
+        appBar: AppBar(
+          title: Text("Live location Map"),
+          backgroundColor: Colors.amber,
+        ),
+        body: Geomap());
   }
 }
 
@@ -37,21 +73,21 @@ class Geomap extends StatefulWidget {
 
 class _GeomapState extends State<Geomap> {
   //all the varaibles
-
   Geoflutterfire geo = Geoflutterfire();
   Location location = new Location();
   GoogleMapController myController;
   Firestore firestore = Firestore.instance;
   Map<MarkerId, Marker> markerslist = <MarkerId, Marker>{};
   Uint8List imageData;
+
+  var all;
+
   void initState() {
     super.initState();
     setState(() {
       getMarker();
     });
   }
-
- 
 
   Future<Uint8List> getMarker() async {
     ByteData data = await rootBundle.load("assets/Train_icon.png");
@@ -63,14 +99,11 @@ class _GeomapState extends State<Geomap> {
         .asUint8List();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: <Widget>[
-          loadMap(),
-        ],
+        children: <Widget>[loadMap()],
       ),
     );
   }
@@ -86,13 +119,18 @@ class _GeomapState extends State<Geomap> {
                   child: CircularProgressIndicator(
                 backgroundColor: Colors.purpleAccent,
               ));
-
-            for (int i = 0; i <snapshot.data.documents.length; i++) {
-              print("object");
+            this.all = snapshot;
+            print(snapshot.data.documents);
+            for (int i = 0; i < snapshot.data.documents.length; i++) {
               var train = snapshot.data.documents[i];
-              GeoPoint geoPoint = train['position']['geopoint'];
-              double lat = geoPoint.latitude;
-              double long = geoPoint.longitude;
+              var lat, long;
+              if (train['Lat'] == 0 || train['Long'] == 0) {
+                lat = 0.0;
+                long = 0.0;
+              } else {
+                lat = train['Lat'].toDouble();
+                long = train['Long'].toDouble();
+              }
 
               var id = MarkerId(i.toString());
               Marker mark = Marker(
@@ -104,26 +142,51 @@ class _GeomapState extends State<Geomap> {
                 rotation: lat,
                 anchor: Offset(0.5, 0.5),
                 infoWindow: InfoWindow(title: train['info']),
-                icon: BitmapDescriptor.fromBytes(imageData),
+                icon: pinLocationIcon,
+
+                //  BitmapDescriptor.defaultMarkerWithHue(
+                //       BitmapDescriptor.hueViolet)
               );
               markerslist[id] = mark;
             }
 
             return GoogleMap(
-              initialCameraPosition: CameraPosition(
-                  target: LatLng(6.9337601, 79.8500765), zoom: 5),
+              initialCameraPosition:
+                  CameraPosition(target: LatLng(8.343966, 80.410869), zoom: 18),
               onMapCreated: (controller) {
                 setState(() {
                   myController = controller;
                 });
               },
               myLocationEnabled: true,
+              mapType: MapType.hybrid,
               compassEnabled: true,
               markers: Set<Marker>.of(markerslist.values),
             );
           },
         ),
+        // _buildcontianer(),
+        // Positioned(
+        //   bottom: 50,
+        //   left: 10,
+        //   child: FlatButton(
+        //     child: Icon(
+        //       Icons.pin_drop,
+        //       color: Colors.white,
+        //     ),
+        //     color: Colors.green,
+        //     // onPressed: _addGeoPoint,
+        //   ),
+        // )
       ],
     );
+  }
+
+  //card animation
+  Future<void> gotolocation(double lat, double lng) async {
+    myController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+      target: LatLng(lat, lng),
+      zoom: 17.0,
+    )));
   }
 }
