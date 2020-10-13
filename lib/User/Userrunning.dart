@@ -3,6 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:kochchiye_ko/User/Singletrainmap.dart';
+import 'package:kochchiye_ko/User/User.dart';
+
 class Userrunning extends StatefulWidget {
   @override
   _UserrunningState createState() => _UserrunningState();
@@ -137,10 +140,19 @@ class _UserrunningState extends State<Userrunning> {
                         ),
                         ListView.builder(
                           itemCount: num,
-                          itemBuilder: (context, index) => Card(
-                              size: size,
-                              ind: index,
-                              snapshot: snapshot[index]),
+                          itemBuilder: (context, index) => GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Usertraindetail()),
+                              );
+                            },
+                            child: Card(
+                                size: size,
+                                ind: index,
+                                snapshot: snapshot[index]),
+                          ),
                         )
                       ],
                     ),

@@ -13,31 +13,39 @@ class _LanguageState extends State<Language> {
       appBar: AppBar(
         backgroundColor: Colors.amber,
         brightness: Brightness.light,
-        title: Text("Settings"),
+        title: Text(" Lanaguage"),
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              child: Text("Sinhala"),
-              onPressed: () {
-                setState(() {
-                  EasyLocalization.of(context).locale = Locale("si", "SN");
-                });
-              },
+      body: Column(
+        children: <Widget>[
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  height: 20,
+                ),
+                Text("Choose the lanaguage you like"),
+                RaisedButton(
+                  child: Text("Sinhala"),
+                  onPressed: () {
+                    setState(() {
+                      EasyLocalization.of(context).locale = Locale("si", "SN");
+                    });
+                  },
+                ),
+                RaisedButton(
+                  child: Text("English"),
+                  onPressed: () {
+                    setState(() {
+                      EasyLocalization.of(context).locale = Locale("en", "EN");
+                    });
+                  },
+                ),
+              ],
             ),
-            RaisedButton(
-              child: Text("English"),
-              onPressed: () {
-                setState(() {
-                  EasyLocalization.of(context).locale = Locale("en", "EN");
-                });
-              },
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
