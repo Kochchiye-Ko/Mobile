@@ -43,10 +43,11 @@ class _SingletrainmapState extends State<Singletrainmap> {
 
   @override
   Widget build(BuildContext context) {
-    print(snapshot2['Train name']);
+    // print(snapshot2['Train Name']);
+
     return Scaffold(
         appBar: AppBar(
-          title: Text("Live location Map"),
+          title: Text("snapshot2[]"),
           backgroundColor: Colors.amber,
         ),
         body: _progressController
@@ -55,12 +56,15 @@ class _SingletrainmapState extends State<Singletrainmap> {
                   backgroundColor: Colors.purpleAccent,
                 ),
               )
-            : Geomap());
+            : Geomap(
+                sna: snapshot2,
+              ));
   }
 }
 
 class Geomap extends StatefulWidget {
-  Geomap({Key key}) : super(key: key);
+  var sna;
+  Geomap({this.sna});
 
   @override
   _GeomapState createState() => _GeomapState();
@@ -92,40 +96,37 @@ class _GeomapState extends State<Geomap> {
     ).then((onValue) {
       pinLocationIcon = onValue;
     });
-    markers.add(Marker(
-      icon: pinLocationIcon,
-      markerId: MarkerId(1.toString()),
-      position: LatLng(8.3114, 80.0098),
-    ));
-    markers.add(Marker(
-      markerId: MarkerId(1.toString()),
-      position: LatLng(8.3114, 80.40371),
-    ));
-    markers.add(Marker(
-      markerId: MarkerId(1.toString()),
-      position: LatLng(8.1540, 80.3046),
-    ));
-    markers.add(Marker(
-      markerId: MarkerId(1.toString()),
-      position: LatLng(7.4818, 80.3609),
-    ));
-    markers.add(Marker(
-      markerId: MarkerId(1.toString()),
-      position: LatLng(7.0840, 80.0098),
-    ));
-    markers.add(Marker(
-      markerId: MarkerId(1.toString()),
-      position: LatLng(6.9361, 79.8450),
-    ));
+
+    Map<dynamic, dynamic> map = snapshot2.data['Stations'];
+    final Map<String, dynamic> data =
+        map.map((key, value) => MapEntry(key.toString(), value));
+
+    List<LatLng> poly = [];
+
+    poly.add((LatLng(8.1540, 80.3046)));
+    //       ,)
+
+    for (int i = 0; i < snapshot2.data['Stations'].length; i++) {
+      print(i);
+      GeoPoint point = data[i.toString()];
+      poly.add(
+        LatLng(
+          point.latitude,
+          point.longitude,
+        ),
+      );
+      markers.add(Marker(
+        markerId: MarkerId(i.toString()),
+        position: LatLng(
+          point.latitude,
+          point.longitude,
+        ),
+      ));
+    }
+
     lines.add(
       Polyline(
-        points: [
-          LatLng(8.3114, 80.40371),
-          LatLng(8.1540, 80.3046),
-          LatLng(7.4818, 80.3609),
-          LatLng(7.0840, 80.0098),
-          LatLng(6.9361, 79.8450),
-        ],
+        points: poly,
         color: Colors.blueAccent,
         endCap: Cap.squareCap,
         geodesic: true,
