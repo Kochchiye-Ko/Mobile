@@ -17,20 +17,6 @@ class TestHome extends StatefulWidget {
 
 class _TestHomeState extends State<TestHome> {
   Geoflutterfire geo = Geoflutterfire();
-  // final AuthService _auth = AuthService();
-
-  // getaa() async {
-  //   BackgroundLocation.startLocationService();
-  //   BackgroundLocation.getLocationUpdates((location) {
-  //     GeoFirePoint point =
-  //         geo.point(latitude: location.latitude, longitude: location.longitude);
-  //     Firestore.instance
-  //         .collection('trainlocations')
-  //         .document('train1')
-  //         .setData({'position': point.data});
-  //   });
-  //   print("Done");
-  // }
 
   @override
   Widget build(BuildContext context) {

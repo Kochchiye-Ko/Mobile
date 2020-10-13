@@ -114,17 +114,17 @@ class _UserDetailsRegisterState extends State<UserDetailsRegister> {
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
-                        onPressed: () {
-                          if (_formKey.currentState.validate()) {
-                            DatabaseService()
-                                .addUserInfo(firstNme, lastName, email);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Testhome2()),
-                            );
-                          }
-                        },
+                        // onPressed: () {
+                        //   if (_formKey.currentState.validate()) {
+                        //     DatabaseService()
+                        //         .addUserInfo(firstNme, lastName, email);
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) => Testhome2()),
+                        //     );
+                        //   }
+                        // },
                       ),
                     ),
                   ],
