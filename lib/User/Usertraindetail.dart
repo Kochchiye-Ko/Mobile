@@ -86,7 +86,7 @@ class _UsertraindetailState extends State<Usertraindetail> {
                         ),
                         color: Colors.blue,
                         label: Text(
-                          "Seee On Map",
+                          "Seen On Map",
                           style: TextStyle(color: Colors.white),
                         )),
                   ),
