@@ -8,6 +8,7 @@ import 'package:kochchiye_ko/Auth/authservice.dart';
 import 'package:kochchiye_ko/Auth/userDetailsRegister.dart';
 import 'package:kochchiye_ko/User/Singletrainmap.dart';
 import 'package:kochchiye_ko/User/User.dart';
+import 'package:kochchiye_ko/User/Userhome.dart';
 
 class TestHome extends StatefulWidget {
   @override
@@ -54,16 +55,30 @@ class _TestHomeState extends State<TestHome> {
                 child: Text("Go to UserHome"),
                 onPressed: () {
                   Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Userhome(),
+                      ));
+                },
+              ),
+
+              RaisedButton(
+                child: Text("Indvidual Train details"),
+                onPressed: () {
+                  Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Testhome2()),
+                    MaterialPageRoute(builder: (context) => Usertraindetail()),
                   );
                 },
               ),
               SizedBox(
                 height: 10.0,
               ),
+              SizedBox(
+                height: 10.0,
+              ),
               RaisedButton(
-                child: Text("Go to UserHome"),
+                child: Text("SIngle map deatils"),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -89,31 +104,7 @@ class _TestHomeState extends State<TestHome> {
               // SizedBox(
               //   height: 10.0,
               // ),
-              RaisedButton(
-                child: Text("Send Notificatins"),
-                onPressed: () {
-                  // getaa();
-                },
-              ),
-              // RaisedButton(
-              //   child: Text("Stop send location"),
-              //   onPressed: () {
-              //     BackgroundLocation.stopLocationService();
-              //   },
-              // ),
-              // SizedBox(
-              //   height: 10.0,
-              // ),
-              // RaisedButton(
-              //   child: Text("Stop send location"),
-              //   onPressed: () {
-              //     //   Navigator.push(
-              //     //   context,
-              //     //   MaterialPageRoute(builder: (context) =>  Signin()
-              //     //   ),
-              //     // );
-              //   },
-              // ),
+
               RaisedButton(
                 child: Text("User details form"),
                 onPressed: () {

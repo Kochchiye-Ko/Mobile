@@ -143,7 +143,7 @@ class _GeomapState extends State<Geomap> {
       title: 'Google Maps Polylines',
       home: Scaffold(
         body: StreamBuilder<Object>(
-            stream: null,
+            stream: Firestore.instance.collection('trainlocations').snapshots(),
             builder: (context, snapshot) {
               return GoogleMap(
                 mapType: MapType.normal,
