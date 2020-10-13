@@ -133,6 +133,20 @@ class _GeomapState extends State<Geomap> {
         polylineId: PolylineId("line_one"),
       ),
     );
+    markers.add(Marker(
+      markerId: MarkerId(25.toString()),
+      icon: pinLocationIcon,
+      infoWindow: InfoWindow(title: snapshot2.data['Train Name']),
+      draggable: false,
+      zIndex: 2,
+      flat: true,
+      rotation: snapshot2.data['Lat'],
+      anchor: Offset(0.5, 0.5),
+      position: LatLng(
+        snapshot2.data['Lat'],
+        snapshot2.data['Long'],
+      ),
+    ));
   }
 
   @override
