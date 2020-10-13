@@ -47,11 +47,9 @@ class _TestHomeState extends State<TestHome> {
                       ));
                 },
               ),
-
               SizedBox(
                 height: 10.0,
               ),
-
               SizedBox(
                 height: 10.0,
               ),
@@ -64,13 +62,6 @@ class _TestHomeState extends State<TestHome> {
                   );
                 },
               ),
-              // SizedBox(
-              //   height: 10.0,
-              // ),
-              // SizedBox(
-              //   height: 10.0,
-              // ),
-
               RaisedButton(
                 child: Text("User details form"),
                 onPressed: () {
@@ -84,8 +75,6 @@ class _TestHomeState extends State<TestHome> {
               SizedBox(
                 height: 10.0,
               ),
-              Text(
-                  "All of these are in testing mode to tese]t.UI's will be added leter")
             ]),
           )
         ],
