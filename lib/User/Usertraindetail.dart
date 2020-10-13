@@ -66,32 +66,29 @@ class _UsertraindetailState extends State<Usertraindetail> {
                   height: 10,
                 ),
                 Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      print("dones");
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Singletrainmap()),
-                      );
-                    },
-                    child: ButtonTheme(
-                      minWidth: 160,
-                      height: 45,
-                      child: FlatButton.icon(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.book,
-                            color: Colors.white,
-                          ),
-                          color: Colors.blue,
-                          label: Text(
-                            "Seee On Map",
-                            style: TextStyle(color: Colors.white),
-                          )),
-                    ),
+                  child: ButtonTheme(
+                    minWidth: 160,
+                    height: 45,
+                    child: FlatButton.icon(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        onPressed: () {
+                          print("dones");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Singletrainmap()),
+                          );
+                        },
+                        icon: Icon(
+                          Icons.book,
+                          color: Colors.white,
+                        ),
+                        color: Colors.blue,
+                        label: Text(
+                          "Seen On Map",
+                          style: TextStyle(color: Colors.white),
+                        )),
                   ),
                 ),
                 SizedBox(

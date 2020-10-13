@@ -48,30 +48,10 @@ class _TestHomeState extends State<TestHome> {
                 },
               ),
 
-              RaisedButton(
-                child: Text("Indvidual Train details"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Usertraindetail()),
-                  );
-                },
-              ),
               SizedBox(
                 height: 10.0,
               ),
-              SizedBox(
-                height: 10.0,
-              ),
-              RaisedButton(
-                child: Text("SIngle map deatils"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Singletrainmap()),
-                  );
-                },
-              ),
+
               SizedBox(
                 height: 10.0,
               ),
